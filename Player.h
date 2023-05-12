@@ -7,7 +7,7 @@ class Player {
     protected:
         int max_health; // represents the max health of a player
         int current_health; // current health of player
-        int experience; // current experience level
+        int exp; // current experience level
         int level; // total experience level
     public:
         Player(); // default constructor - sets all data members to 0
