@@ -1,7 +1,7 @@
 #include "Monster.h"
 #include "Boss.h"
 
-//defeault constructer setting to nothing
+//default constructer setting to nothing
 Boss::Boss(){}; 
 
 //constructer setting health

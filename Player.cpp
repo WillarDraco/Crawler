@@ -13,7 +13,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
     defend = false;
 }
 
-void Player::punch() { // basic attack all players can use
+void Player::punch(Monster *monster) { // basic attack all players can use
     int damage = level / 2 * 5;
     if (Monster->block() == true) {
         damage = damage * 0.85;
