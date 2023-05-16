@@ -8,14 +8,15 @@ class Monster{
         int max_health; // represents the max health of a monster
         int current_health; // current health of a monster
         int level; // level of the monster
+        bool defend; //sets defending state
 
     public:
         Monster(); //default constructer
         Monster(int level); //sets health based on level
 
-        void punch(); // basic attack
-        void defend(); // reduces taken damage for one turn
-        virtual void rest(); // heals for turn - based on total health
+        virtual void attack(Player* player); // basic attack
+        virtual bool block(); // reduces taken damage for one turn
+        virtual void take_damage(int damage); //taking damage from player
 
         virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
         virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
@@ -30,6 +31,4 @@ class Monster{
         void set_level(int);
 
 };
-
-
 #endif
