@@ -9,14 +9,13 @@ class Player {
         int current_health; // current health of player
         int exp; // current number of experience points
         int level; // total experience level
-        int defense; // represents the defense stat of the player
         bool defend; // sets defending state
     public:
         Player(); // default constructor - sets all data members to 0
         Player(int level); // sets level data member, health is set based on level. exp = 0.
 
         void punch(); // basic attack all players can use
-        void defend(int damage); // reduces enemy damage for one turn
+        void block(); // reduces enemy damage for one turn
         virtual void rest(); // heals player for turn - based on total health
     
         virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
