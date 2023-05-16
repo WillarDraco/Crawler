@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Weapon.h"
 #include "Player.h"
+#include <cstdlib>
     
     //default constructer sets everything to nothing
     Monster::Monster(){}; 
@@ -12,19 +13,23 @@
     };
 
     // basic attack
-    void Monster::punch(){
-        int damage = 5 + 2*(level - 1);
-    }; 
+    void Monster::attack(Player* player){}
 
     // reduces taken damage for one turn
-    void Monster::defend(){
-
+    bool Monster::block(){
+        defend = true;
     }; 
 
-    void Monster::rest(){}; // heals for turn - based on total health
+    void Monster::take_damage(int damage){; //taking damage from player
+        if (defend = true){
+            current_health = current_health - damage*(0.5);
+        }
+        else{
+            current_health = current_health - damage;
+        }
+    }
 
     void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    
     void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
         
 
