@@ -15,13 +15,15 @@ Player::Player(int level) { // sets level data member, health is set based on le
 
 void Player::punch(Monster *monster) { // basic attack all players can use
     int damage = level / 2 * 5;
-    if (monster.block() == true) {
-        damage = 
+    if (Monster.block() == true) {
+        damage = damage * 0.85;
+        Monster.take_damage(damage);
     } else {
         Monster.take_damage(damage);
     }
 }
-void Player::block() { // reduces enemy damage for one turn
+
+void Player::block() { // reduces damage taken for one turn
     defend = true;
 }
 

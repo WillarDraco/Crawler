@@ -33,5 +33,4 @@ class Player {
         void set_exp(int exp);
         void set_level(int level);
 };
-
 #endif
