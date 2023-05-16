@@ -3,6 +3,8 @@
         "bitset": "cpp",
         "locale": "cpp",
         "memory": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp"
     }
 }
