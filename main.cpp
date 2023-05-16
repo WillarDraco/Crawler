@@ -5,4 +5,4 @@ int main(void) {
 }
 
 
-/ Turn Based Rogue-like game
+// Turn Based Rogue-like game
