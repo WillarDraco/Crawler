@@ -17,7 +17,7 @@ int main()
 
         window.clear();
         window.draw(shape);
-       sf::Window::display();
+        window.display();
     }
 
     return 0;
