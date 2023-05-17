@@ -2,6 +2,9 @@
 #include <string>
 #include <limits>
 #include <unistd.h>
+#include <Monster.h>
+#include <Goblin.h>
+#include <Player.h>
 
 
 
@@ -52,11 +55,10 @@ int main() {
     sleep(2);
     std::cout << "The room is pitch black, your head hurts\n";
     sleep(2);
-    std::cout << "You hear a squelch, and you scramble to your feet as the slime approaches...\n"; 
-
+    std::cout << "You hear a growl, and you scramble to your feet as a goblin approaches...\n"; 
     sleep(2);
 
-        
+    Goblin tutorial_enemy = Goblin(); 
     // openGL fight scene appears
 
     // text boxes pop up explaining punch/defend/rest
@@ -72,24 +74,64 @@ int main() {
     std::cout << "Rest recovers a small amount of health\n";
     sleep(2);
 
-    //Loop to ensure valid selection
-    bool valid = false;
-    while (valid == false) {
-        std::string selection;
-        std::cout << "Will you punch, defend or rest?\n";
-        std::cin >> selection;
+    // While loop until fight is over
+    bool victory = false;
+    bool player_death = false;
+    int enemy_move;
+    int kill_count = 0;
 
-        if (selection == ("Punch","punch")) {
+    while (victory == false && player_death == false) {
+        // Loop to ensure valid selection
+        bool valid = false;
+        while (valid == false) {
+            std::string selection;
+            std::cout << "Will you punch, defend or rest?\n";
+            std::cin >> selection;
+
+            if (selection == ("Punch","punch")) {
         
-        valid = true;
-        } else if (selection == ("Defend","defend")) {
+                valid = true;
+            } else if (selection == ("Defend","defend")) {
         
-        valid = true;
-        } else if (selection == ("Rest","rest")) {
+                valid = true;
+            } else if (selection == ("Rest","rest")) {
         
-        valid = true;
-        } else
-            std::cout << "Your selection is not valid, try again\n";
+                valid = true;
+            } else {
+                std::cout << "Your selection is not valid, try again\n";
+            }
+        }
+
+        if (tutorial_enemy.get_current_health() <= 0) {
+            std::cout << "You defeated the goblin!";
+            victory = true;
+            kill_count++;
+            break;
+        }
+        enemy_move = 1+ (rand() % 100);
+
+        if (enemy_move > 75) {
+            tutorial_enemy.attack(*player);
+        } else {
+            tutorial_enemy.block();
+        }
+
+        if (player.get_current_health() <= 0) {
+            std::cout << "You died";
+            player_death = true;
+        }
     }
 
+    if (player_death == true) {
+        //gameover, stats
+        return 0;
+    }
+
+    sleep(2);
+    std::cout << "Standing breathless over the dead body of the golbin, "
+        "you look into the darkness";
+    sleep(2);
+    std::cout << "You decide the only way out is forwards, and with a grimace"
+        " you take your first step into what seem to be an endless darkness...";
+    sleep(2);
 }
