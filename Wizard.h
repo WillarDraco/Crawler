@@ -2,6 +2,7 @@
 #define WIZARD_H
 #include "Player.h"
 #include "Weapon.h"
+#include "Monster.h"
 
 class Wizard : protected Player {
     private:
@@ -16,7 +17,7 @@ class Wizard : protected Player {
         void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-        void castSpell(); // wizard only attack that uses mana and does damage based on mana and equipped weapon
+        void castSpell(Monster* monster); // wizard only attack that uses mana and does damage based on mana and equipped weapon
         void manaRegen(); // regenerates mana based on level each
         void rest(); // heals player and recharges mana for turn - based on total health and mana
 };
