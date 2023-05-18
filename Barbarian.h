@@ -14,9 +14,8 @@ class Barbarian : protected Player {
 
         void equipWeapon(Weapon* barbarian_weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon* barbarian_weapon); // sets current weapon to  “” (removes weapon bonuses)
-        void castSpell(); // wizard only attack that uses mana and does damage based on mana and equipped weapon
 
-        void swingWeapon(); // barbarian only attack that does damage based on strength and equipped weapon
+        void swingWeapon(Monster* monster); // barbarian only attack that does damage based on strength and equipped weapon
 
         void rest(); // heals player for turn - based on total health
 };
