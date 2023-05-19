@@ -29,29 +29,46 @@ int main() {
 
     sleep(0.5);
 
-    
+    Player** classes = new Player*[3];
 
+    Barbarian* barbarian = new Barbarian(1);
+    Archer* archer = new Archer(1);
+    Wizard* wizard = new Wizard(1);
+
+    classes[0] = barbarian;
+    classes[1] = archer;
+    classes[2] = wizard;
+
+    int classes_index;
     bool valid_class = false;
     while (valid_class == false) {
         std::cout << "Select a class, you may choose:\nBarbarian\nArcher\nWizard\n";
         std::cin >> _class;
  
         if (_class == ("Barbarian") || _class == "barbarian") {
-            Barbarian* user = new Barbarian(1);
+            classes_index = 0;
             valid_class = true;
             _class = "barbarian";
         } else if (_class == ("Archer") || _class == ("archer")) {
-            Archer* user = new Archer(1);
+            classes_index = 1;
             valid_class = true;
             _class = "archer";
         } else if (_class == ("Wizard") || _class == ("wizard")) {
-            Wizard* user = new Wizard(1);
+            classes_index = 2;
             valid_class = true;
             _class = "wizard";
         } else {
             std::cout << "Your selection is not valid, try again\n";
         }
     }
+    if (_class == "wizard") {
+        Wizard* user = new Wizard;
+    } else if (_class == "archer") {
+        Archer* user = new Archer;
+    } else if (_class == "barbarian") {
+        Barbarian* user = new Barbarian;
+    } else
+
 
     sleep(0.5);
 
@@ -66,7 +83,7 @@ int main() {
     std::cout << "You hear a growl, and you scramble to your feet as a goblin approaches...\n"; 
     sleep(2);
 
-    Goblin tutorial_enemy = Goblin(); 
+    Goblin tutorial_enemy = Goblin(1); 
     // openGL fight scene appears
 
     // text boxes pop up explaining punch/defend/rest
@@ -97,7 +114,7 @@ int main() {
             std::cin >> selection;
             if (_class == "barbarian") {
                 if (selection == ("attack","Attack")) {
-                    user->attack(&tutorial_enemy);
+                    classes[1]->attack(tutorial_enemy);
                     valid = true;
                 } else if (selection == ("Defend","defend")) {
                     barbarian.defend();
@@ -168,3 +185,21 @@ int main() {
         " you take your first step into what seem to be an endless darkness...";
     sleep(2);
 }
+
+// tutorial enemy drops weapon
+
+// if victory - check player levelup
+// if player death
+
+// main gameplayer loop
+
+// KC % 3 == 0 run boss loop
+
+// else run standard enemy loop
+
+// combat - 2 enemy arrays, one boss one standard, generate rand enemy from array
+
+// if victory - STDKC++/BKC++, check level, if Boss upgrades or heal
+
+// if death - display kill count and boss kill count, display level
+// game over
