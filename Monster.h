@@ -12,9 +12,9 @@ class Monster{
 
     public:
         Monster(); //default constructer
-        Monster(int level); //sets health based on level
+        Monster(Player* player); //sets health based on level
 
-        virtual void attack(Player* player); // basic attack
+        virtual void punch(Player* player); // basic attack
         virtual bool block(); // reduces taken damage for one turn
         virtual void take_damage(int damage); //taking damage from player
 
@@ -26,9 +26,9 @@ class Monster{
         int get_current_health();
         int get_level();
 
-        void set_max_health(int);
-        void set_current_health(int);
-        void set_level(int);
+        void set_max_health(int health);
+        void set_current_health(int health);
+        void set_level(int level);
 
 };
 #endif

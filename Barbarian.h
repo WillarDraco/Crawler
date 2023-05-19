@@ -18,5 +18,8 @@ class Barbarian : public Player {
         void swingWeapon(Monster* monster); // barbarian only attack that does damage based on strength and equipped weapon
 
         void rest(); // heals player for turn - based on total health
+
+        int get_strength(); // Gets strength value
+        void set_strength(int strength); // Sets strength value
 };
 #endif

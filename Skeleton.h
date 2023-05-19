@@ -1,25 +1,27 @@
-#ifndef GOBLIN_H
-#define GOBLIN_H
+#ifndef SKELETON_H
+#define SKELETON_H
 
 #include "Monster.h"
 #include "Player.h"
 
-class Goblin : public Monster{
+class Skeleton : public Monster{
     protected:
-        int strength;
+        int agility;
 
     public:
-        Goblin(int level); //default constructor
+        Skeleton(int level); //default constructor
 
-        void punch(Player* player); // basic attack
+        void range_attack(Player* player); // range attack
+
 
         void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
         
 
         //getters and setters
-        int get_strength();
-        void set_strength(int);
+        int get_agility();
+        void set_agility(int agility);
+
 };
 
 #endif

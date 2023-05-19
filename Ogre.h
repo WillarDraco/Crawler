@@ -2,6 +2,7 @@
 #define ORGE_H
 
 #include "Boss.h"
+#include "Player.h"
 
 class Ogre : public Boss{
     protected:
@@ -9,7 +10,16 @@ class Ogre : public Boss{
         int agility;
 
     public:
-        Ogre(); //default constructer
+        Ogre(int level); //constructer
+
+
+        void punch(Player* player, int strength); // basic attack
+        void range_attack (Player* player, int agility);
+
+        void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
+        void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+        
+
 
         //getters and setters
         int get_strength();
