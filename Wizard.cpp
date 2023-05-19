@@ -11,7 +11,8 @@ Wizard::Wizard(int level) { // sets mana and health based on level, exp = 0, cur
     exp = 0; // current number of experience points
     this->level = level; // total experience level
     defend = false; // sets defending state
-    max_mana = (level * 10) + 90; // represents the maximum mana of a player - affects magic damage and usage        current_mana = max_mana; // current mana level of player
+    max_mana = (level * 10) + 90; // represents the maximum mana of a player - affects magic damage and usage
+    current_mana = max_mana; // current mana level of player
 }
 
 void Wizard::equipWeapon(Weapon); // sets current weapon (weapon bonuses)
@@ -44,4 +45,20 @@ void Wizard::rest() { // heals player and recharges mana for turn - based on tot
     if (current_mana > max_mana) {
         current_mana = max_mana;
     }
+}
+
+int Wizard::get_max_mana() { // Gets max mana
+    return max_mana;
+}
+
+int Wizard::get_current_mana() { // Gets current mana
+    return current_mana;
+}
+
+void Wizard::set_max_mana(int mana) { // Sets max mana
+    max_mana = mana;
+}
+
+void Wizard::set_current_mana(int mana) { // Sets current mana
+    current_mana = mana;
 }

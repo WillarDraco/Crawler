@@ -35,3 +35,11 @@ void Barbarian::rest() { // heals player for turn - based on total health
         current_health = max_health;
     }
 }
+
+int Barbarian::get_strength() { // Gets strength value
+    return strength;
+}
+
+void Barbarian::set_strength(int strength) { // Sets strength value
+    this->strength = strength;
+}

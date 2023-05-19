@@ -50,3 +50,26 @@ void Archer::rest() { // heals player for turn - based on total health
         current_health = max_health;
     }
 }
+
+int Archer::get_agility() { // Gets agility value
+    return agility;
+}
+int Archer::get_max_ammo() { // Gets max ammo value
+    return max_ammo;
+}
+
+int Archer::get_current_ammo() { // Gets current ammo value
+    return current_ammo;
+}
+
+void Archer::set_agility(int agility) { // Sets agility value
+    this->agility = agility;
+}
+
+void Archer::set_max_ammo(int max_ammo) { // Gets max ammo value
+    this->max_ammo = max_ammo;
+}
+
+void Archer::set_current_ammo(int current_ammo) { // Gets current ammo value
+    this->current_ammo = current_ammo;
+}
