@@ -14,7 +14,8 @@ class Player {
         Player(); // default constructor - sets all data members to 0
         Player(int level); // sets level data member, health is set based on level. exp = 0.
 
-        void punch(Monster* monster); // basic attack all players can use
+        void attack(Monster* monster); // basic attack all players can use
+        virtual void special_attack(Monster* monster); // special attack for each class
         void block(); // reduces enemy damage for one turn
         virtual void rest(); // heals player for turn - based on total health
     
@@ -23,6 +24,7 @@ class Player {
 
         void take_damage(int damage); // Take damage function
         void gain_exp(Monster* monster); // Gain exp function after defeating a monster
+        virtual void level_up(); // Changes stats according to level
 
         // getters and setters for all data memebers
         int get_max_health();

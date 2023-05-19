@@ -14,7 +14,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
     defend = false;
 }
 
-void Player::punch(Monster* monster) { // basic attack all players can use
+void Player::attack(Monster* monster) { // basic attack all players can use
     int damage = level / 2 * 5;
     if (monster->block() == true) {
         damage = damage * 0.85;
@@ -22,6 +22,9 @@ void Player::punch(Monster* monster) { // basic attack all players can use
     } else {
         monster->take_damage(damage);
     }
+}
+
+void special_attack(Monster* monster) { // special attack for each class
 }
 
 void Player::block() { // reduces damage taken for one turn
@@ -33,8 +36,13 @@ void Player::take_damage(int damage) {
 }
 
 void Player::gain_exp(Monster* monster) { // Gain exp function after defeating a monster
-    exp = exp + level * monster->get_level();
-    level = (5 * pow(3,level)) / 4;
+    int old_level = level;
+    exp = exp + ((1 /3) * level) * (((rand() % 120) + 80) / 100);
+    level = (1 / 2) * pow((1 / 2),exp);
+    if (old_level != level) {
+        std::cout << "Congratulations, you have levelled up! \n";
+        max_health = (level * 10) + 90;
+    }
 }
 
 // getters and setters for all data memebers

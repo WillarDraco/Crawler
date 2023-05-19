@@ -3,11 +3,13 @@
 #include "Weapon.h"
 #include "Monster.h"
 #include <cstdlib>
+#include <string>
 
 Barbarian::Barbarian() { // sets all data members to 0 or “ ”
 }
 
-Barbarian::Barbarian(int level) { // sets strength and health based on level, exp = 0, current weapon = “”;
+Barbarian::Barbarian(int level, std::string name) { // sets strength and health based on level, exp = 0, current weapon = “”;
+    this->name = name;
     max_health = (level * 10) + 100; // represents the max health of a player
     current_health = max_health; // current health of player
     exp = 0; // current number of experience points
@@ -19,7 +21,7 @@ Barbarian::Barbarian(int level) { // sets strength and health based on level, ex
 void Barbarian::equipWeapon(Weapon* barbarian_weapon); // sets current weapon (weapon bonuses)
 void Barbarian::unequipWeapon(Weapon* barbarian_weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-void Barbarian::swingWeapon(Monster* monster) { // barbarian only attack that does damage based on strength and equipped weapon
+void Barbarian::special_attack(Monster* monster) { // barbarian only attack that does damage based on strength and equipped weapon
     int damage = strength * ((rand() % 5) * level);
     if (monster->block() == true) {
             damage = damage * 0.85;

@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "Monster.h"
+#include <string>
 
 class Archer : public Player {
     private:
@@ -12,12 +13,12 @@ class Archer : public Player {
         int current_ammo; // current ammunition level
     public:
         Archer(); // sets all data members to 0 or “”
-        Archer(int level); // sets strength and health based on level, exp = 0, current weapon = “”;
+        Archer(int level, std::string name); // sets strength and health based on level, exp = 0, current weapon = “”;
 
         void equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
         
-        void shootWeapon(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
+        void special_attack(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
 
         void recoverAmmo(); // recovers a random (small) amount of ammunition
         void rest(); // heals player for turn - based on total health

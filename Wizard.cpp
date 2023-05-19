@@ -1,11 +1,14 @@
 #include "Wizard.h"
 #include "Monster.h"
 #include <cstdlib>
+#include <iostream>
+#include <string>
 
 Wizard::Wizard() { // sets all data members to 0 or “ ”
 }
 
-Wizard::Wizard(int level) { // sets mana and health based on level, exp = 0, current weapon = “”;
+Wizard::Wizard(int level, std::string name) { // sets mana and health based on level, exp = 0, current weapon = “”, name is inherited;
+    this->name = name;
     max_health = (level * 10) + 70; // represents the max health of a player
     current_health = max_health; // current health of player
     exp = 0; // current number of experience points
@@ -18,7 +21,7 @@ Wizard::Wizard(int level) { // sets mana and health based on level, exp = 0, cur
 void Wizard::equipWeapon(Weapon); // sets current weapon (weapon bonuses)
 void Wizard::unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-void Wizard::castSpell(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
+void Wizard::special_attack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
     int damage = max_mana * ((rand() % 5) * level);
     if (monster->block() == true) {
         damage = damage * 0.85;
@@ -26,6 +29,7 @@ void Wizard::castSpell(Monster* monster) { // wizard only attack that uses mana 
     } else {
         monster->take_damage(damage);
     }
+    std::cout << "user used fireball. It did " << damage << ".\n";
 }
 
 void Wizard::manaRegen() { // regenerates mana based on level each
