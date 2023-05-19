@@ -11,7 +11,7 @@ class Wyvern : public Monster{
     public:
         Wyvern(int level); //default constructor
 
-        void magic_attack (Player* player); //magic attack
+        void magic_attack (Player* player); //attack
         
 
         //getters and setters

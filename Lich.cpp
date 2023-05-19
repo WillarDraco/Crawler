@@ -6,25 +6,55 @@
     Lich::Lich(int level){
         strength = level * 2;
         mana = level * 2;
+        has_weapon = false;
     };
 
     // basic attack
-    void Lich::punch(Player* player){
+    void Lich::attack(Player* player){
+
+        int random_move = rand() % 100 + 1;
         
-        int damage = (rand() % 10 + 5) + (strength);
+        if (random_move < 75){
+            if (has_weapon = true){
+                if (random_move < 50){
+                int damage = (rand() % 10 + 5) + (strength);
 
-        player->take_damage(damage);
-    }
+                player->take_damage(damage);
+                }
+                else if (random_move > 50){
+                int damage = (rand() % 10 + 5) + (mana * 2);
 
-    //magic attack
-    void Lich::magic_attack(Player* player){
-        
-        int damage = (rand() % 10 + 5) + (mana);
+                player->take_damage(damage);
+                }
+            else if(random_move < 50){
+                int damage = (rand() % 10 + 5) + (strength);
 
-        player->take_damage(damage);
-    }
+                player->take_damage(damage);
+            }
+            else if (random_move > 50){
+                int damage = (rand() % 10 + 5) + (mana);
 
+                player->take_damage(damage); 
+            }
+        }   
+        else{
+            block();    
+        }    
     
+    }
+    }  
+
+    // sets current weapon (weapon bonuses)
+    void Lich::equipWeapon(){
+        has_weapon = true;
+    };
+
+    // sets current weapon to  “” (removes weapon bonuses)
+    void Lich::unequipWeapon(){
+        has_weapon = false;
+    };
+    
+
     //getters and setters
     int Lich::get_strength(){
         return strength;
