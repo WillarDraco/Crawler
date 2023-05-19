@@ -6,7 +6,7 @@ Wizard::Wizard() { // sets all data members to 0 or “ ”
 }
 
 Wizard::Wizard(int level) { // sets mana and health based on level, exp = 0, current weapon = “”;
-    max_health = (level * 10) + 90; // represents the max health of a player
+    max_health = (level * 10) + 70; // represents the max health of a player
     current_health = max_health; // current health of player
     exp = 0; // current number of experience points
     this->level = level; // total experience level

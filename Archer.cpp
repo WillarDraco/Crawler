@@ -9,14 +9,14 @@ Archer::Archer() { // sets all data members to 0 or “”
 }
 
 Archer::Archer(int level) { // sets strength and health based on level, exp = 0, current weapon = “”;
-    max_health = (level * 10) + 90; // represents the max health of a player
+    max_health = (level * 10) + 60; // represents the max health of a player
     current_health = max_health; // current health of player
     exp = 0;// current experience level
     this->level = level;
     defend = false;
     int agility = 5; // represents the agility of a player - affects range damage
     Weapon** archer_weapon = 0; // currently equipped weapon
-    int max_ammo = 20; // total arrows/bolts knives an archer can have
+    int max_ammo = 10; // total arrows/bolts knives an archer can have
     int current_ammo = max_ammo; // current ammunition level
 }
 
