@@ -9,6 +9,7 @@ class Monster{
         int current_health; // current health of a monster
         int level; // level of the monster
         bool defend; //sets defending state
+        int exp;
 
     public:
         Monster(); //default constructer

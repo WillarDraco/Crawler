@@ -13,8 +13,7 @@ class Dragon : public Boss{
         Dragon(int level); //constructer
 
 
-        void punch(Player* player); // basic attack
-        void magic_attack (Player* player); //magic attack
+        void attack(Player* player); // basic attack
         
 
         //getters and setters

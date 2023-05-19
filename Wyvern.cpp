@@ -9,10 +9,17 @@
 
     //magic attack
     void Wyvern::magic_attack(Player* player){
+             int random_move = rand() % 100 + 1;
         
-        int damage = (rand() % 5 + 1) + (mana);
+        if (random_move < 75){
+            int damage = (rand() % 5 + 1) + (mana);
 
-        player->take_damage(damage);
+                player->take_damage(damage);
+        }   
+        else{
+            block();    
+        }    
+    
     }
 
     

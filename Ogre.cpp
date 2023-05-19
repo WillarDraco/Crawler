@@ -10,23 +10,50 @@
     }
 
     // basic attack
-    void Ogre::punch(Player* player, int strength){
-        
-        int damage = (rand() % 10 + 5) + (strength);
+    void Ogre::attack(Player* player){
 
-        player->take_damage(damage);
+        int random_move = rand() % 100 + 1;
+        
+        if (random_move < 75){
+            if (has_weapon = true){
+                if (random_move < 50){
+                int damage = (rand() % 10 + 5) + (strength * 2);
+
+                player->take_damage(damage);
+                }
+                else if (random_move > 50){
+                int damage = (rand() % 10 + 5) + (agility);
+
+                player->take_damage(damage);
+                }
+            else if(random_move < 50){
+                int damage = (rand() % 10 + 5) + (strength);
+
+                player->take_damage(damage);
+            }
+            else if (random_move > 50){
+                int damage = (rand() % 10 + 5) + (agility);
+
+                player->take_damage(damage); 
+            }
+        }   
+        else{
+            block();    
+        }    
+    
+    }
     }
 
-    // range attack
-    void Ogre::punch(Player* player, int strength){
-        
-        int damage = (rand() % 10 + 5) + (agility);
 
-        player->take_damage(damage);
-    }
+    // sets current weapon (weapon bonuses)
+    void Ogre::equipWeapon(){
+        has_weapon = true;
+    };
 
-    void equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    void unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
+    // sets current weapon to  “” (removes weapon bonuses)
+    void Ogre::unequipWeapon(){
+        has_weapon = false;
+    }; 
 
 
     //getters and setters
