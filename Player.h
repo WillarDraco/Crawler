@@ -21,7 +21,9 @@ class Player {
         virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
         virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-        void take_damage(int damage);
+        void take_damage(int damage); // Take damage function
+        void gain_exp(Monster* monster); // Gain exp function after defeating a monster
+
         // getters and setters for all data memebers
         int get_max_health();
         int get_current_health();

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Monster.h"
 #include <iostream>
+#include <cmath>
 
 Player::Player() { // default constructor - sets all data members to 0
 }
@@ -29,6 +30,11 @@ void Player::block() { // reduces damage taken for one turn
 
 void Player::take_damage(int damage) {
     current_health = current_health - damage;
+}
+
+void Player::gain_exp(Monster* monster) { // Gain exp function after defeating a monster
+    exp = exp + level * monster->get_level();
+    level = (5 * pow(3,level)) / 4;
 }
 
 // getters and setters for all data memebers
