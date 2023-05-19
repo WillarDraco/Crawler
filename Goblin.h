@@ -7,14 +7,15 @@
 class Goblin : public Monster{
     protected:
         int strength;
-
+        bool has_weapon;
+    
     public:
         Goblin(int level); //default constructor
 
-        void punch(Player* player); // basic attack
+        void attack(Player* player); // basic attack
 
-        void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-        void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+        void equipWeapon(); // sets current weapon (weapon bonuses)
+        void unequipWeapon(); // sets current weapon to  “” (removes weapon bonuses)
         
 
         //getters and setters

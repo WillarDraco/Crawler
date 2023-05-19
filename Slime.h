@@ -12,8 +12,7 @@ class Slime : public Monster{
     public:
         Slime(int level); //default constructor
 
-        void punch(Player* player); // strength attack
-        void magic_attack (Player* player);
+        void attack(Player* player); //attack
         
 
         //getters and setters

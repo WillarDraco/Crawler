@@ -5,22 +5,44 @@
     //default constructer
     Goblin::Goblin(int level){
         strength = level;
+        has_weapon = false;
     };
 
 
-    // basic attack
-    void Goblin::punch(Player* player){
-    
-        int damage = (rand() % 5 + 1) + (strength);
+    //attack function
+        void Goblin::attack(Player* player){
+        int random_move = rand() % 100 + 1;
+        
+        if (random_move < 75){
+            if (has_weapon = true){
+                int damage = (rand() % 5 + 1) + (strength)*2;
 
-        player->take_damage(damage);
+                player->take_damage(damage);
+            }
+            else{
+                int damage = (rand() % 5 + 1) + (strength);
+
+                player->take_damage(damage);
+
+            }
+        }   
+        else{
+            block();    
+        }
     }
 
+    // sets weapon to true
+    void Goblin::equipWeapon(){
+        has_weapon = true;
+    };
 
-    void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-    void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+     // sets weapon to false
+    void Goblin::unequipWeapon(){
+        has_weapon = false;
+    };
 
     
+
     //getters and setters
     int Goblin::get_strength(){
         return strength;
