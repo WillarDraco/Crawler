@@ -3,17 +3,21 @@
 #include "Player.h"
 #include <cstdlib>
     
-    //default constructer sets everything to nothing
-    Monster::Monster(){}; 
+    //default constructer sets everything to basics
+    Monster::Monster() {}; 
 
     //set health based on level
-    Monster::Monster(int level){
-        max_health = 20 + 5*(level - 1);
+    Monster::Monster(Player* player){
+        level = player->get_level();
+
+        max_health = 20 + 5*(level);
         current_health = max_health;
-    };
+
+        defend = false;    
+        };
 
     // basic attack
-    void Monster::attack(Player* player){}
+    void Monster::punch(Player* player){}
 
     // reduces taken damage for one turn
     bool Monster::block(){
@@ -46,14 +50,14 @@
         return level;
     };
 
-    void Monster::set_max_health(int a){
-        max_health = a;
+    void Monster::set_max_health(int health){
+        max_health = health;
     };
 
-    void Monster::set_current_health(int b){
-        current_health = b;
+    void Monster::set_current_health(int health){
+        current_health = health;
     };
 
-    void Monster::set_level(int c){
-        level = c;
+    void Monster::set_level(int level){
+        level = level;
     };

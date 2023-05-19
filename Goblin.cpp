@@ -3,13 +3,15 @@
 #include <cstdlib>
 
     //default constructer
-    Goblin::Goblin(){};
+    Goblin::Goblin(int level){
+        strength = level;
+    };
 
 
     // basic attack
-    void Goblin::attack(Player* player, int strength){
-        
-        int damage = rand() % 5 + 2*(strength);
+    void Goblin::punch(Player* player){
+    
+        int damage = (rand() % 5 + 1) + (strength);
 
         player->take_damage(damage);
     }
@@ -24,7 +26,7 @@
         return strength;
     };
 
-    void Goblin::set_strength(int a){
-        strength = a;
+    void Goblin::set_strength(int strength){
+        strength = strength;
 
     };
