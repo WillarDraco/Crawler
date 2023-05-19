@@ -21,5 +21,13 @@ class Archer : protected Player {
 
         void recoverAmmo(); // recovers a random (small) amount of ammunition
         void rest(); // heals player for turn - based on total health
+
+        int get_agility(); // Gets agility value
+        int get_max_ammo(); // Gets max ammo value
+        int get_current_ammo(); // Gets current ammo value
+
+        void set_agility(int agility); // Sets agility value
+        void set_max_ammo(int max_ammo); // Gets max ammo value
+        void set_current_ammo(int current_ammo); // Gets current ammo value
 };
 #endif

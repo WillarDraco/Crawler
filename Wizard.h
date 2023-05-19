@@ -20,5 +20,10 @@ class Wizard : protected Player {
         void castSpell(Monster* monster); // wizard only attack that uses mana and does damage based on mana and equipped weapon
         void manaRegen(); // regenerates mana based on level each
         void rest(); // heals player and recharges mana for turn - based on total health and mana
+
+        int get_max_mana(); // Gets max mana
+        int get_current_mana(); // Gets current mana
+        void set_max_mana(int mana); // Sets max mana
+        void set_current_mana(int mana); // Sets current mana
 };
 #endif
