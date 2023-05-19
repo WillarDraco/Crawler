@@ -4,7 +4,7 @@
 #include "Weapon.h"
 #include "Monster.h"
 
-class Archer : protected Player {
+class Archer : public Player {
     private:
         int agility; // represents the agility of a player - affects range damage
         Weapon** archer_weapon; // currently equipped weapon

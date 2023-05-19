@@ -4,7 +4,7 @@
 #include "Weapon.h"
 #include "Monster.h"
 
-class Barbarian : protected Player {
+class Barbarian : public Player {
     private:
         int strength; // represents strength of a player - affects melee damage
         Weapon** barbarian_weapon; // currently equipped weapon

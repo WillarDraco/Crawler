@@ -4,7 +4,7 @@
 #include "Weapon.h"
 #include "Monster.h"
 
-class Wizard : protected Player {
+class Wizard : public Player {
     private:
         int max_mana; // represents the maximum mana of a player - affects magic damage and usage
         int current_mana; // current mana level of player
