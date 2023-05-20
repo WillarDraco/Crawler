@@ -4,11 +4,13 @@
 #include "Monster.h"
 #include <cstdlib>
 #include <iostream>
+#include <string>
 
 Archer::Archer() { // sets all data members to 0 or “”
 }
 
-Archer::Archer(int level) { // sets strength and health based on level, exp = 0, current weapon = “”;
+Archer::Archer(int level, std::string name) { // sets strength and health based on level, exp = 0, current weapon = “”;
+    this->name = name;
     max_health = (level * 10) + 60; // represents the max health of a player
     current_health = max_health; // current health of player
     exp = 0;// current experience level
@@ -23,7 +25,7 @@ Archer::Archer(int level) { // sets strength and health based on level, exp = 0,
 void Archer::equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
 void Archer::unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-void Archer::shootWeapon(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
+void Archer::special_attack(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
     int damage = 0;
     if (current_ammo != 0) {
         damage = agility * ((rand() % 10 + 2) * level);

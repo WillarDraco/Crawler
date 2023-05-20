@@ -3,21 +3,23 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "Monster.h"
+#include <string>
 
 class Wizard : public Player {
     private:
+        std::string name; // the name of the user
         int max_mana; // represents the maximum mana of a player - affects magic damage and usage
         int current_mana; // current mana level of player
         Weapon** Wizard_Weapon; // currently equipped weapon
 
     public:
         Wizard(); // sets all data members to 0 or “ ”
-        Wizard(int level); // sets mana and health based on level, exp = 0, current weapon = “”;
+        Wizard(int level, std::string name); // sets mana and health based on level, exp = 0, current weapon = “”, name is inherited;
 
         void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
-        void castSpell(Monster* monster); // wizard only attack that uses mana and does damage based on mana and equipped weapon
+        void special_attack(Monster* monster); // wizard only attack that uses mana and does damage based on mana and equipped weapon
         void manaRegen(); // regenerates mana based on level each
         void rest(); // heals player and recharges mana for turn - based on total health and mana
 
