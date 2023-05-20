@@ -31,9 +31,9 @@ int main() {
 
     Player** classes = new Player*[3];
 
-    Barbarian* barbarian = new Barbarian(1);
-    Archer* archer = new Archer(1);
-    Wizard* wizard = new Wizard(1);
+    Barbarian* barbarian = new Barbarian(1, name);
+    Archer* archer = new Archer(1, name);
+    Wizard* wizard = new Wizard(1, name);
 
     classes[0] = barbarian;
     classes[1] = archer;
@@ -48,31 +48,23 @@ int main() {
         if (_class == ("Barbarian") || _class == "barbarian") {
             classes_index = 0;
             valid_class = true;
-            _class = "barbarian";
+            _class = "Barbarian";
         } else if (_class == ("Archer") || _class == ("archer")) {
             classes_index = 1;
             valid_class = true;
-            _class = "archer";
+            _class = "Archer";
         } else if (_class == ("Wizard") || _class == ("wizard")) {
             classes_index = 2;
             valid_class = true;
-            _class = "wizard";
+            _class = "Wizard";
         } else {
             std::cout << "Your selection is not valid, try again\n";
         }
     }
-    if (_class == "wizard") {
-        Wizard* user = new Wizard;
-    } else if (_class == "archer") {
-        Archer* user = new Archer;
-    } else if (_class == "barbarian") {
-        Barbarian* user = new Barbarian;
-    } else
-
 
     sleep(0.5);
 
-    std::cout << "You are a " << _class << " named " << name << "\n" << "Press enter to continue\n";
+    std::cout << "You are " << name << " the " << _class << "\n" << "Press enter to continue\n";
     std::cin.get();
     std::cin.get();
 
@@ -113,7 +105,7 @@ int main() {
             std::cout << "Will you attack, defend or rest?\n";
             std::cin >> selection;           
             if (selection == ("attack","Attack")) {
-                classes[classes_index]->attack(tutorial_enemy);
+                classes[classes_index]->attack(&tutorial_enemy);
                 valid = true;
             } else if (selection == ("Defend","defend")) {
                 classes[classes_index]->block();
@@ -131,12 +123,7 @@ int main() {
             kill_count++;
             break;
         }
-        enemy_move = 1+ (rand() % 100);
-        if (enemy_move < 75) {
-            tutorial_enemy.attack(classes[classes_index]);
-        } else {
-            tutorial_enemy.block();
-        }
+        tutorial_enemy.attack(classes[classes_index]);
 
         if (classes[classes_index]->get_current_health() <= 0) {
             std::cout << "You died";
@@ -144,18 +131,68 @@ int main() {
         }
     }
 
+    // if player health reaches 0, trigger gameover and display playthrough statistics
     if (player_death == true) {
-        //gameover, stats
+        std::string name = classes[classes_index]->get_name();
+        std::cout << "Unfortunately " << name << " the " << _class << " has failed in their quest to reach the exit.\n";
+        sleep(2);
+        std::cout << name << " killed " << kill_count << " monsters and " << boss_kill_count << " bosses.\n";
+        sleep(2);
+        std::cout << name << " reached level " << classes[classes_index]->get_level() << ".\n";
+        sleep(2);
+        std::cout << "While " << name << " may have failed in his quest, another may succeed...\n";
+        sleep(2);
+        std::cout << "Will you try again?\n";
+        
         return 0;
     }
 
     sleep(2);
     std::cout << "Standing breathless over the dead body of the golbin, "
-        "you look into the darkness";
+        "you look into the darkness\n";
     sleep(2);
-    std::cout << "You decide the only way out is forwards, and with a grimace"
-        " you take your first step into what seem to be an endless darkness...";
+    std::cout << "You decide the only way out is forwards, and with a grimace\n"
+        " you take your first step into what seem to be an endless darkness...\n";
     sleep(2);
+
+    if (_class == "Barbarian") {
+        std::cout << "You notice a dirty blade tucked in the the goblins belt...\n";
+        sleep(2);
+        std::cout << "You take the blade from the body and see it's a sword, rusty and dirty but sharp\n";
+        sleep(2);
+        std::cout << "Gratefully, you tuck the sword into your own belt, and as you begin to look around you notice and old wooden shield in the corner of the room\n";
+        sleep(2);
+        std::cout << "Congratulations! you have acquired a sword and shield!\n";
+        sleep(2);
+    } else if (_class == "Archer") {
+        std::cout << "You notice a leather strap across the goblins chest, and upon closer insepction you realise theres a quiver full of arrows across the goblins back...\n";
+        sleep(2);
+        std::cout << "The tips on the arrows look worn but still sharp enough to cut\n";
+        sleep(2);
+        std::cout << "Gratefully, you strap the quiver to your own back, and as you begin to look around you notice and old hunting bow in the corner of the room\n";
+        sleep(2);
+        std::cout << "Congratulations! You have acquired a Bow and Quiver!\n";
+        sleep(2);
+    } else if (_class == "Wizard") {
+        std::cout << "You notice a strange old book in the goblins small satchel\n";
+        sleep(2);
+        std::cout << "You take the book and as you attempt to read it, you realise while most of it is in a language you cannot understand\n";
+        sleep(2);
+        std::cout << "You look around the room and find it completely empty and decide to take a moment to glean what you can from this book\n";
+        sleep(2);
+        std::cout << "Several moments later you realise its a book about spellcraft! For now you can only understand one spell but that is enough for now\n";
+        sleep(2);
+        std::cout << "You put the book back in the satchel and attach the satchel to your belt\n";
+        sleep(2);
+        std::cout << "Congratulation! You have acquired a spellbook!\n";
+    }
+    std::cout << "Now that you have a weapon, your attack will do more damage, and each type of weapon has unique effects!";
+    sleep(2);
+    std::cout << "You may find other weapons in your travels, but be warned, you can only carry one type at a time";
+    sleep(2);
+    std::cout << "Press Enter to continue...";
+    std::cin.get();
+    std::cin.get();
 }
 
 // tutorial enemy drops weapon
