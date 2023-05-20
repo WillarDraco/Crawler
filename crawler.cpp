@@ -111,47 +111,19 @@ int main() {
         while (valid == false) {
             std::string selection;
             std::cout << "Will you attack, defend or rest?\n";
-            std::cin >> selection;
-            if (_class == "barbarian") {
-                if (selection == ("attack","Attack")) {
-                    classes[1]->attack(tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    barbarian.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    barbarian.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            } else if (_class == "archer") {
-                if (selection == ("Punch","punch")) {
-                    archer.punch(&tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    archer.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    archer.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            } else if (_class == "wizard") {
-                if (selection == ("Punch","punch")) {
-                    wizard.punch(&tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    wizard.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    wizard.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            }
+            std::cin >> selection;           
+            if (selection == ("attack","Attack")) {
+                classes[classes_index]->attack(tutorial_enemy);
+                valid = true;
+            } else if (selection == ("Defend","defend")) {
+                classes[classes_index]->block();
+                valid = true;
+            } else if (selection == ("Rest","rest")) {
+                classes[classes_index]->rest();
+                valid = true;
+            } else {
+                std::cout << "Your selection is not valid, try again\n";
+            }            
         }
         if (tutorial_enemy.get_current_health() <= 0) {
             std::cout << "You defeated the goblin!";
@@ -161,12 +133,12 @@ int main() {
         }
         enemy_move = 1+ (rand() % 100);
         if (enemy_move < 75) {
-            tutorial_enemy.attack(&user);
+            tutorial_enemy.attack(classes[classes_index]);
         } else {
             tutorial_enemy.block();
         }
 
-        if (user.get_current_health() <= 0) {
+        if (classes[classes_index]->get_current_health() <= 0) {
             std::cout << "You died";
             player_death = true;
         }
