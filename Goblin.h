@@ -10,7 +10,7 @@ class Goblin : public Monster{
         bool has_weapon;
     
     public:
-        Goblin(int level, Player* player); //constructor
+        Goblin(Player* player); //constructor
 
         void attack(Player* player); // basic attack
 
