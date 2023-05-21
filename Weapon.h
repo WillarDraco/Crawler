@@ -3,9 +3,10 @@
 
 class Weapon {
     protected:
-        int damage;
+        int damage; // I
     private:
-        
+        virtual void stat_increase();
+        virtual void damage_increase();
 };
 
 #endif
