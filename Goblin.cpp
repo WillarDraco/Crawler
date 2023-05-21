@@ -2,10 +2,17 @@
 #include "Goblin.h"
 #include <cstdlib>
 
-    //default constructer
-    Goblin::Goblin(int level){
-        strength = level;
-        has_weapon = false;
+    //constructer
+    Goblin::Goblin(int level, Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 20 + 5*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->strength = level;
+        this->has_weapon = false;
     };
 
 

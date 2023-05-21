@@ -17,7 +17,7 @@ int main() {
 
     std::cout << "Welcome to Crawler!" << "\n" << "Crawler is a turn-based "
         "rogue-like game where you take control of a player and defeat as many " 
-        "monsters as you can, levelling up and unlocking weapons along the way.\n";
+        "monsters as you can,\nlevelling up and unlocking weapons along the way.\n";
 
     sleep(2);
 
@@ -79,12 +79,12 @@ int main() {
     std::cout << "You hear a growl, and you scramble to your feet as a goblin approaches...\n"; 
     sleep(2);
 
-    Goblin tutorial_enemy = Goblin(1); 
+    Goblin tutorial_enemy = Goblin(1, classes[classes_index]); 
     // openGL fight scene appears
 
     // text boxes pop up explaining punch/defend/rest
 
-    std::cout << "In a fight, until you have a weapon you may Punch, Defend or Rest\n";
+    std::cout << "\nIn a fight, until you have a weapon you may Attack, Defend, Rest or perform a special action\n";
     sleep(2);
     std::cout << "Once an option is selected, the selected option occurs and it is now the enemys turn\n";
     sleep(2);
@@ -93,6 +93,8 @@ int main() {
     std::cout << "Defend reduces a small amount of damage taken on enemy's next turn\n";
     sleep(2);
     std::cout << "Rest recovers a small amount of health\n";
+    sleep(2);
+    std::cout << "Your special action depends on your class type FINISH THIS BEFORE SUBMIT\n";
     sleep(2);
 
     // While loop until fight is over
@@ -103,23 +105,23 @@ int main() {
         bool valid = false;
         while (valid == false) {
             std::string selection;
-            std::cout << "Will you attack, defend or rest?\n";
+            std::cout << "\nWill you attack, defend or rest?\n";
             std::cin >> selection;           
-            if (selection == ("Attack")) {
+            if (selection == "Attack" || (selection == "attack")) {
                 classes[classes_index]->attack(&tutorial_enemy);
                 valid = true;
-            } else if (selection == ("defend")) {
+            } else if (selection == "Defend" || (selection == "defend")) {
                 classes[classes_index]->block();
                 valid = true;
-            } else if (selection == ("rest")) {
+            } else if (selection == "Rest" || (selection == "rest")) {
                 classes[classes_index]->block();
                 valid = true;
             } else {
                 std::cout << "Your selection is not valid, try again\n";
             }            
         }
-        if (tutorial_enemy.get_current_health() <= 0) {
-            std::cout << "You defeated the goblin!";
+        if (tutorial_enemy.get_current_health() == 0) {
+            std::cout << "\nYou defeated the goblin!\n";
             victory = true;
             kill_count++;
             break;
@@ -127,7 +129,7 @@ int main() {
         tutorial_enemy.attack(classes[classes_index]);
 
         if (classes[classes_index]->get_current_health() <= 0) {
-            std::cout << "You died";
+            std::cout << "\nYou died\n";
             player_death = true;
         }
     }
@@ -148,50 +150,47 @@ int main() {
         return 0;
     }
 
-    sleep(2);
-    std::cout << "Standing breathless over the dead body of the golbin, "
-        "you look into the darkness\n";
-    sleep(2);
-    std::cout << "You decide the only way out is forwards, and with a grimace\n"
-        " you take your first step into what seem to be an endless darkness...\n";
-    sleep(2);
-
     if (_class == "Barbarian") {
-        std::cout << "You notice a dirty blade tucked in the the goblins belt...\n";
+        std::cout << "\nYou notice a dirty blade tucked in the the goblins belt...\n";
         sleep(2);
         std::cout << "You take the blade from the body and see it's a sword, rusty and dirty but sharp\n";
         sleep(2);
-        std::cout << "Gratefully, you tuck the sword into your own belt, and as you begin to look around you notice and old wooden shield in the corner of the room\n";
+        std::cout << "Gratefully, you tuck the sword into your own belt, and as you begin to look around you\nnotice and old wooden shield in the corner of the room\n";
         sleep(2);
-        std::cout << "Congratulations! you have acquired a sword and shield!\n";
+        std::cout << "\nCongratulations! you have acquired a sword and shield!\n";
         sleep(2);
     } else if (_class == "Archer") {
-        std::cout << "You notice a leather strap across the goblins chest, and upon closer insepction you realise theres a quiver full of arrows across the goblins back...\n";
+        std::cout << "\nYou notice a leather strap across the goblins chest, and upon closer insepction you realise\nthere is a quiver full of arrows across the goblins back...\n";
         sleep(2);
         std::cout << "The tips on the arrows look worn but still sharp enough to cut\n";
         sleep(2);
-        std::cout << "Gratefully, you strap the quiver to your own back, and as you begin to look around you notice and old hunting bow in the corner of the room\n";
+        std::cout << "Gratefully, you strap the quiver to your own back, and as you begin to look around you notice\nan old hunting bow in the corner of the room\n";
         sleep(2);
-        std::cout << "Congratulations! You have acquired a Bow and Quiver!\n";
+        std::cout << "\nCongratulations! You have acquired a Bow and Quiver!\n";
         sleep(2);
     } else if (_class == "Wizard") {
-        std::cout << "You notice a strange old book in the goblins small satchel\n";
+        std::cout << "\nYou notice a strange old book in the goblins small satchel\n";
         sleep(2);
-        std::cout << "You take the book and as you attempt to read it, you realise while most of it is in a language you cannot understand\n";
+        std::cout << "You take the book and as you attempt to read it, you realise while most of it is in a language\nyou cannot understand\n";
         sleep(2);
-        std::cout << "You look around the room and find it completely empty and decide to take a moment to glean what you can from this book\n";
+        std::cout << "You look around the room and find it completely empty and decide to take a moment to glean\nwhat you can from this book\n";
         sleep(2);
-        std::cout << "Several moments later you realise its a book about spellcraft! For now you can only understand one spell but that is enough for now\n";
+        std::cout << "Several moments later you realise its a book about spellcraft! For now you can only understand\none spell but that is enough for now\n";
         sleep(2);
         std::cout << "You put the book back in the satchel and attach the satchel to your belt\n";
         sleep(2);
-        std::cout << "Congratulation! You have acquired a spellbook!\n";
+        std::cout << "\nCongratulation! You have acquired a spellbook!\n";
     }
-    std::cout << "Now that you have a weapon, your attack will do more damage, and each type of weapon has unique effects!";
+    std::cout << "\nNow that you have a weapon, your attack will do more damage, and each type of weapon has\nunique effects!\n";
     sleep(2);
-    std::cout << "You may find other weapons in your travels, but be warned, you can only carry one type at a time";
+    std::cout << "You may find other weapons in your travels, but be warned, you can only carry one type at a time\n";
     sleep(2);
-    std::cout << "Press Enter to continue...";
+    std::cout << "\nStanding breathless over the dead body of the goblin, you look into the darkness\n";
+    sleep(2);
+    std::cout << "You decide the only way out is forwards, and with a grimace\n"
+        "you take your first step into what seem to be an endless darkness...\n";
+    sleep(2);
+    std::cout << "\nPress Enter to continue...\n";
     std::cin.get();
     std::cin.get();
 }

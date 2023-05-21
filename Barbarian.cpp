@@ -4,6 +4,7 @@
 #include "Monster.h"
 #include <cstdlib>
 #include <string>
+#include <iostream>
 
 Barbarian::Barbarian() { // sets all data members to 0 or “ ”
 }
@@ -44,4 +45,18 @@ int Barbarian::get_strength() { // Gets strength value
 
 void Barbarian::set_strength(int strength) { // Sets strength value
     this->strength = strength;
+}
+
+void Barbarian::attack(Monster* monster) { // basic attack all players can use
+    int damage = get_level() / 2 * 5;
+    if (monster->hasBlocked() == true) {
+        damage = damage * 0.85;
+        std::cout << "You did " << damage << " damage\n";
+        monster->take_damage(damage);
+        std::cout << "The monster has " << monster->get_current_health() << " health left\n";
+    } else {
+        std::cout << "You did " << damage << " damage\n";
+        monster->take_damage(damage);
+        std::cout << "The monster has " << monster->get_current_health() << " health left\n";
+    }
 }
