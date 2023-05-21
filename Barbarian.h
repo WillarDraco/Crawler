@@ -13,8 +13,8 @@ class Barbarian : public Player {
         Barbarian(); // sets all data members to 0 or “ ”
         Barbarian(int level, std::string name); // sets strength and health based on level, exp = 0, current weapon = “”;
 
-        //void equipWeapon(Weapon* barbarian_weapon); // sets current weapon (weapon bonuses)
-        //void unequipWeapon(Weapon* barbarian_weapon); // sets current weapon to  “” (removes weapon bonuses)
+        void equipWeapon(Weapon* barbarian_weapon); // sets current weapon (weapon bonuses)
+        void unequipWeapon(Weapon* barbarian_weapon); // sets current weapon to  “” (removes weapon bonuses)
 
         void attack(Monster* monster);
 

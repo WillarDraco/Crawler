@@ -16,10 +16,18 @@ Wizard::Wizard(int level, std::string name) { // sets mana and health based on l
     defend = false; // sets defending state
     max_mana = (level * 10) + 90; // represents the maximum mana of a player - affects magic damage and usage
     current_mana = max_mana; // current mana level of player
+    wizard_weapon = 0;
 }
 
-//void Wizard::equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-//void Wizard::unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+void Wizard::equipWeapon(Weapon* wizard_weapon) { // sets current weapon (weapon bonuses)
+    max_mana = max_mana + wizard_weapon->get_stat_bonus();
+    this->wizard_weapon = &wizard_weapon;
+}
+
+void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    max_mana = max_mana - wizard_weapon->get_stat_bonus();
+    this->wizard_weapon = 0;
+}
 
 void Wizard::special_attack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
     int damage = max_mana * ((rand() % 5) * level);

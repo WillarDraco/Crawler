@@ -22,8 +22,15 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     int current_ammo = max_ammo; // current ammunition level
 }
 
-//void Archer::equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
-//void Archer::unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
+void Archer::equipWeapon(Weapon* archer_weapon) { // sets current weapon (weapon bonuses)
+    agility = agility + archer_weapon->get_stat_bonus();
+    this->archer_weapon = &archer_weapon;
+}
+
+void Archer::unequipWeapon(Weapon* archer_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    agility = agility - archer_weapon->get_stat_bonus();
+    this->archer_weapon = 0;
+}
 
 void Archer::special_attack(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
     int damage = 0;
