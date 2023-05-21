@@ -229,7 +229,7 @@ int main() {
             int monster_select = rand() % 3 + 1;
 
             if (monster_select == 0) {
-                std::cout << "You stumble across a goblin"
+                std::cout << "You stumble across a goblin";
             }
             delete goblin;
             delete slime;
