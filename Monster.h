@@ -3,7 +3,7 @@
 
 #include "Weapon.h"
 
-class Player;
+class Player; // forward declaration to avoid codependecy
 
 class Monster{
     protected:
