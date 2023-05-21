@@ -23,8 +23,8 @@ class Player {
         void block(); // reduces enemy damage for one turn
         //virtual void rest(); // heals player for turn - based on total health
     
-        //virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-        //virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+        virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
+        virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
         void take_damage(int damage); // Take damage function
         void gain_exp(Monster* monster); // Gain exp function after defeating a monster

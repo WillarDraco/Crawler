@@ -34,7 +34,8 @@
 
     void Monster::take_damage(int damage){; //taking damage from player
         current_health = current_health - damage;
-        std::cout << "The monster has " << current_health << " health left\n";   
+        std::cout << "\nYou did " << damage << " damage.\n";
+        std::cout << "The monster has " << current_health << " health left.\n";   
     }
 
     //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)

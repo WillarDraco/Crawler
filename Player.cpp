@@ -16,15 +16,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
 
 void Player::attack(Monster* monster) { // basic attack all players can use
     int damage = level * 5;
-    defend = false;
-    if (monster->hasBlocked() == true) {
-        damage = damage * 0.85;
-        std::cout << "\nYou did " << damage << " damage\n";
-        monster->take_damage(damage);
-    } else {
-        std::cout << "\nYou did " << damage << " damage\n";
-        monster->take_damage(damage);
-    }
+    monster->take_damage(damage);
 }
 
 //void special_attack(Monster* monster) { // special attack for each class
@@ -35,8 +27,9 @@ void Player::block() { // reduces damage taken for one turn
 }
 
 void Player::take_damage(int damage) {
+    std::cout << "\n The monster did " << damage << " damage.\n";
     current_health = current_health - damage;
-    std::cout << "You have " << current_health << " health left\n";
+    std::cout << "You have " << current_health << " health left.\n";
 }
 
 void Player::gain_exp(Monster* monster) { // Gain exp function after defeating a monster

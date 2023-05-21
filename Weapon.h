@@ -1,9 +1,10 @@
 #ifndef WEAPON_H
 #define WEAPON_H
+#include <string>
 
 class Weapon {
     protected:
-        char name; // represents name of player’s weapon
+        std::string name; // represents name of player’s weapon
         int stat_bonus; // represents bonus strength/mana/agility of weapon
 
     public:
