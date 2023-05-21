@@ -3,9 +3,16 @@
 #include <cstdlib>
 
     //default constructer
-    Skeleton::Skeleton(int level){
-        agility = level;
-        has_weapon = false;
+    Skeleton::Skeleton(Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 20 + 5*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->agility = level;
+        this->has_weapon = false;
     };
 
     //attack

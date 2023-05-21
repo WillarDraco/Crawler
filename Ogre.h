@@ -11,7 +11,7 @@ class Ogre : public Boss{
         bool has_weapon;
 
     public:
-        Ogre(int level); //constructer
+        Ogre(Player* player); //constructer
 
 
         void attack(Player* player); // basic attack

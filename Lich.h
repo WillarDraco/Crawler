@@ -11,7 +11,7 @@ class Lich : public Boss{
         bool has_weapon;
 
     public:
-        Lich(int level); //constructer
+        Lich(Player* player); //constructer
 
 
         void attack(Player* player); // basic attack

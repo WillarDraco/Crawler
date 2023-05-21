@@ -10,7 +10,7 @@ class Skeleton : public Monster{
         bool has_weapon;
 
     public:
-        Skeleton(int level); //default constructor
+        Skeleton(Player* player); //default constructor
 
         void attack(Player* player); //attack
 

@@ -2,10 +2,18 @@
 #include "Ogre.h"
 #include <cstdlib>
 
-    //default constructer
-    Ogre::Ogre(int level){
-        strength = level * 2;
-        agility = level * 2;
+    //constructer
+    Ogre::Ogre(Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 90 + 10*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->strength = level * 2;
+        this->agility = level * 2;
+        this->has_weapon = false;
 
     }
 

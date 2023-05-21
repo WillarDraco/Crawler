@@ -3,10 +3,18 @@
 #include <cstdlib>
 
     //default constructer
-    Lich::Lich(int level){
-        strength = level * 2;
-        mana = level * 2;
-        has_weapon = false;
+    Lich::Lich(Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 90 + 10*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->strength = level * 2;
+        this->mana = level * 2;
+        this->has_weapon = false;        
+
     };
 
     // basic attack
