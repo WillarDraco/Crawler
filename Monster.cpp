@@ -33,7 +33,7 @@
     };
 
     void Monster::take_damage(int damage){; //taking damage from player
-        if(defend = true){
+        if(defend == true){
         current_health = current_health - (0.75)*damage;
         std::cout << "\nYou did " << 0.75 * damage << " damage\n";
         std::cout << "The monster has " << current_health << " health left\n";   
