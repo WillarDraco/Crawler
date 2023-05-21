@@ -16,7 +16,8 @@ Player::Player(int level) { // sets level data member, health is set based on le
 
 void Player::attack(Monster* monster) { // basic attack all players can use
     int damage = level * 5;
-    monster->take_damage(damage);
+    defend = false;
+        monster->take_damage(damage);
 }
 
 //void special_attack(Monster* monster) { // special attack for each class
@@ -35,9 +36,16 @@ void Player::block() { // reduces damage taken for one turn
 }
 
 void Player::take_damage(int damage) {
-    std::cout << "\n The monster did " << damage << " damage.\n";
+    if (defend == true) {
+        current_health = current_health - damage * 0.75;
+        std::cout << "\nThe Goblin attacked for " << 0.75 * damage << " damage\n";
+        std::cout << "You have " << current_health << " health left\n";
+        return;
+    } else
     current_health = current_health - damage;
-    std::cout << "You have " << current_health << " health left.\n";
+    std::cout << "\nThe Goblin attacked for " << damage << " damage\n";
+    std::cout << "You have " << current_health << " health left\n";
+    return;
 }
 
 void Player::gain_exp(Monster* monster) { // Gain exp function after defeating a monster
@@ -48,6 +56,7 @@ void Player::gain_exp(Monster* monster) { // Gain exp function after defeating a
         std::cout << "Congratulations, you have levelled up! \n";
         max_health = (level * 10) + 90;
     }
+    return;
 }
 
 // getters and setters for all data memebers
@@ -73,16 +82,20 @@ std::string Player::get_name() { //gets player name
 
 void Player::set_max_health(int health) { // Sets max health
     max_health = health;
+    return;
 }
 
 void Player::set_current_health(int health) { // Sets health
     current_health = health;
+    return;
 }
 
 void Player::set_exp(int exp) { // Sets exp
     this->exp = exp;
+    return;
 }
 
 void Player::set_level(int level) { //Sets level
     this->level = level;
+    return;
 }
