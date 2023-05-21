@@ -3,7 +3,7 @@
 #include "Weapon.h"
 #include <string>
 
-class Wand : protected Weapon {
+class Wand : public Weapon {
     public:
         Wand();
         Wand(std::string name, int stat_bonus);

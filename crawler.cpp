@@ -12,6 +12,7 @@
 #include "Skeleton.h"
 #include "Wyvern.h"
 #include "Wand.h"
+#include "Weapon.h"
 
 
 
@@ -184,8 +185,8 @@ int main() {
         std::cout << "You put the book back in the satchel and attach the satchel to your belt\n";
         sleep(2);
         std::cout << "\nCongratulation! You have acquired a spellbook!\n";
-        Wand wand = Wand("Cracked Wand", 5);
-        classes[classes_index]->equip
+        Wand* wand = new Wand("Cracked Wand", 5);
+        classes[classes_index]->equipWeapon(wand);
     }
     std::cout << "\nNow that you have a weapon, your attack will do more damage, and each type of weapon has\nunique effects!\n";
     sleep(2);
