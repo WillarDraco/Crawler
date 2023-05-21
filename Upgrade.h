@@ -12,6 +12,9 @@ class Upgrade{
 
     public:
     Upgrade(); //default constructer
+
+
+
     
     void choose_strength(); //sets upgrade strength to true
     void choose_agility(); //sets upgrade agility to true

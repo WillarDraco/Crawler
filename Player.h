@@ -4,7 +4,7 @@
 #include "Weapon.h"
 #include <string>
 
-class Monster;
+class Monster; // forward declaration to avoid codependecy
 
 class Player {
     protected:
