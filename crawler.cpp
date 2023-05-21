@@ -205,7 +205,7 @@ int main() {
     while (player_death == false) {
 
         
-        if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
+        /* if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
             Ogre* ogre = new Ogre(classes[classes_index]);
             Dragon* dragon = new Dragon(classes[classes_index]);
             Lich* lich = new Lich(classes[classes_index]);
@@ -217,7 +217,7 @@ int main() {
             delete ogre;
             delete lich;
             delete dragon;
-        } else 
+        } else */
             Goblin* goblin = new Goblin(classes[classes_index]);
             Slime* slime = new Slime(classes[classes_index]);
             Skeleton* skeleton = new Skeleton(classes[classes_index]);
@@ -226,6 +226,11 @@ int main() {
             standard_monsters[1] = slime;
             standard_monsters[2] = skeleton;
 
+            int monster_select = rand() % 3 + 1;
+
+            if (monster_select == 0) {
+                std::cout << "You stumble across a goblin"
+            }
             delete goblin;
             delete slime;
             delete skeleton;
