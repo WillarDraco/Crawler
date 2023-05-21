@@ -3,8 +3,15 @@
 #include <cstdlib>
 
     //default constructer
-    Wyvern::Wyvern(int level){
-        mana = level;
+    Wyvern::Wyvern(Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 20 + 5*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->mana = level;
     };
 
     //magic attack

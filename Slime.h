@@ -10,7 +10,7 @@ class Slime : public Monster{
         int mana;
 
     public:
-        Slime(int level); //default constructor
+        Slime(Player* player); //default constructor
 
         void attack(Player* player); //attack
         

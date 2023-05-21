@@ -3,7 +3,7 @@
 #include <cstdlib>
 
     //constructer
-    Goblin::Goblin(int level, Player* player){
+    Goblin::Goblin(Player* player){
         this->level = player->get_level();
 
         this->max_health = 20 + 5*(level);
