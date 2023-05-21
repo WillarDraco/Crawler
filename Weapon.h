@@ -5,7 +5,7 @@ class Weapon {
     protected:
         int damage;
     private:
-
+        
 };
 
 #endif
