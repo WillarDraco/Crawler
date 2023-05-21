@@ -16,6 +16,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
 
 void Player::attack(Monster* monster) { // basic attack all players can use
     int damage = level * 5;
+    defend = false;
     if (monster->hasBlocked() == true) {
         damage = damage * 0.85;
         std::cout << "\nYou did " << damage << " damage\n";

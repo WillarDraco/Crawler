@@ -8,11 +8,13 @@
 #include "Barbarian.h"
 #include "Wizard.h"
 #include "Archer.h"
+#include "Slime.h"
+#include "Skeleton.h"
 
 
 
 int main() {
-    int kill_count = 0; // keeps track of amount of normal monsters killed
+    int standard_kill_count = 0; // keeps track of amount of normal monsters killed
     int boss_kill_count = 0; // keeps track of amount of bosses killed
 
     std::cout << "Welcome to Crawler!" << "\n" << "Crawler is a turn-based "
@@ -78,7 +80,7 @@ int main() {
     std::cout << "You hear a growl, and you scramble to your feet as a goblin approaches...\n"; 
     sleep(2);
 
-    Goblin tutorial_enemy = Goblin(1, classes[classes_index]); 
+    Goblin tutorial_enemy = Goblin(classes[classes_index]); 
     // openGL fight scene appears
 
     // text boxes pop up explaining punch/defend/rest
@@ -113,7 +115,7 @@ int main() {
                 classes[classes_index]->block();
                 valid = true;
             } else if (selection == "Rest" || (selection == "rest")) {
-                classes[classes_index]->block();
+                //classes[classes_index]->rest();
                 valid = true;
             } else {
                 std::cout << "Your selection is not valid, try again\n";
@@ -122,7 +124,7 @@ int main() {
         if (tutorial_enemy.get_current_health() == 0) {
             std::cout << "\nYou defeated the goblin!\n";
             victory = true;
-            kill_count++;
+            standard_kill_count++;
             break;
         }
         tutorial_enemy.attack(classes[classes_index]);
@@ -138,7 +140,7 @@ int main() {
         std::string name = classes[classes_index]->get_name();
         std::cout << "Unfortunately " << name << " the " << _class << " has failed in their quest to reach the exit.\n";
         sleep(2);
-        std::cout << name << " killed " << kill_count << " monsters and " << boss_kill_count << " bosses.\n";
+        std::cout << name << " killed " << standard_kill_count << " monsters and " << boss_kill_count << " bosses.\n";
         sleep(2);
         std::cout << name << " reached level " << classes[classes_index]->get_level() << ".\n";
         sleep(2);
@@ -149,6 +151,7 @@ int main() {
         return 0;
     }
 
+    // tutorial enemy drops weapon depending on class
     if (_class == "Barbarian") {
         std::cout << "\nYou notice a dirty blade tucked in the the goblins belt...\n";
         sleep(2);
@@ -192,22 +195,51 @@ int main() {
     std::cout << "\nPress Enter to continue...\n";
     std::cin.get();
     std::cin.get();
-}
 
-// tutorial enemy drops weapon
 
-// if victory - check player levelup
-// if player death
+// tutorial victory level stuff
 
 // main gameplayer loop
+    Monster** standard_monsters = new Monster*[3]; // fill arrays inside loop to account for changing player level
+    Monster** boss_monsters = new Monster*[3];
+    while (player_death == false) {
 
-// KC % 3 == 0 run boss loop
+        
+        /* if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
+            Ogre* ogre = new Ogre(classes[classes_index]);
+            Dragon* dragon = new Dragon(classes[classes_index]);
+            Lich* lich = new Lich(classes[classes_index]);
 
+            boss_monsters[0] = ogre;
+            boss_monsters[1] = dragon;
+            boss_monsters[2] = lich;
+
+            delete ogre;
+            delete lich;
+            delete dragon;
+        } else */
+            Goblin* goblin = new Goblin(classes[classes_index]);
+            Slime* slime = new Slime(classes[classes_index]);
+            Skeleton* skeleton = new Skeleton(classes[classes_index]);
+
+            standard_monsters[0] = goblin;
+            standard_monsters[1] = slime;
+            standard_monsters[2] = skeleton;
+
+            int monster_select = rand() % 3 + 1;
+
+            if (monster_select == 0) {
+                std::cout << "You stumble across a goblin"
+            }
+            delete goblin;
+            delete slime;
+            delete skeleton;
 // else run standard enemy loop
 
 // combat - 2 enemy arrays, one boss one standard, generate rand enemy from array
+    }
+}
+
+
 
 // if victory - STDKC++/BKC++, check level, if Boss upgrades or heal
-
-// if death - display kill count and boss kill count, display level
-// game over
