@@ -18,10 +18,9 @@ int main() {
     std::cout << "Welcome to Crawler!" << "\n" << "Crawler is a turn-based "
         "rogue-like game where you take control of a player and defeat as many " 
         "monsters as you can,\nlevelling up and unlocking weapons along the way.\n";
-
     sleep(2);
 
-    // openGL start button and whatnot
+    // openGL start button and maybe highscores?
     // black screen, text pops up - character creation -
     std::string name;
     std::string _class;

@@ -2,6 +2,7 @@
 #include "Weapon.h"
 #include "Player.h"
 #include <cstdlib>
+#include <iostream>
     
     //default constructer sets everything to basics
     Monster::Monster() {}; 
@@ -32,12 +33,8 @@
     };
 
     void Monster::take_damage(int damage){; //taking damage from player
-        if (defend == true){
-            current_health = current_health - damage*(0.5);
-        }
-        else{
-            current_health = current_health - damage;
-        }
+        current_health = current_health - damage;
+        std::cout << "The monster has " << current_health << " health left\n";   
     }
 
     //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
