@@ -20,12 +20,19 @@
     void Monster::punch(Player* player){}
 
     // reduces taken damage for one turn
-    bool Monster::block(){
+    void Monster::block(){
         defend = true;
     }; 
 
+    bool Monster::hasBlocked() {
+        if (defend == true) {
+            return true;
+        } else
+        return false;
+    };
+
     void Monster::take_damage(int damage){; //taking damage from player
-        if (defend = true){
+        if (defend == true){
             current_health = current_health - damage*(0.5);
         }
         else{
@@ -33,8 +40,8 @@
         }
     }
 
-    void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
+    //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
+    //void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
         
 
     //getters and setters for data members

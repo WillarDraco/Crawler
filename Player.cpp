@@ -1,7 +1,7 @@
 #include "Player.h"
-#include "Monster.h"
 #include <iostream>
 #include <cmath>
+#include "Monster.h"
 
 Player::Player() { // default constructor - sets all data members to 0
 }
@@ -16,7 +16,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
 
 void Player::attack(Monster* monster) { // basic attack all players can use
     int damage = level / 2 * 5;
-    if (monster->block() == true) {
+    if (monster->hasBlocked() == true) {
         damage = damage * 0.85;
         monster->take_damage(damage);
     } else {
@@ -24,8 +24,8 @@ void Player::attack(Monster* monster) { // basic attack all players can use
     }
 }
 
-void special_attack(Monster* monster) { // special attack for each class
-}
+//void special_attack(Monster* monster) { // special attack for each class
+//}
 
 void Player::block() { // reduces damage taken for one turn
     defend = true;
@@ -60,6 +60,10 @@ int Player::get_exp() { // Gets current exp
 
 int Player::get_level() { //Gets current level
     return level;
+}
+
+std::string Player::get_name() { //gets player name
+    return name;
 }
 
 void Player::set_max_health(int health) { // Sets max health

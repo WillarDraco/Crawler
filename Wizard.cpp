@@ -18,12 +18,12 @@ Wizard::Wizard(int level, std::string name) { // sets mana and health based on l
     current_mana = max_mana; // current mana level of player
 }
 
-void Wizard::equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-void Wizard::unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+//void Wizard::equipWeapon(Weapon); // sets current weapon (weapon bonuses)
+//void Wizard::unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
 void Wizard::special_attack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
     int damage = max_mana * ((rand() % 5) * level);
-    if (monster->block() == true) {
+    if (monster->hasBlocked() == true) {
         damage = damage * 0.85;
         monster->take_damage(damage);
     } else {

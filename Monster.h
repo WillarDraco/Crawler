@@ -3,6 +3,8 @@
 
 #include "Weapon.h"
 
+class Player;
+
 class Monster{
     protected:
         int max_health; // represents the max health of a monster
@@ -16,11 +18,12 @@ class Monster{
         Monster(Player* player); //sets health based on level
 
         virtual void punch(Player* player); // basic attack
-        virtual bool block(); // reduces taken damage for one turn
+        virtual void block(); // reduces taken damage for one turn
         virtual void take_damage(int damage); //taking damage from player
+        virtual bool hasBlocked(); //check if monster has blocked
 
-        virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
-        virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
+        //virtual void equipWeapon(Weapon); // sets current weapon (weapon bonuses)
+        //virtual void unequipWeapon(Weapon); // sets current weapon to  “” (removes weapon bonuses)
 
         //getters and setters for data members
         int get_max_health();

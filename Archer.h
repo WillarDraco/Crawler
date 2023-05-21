@@ -15,8 +15,8 @@ class Archer : public Player {
         Archer(); // sets all data members to 0 or “”
         Archer(int level, std::string name); // sets strength and health based on level, exp = 0, current weapon = “”;
 
-        void equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
-        void unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
+        //void equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
+        //void unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
         
         void special_attack(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
 

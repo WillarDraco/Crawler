@@ -12,6 +12,8 @@
 
 
 int main() {
+    int kill_count = 0; // keeps track of amount of normal monsters killed
+    int boss_kill_count = 0; // keeps track of amount of bosses killed
 
     std::cout << "Welcome to Crawler!" << "\n" << "Crawler is a turn-based "
         "rogue-like game where you take control of a player and defeat as many " 
@@ -29,6 +31,8 @@ int main() {
 
     sleep(0.5);
 
+    // create an array of pointers to pointers of each class type
+    // player selects one to use and that pointer/index is used throughout the game
     Player** classes = new Player*[3];
 
     Barbarian* barbarian = new Barbarian(1, name);
@@ -94,9 +98,6 @@ int main() {
     // While loop until fight is over
     bool victory = false;
     bool player_death = false;
-    int enemy_move;
-    int kill_count = 0;
-
     while (victory == false && player_death == false) {
         // Loop to ensure valid selection
         bool valid = false;
@@ -104,14 +105,14 @@ int main() {
             std::string selection;
             std::cout << "Will you attack, defend or rest?\n";
             std::cin >> selection;           
-            if (selection == ("attack","Attack")) {
+            if (selection == ("Attack")) {
                 classes[classes_index]->attack(&tutorial_enemy);
                 valid = true;
-            } else if (selection == ("Defend","defend")) {
+            } else if (selection == ("defend")) {
                 classes[classes_index]->block();
                 valid = true;
-            } else if (selection == ("Rest","rest")) {
-                classes[classes_index]->rest();
+            } else if (selection == ("rest")) {
+                classes[classes_index]->block();
                 valid = true;
             } else {
                 std::cout << "Your selection is not valid, try again\n";

@@ -14,7 +14,7 @@
         int random_move = rand() % 100 + 1;
         
         if (random_move < 75){
-            if (has_weapon = true){
+            if (has_weapon == true){
                 int damage = (rand() % 5 + 1) + (strength)*2;
 
                 player->take_damage(damage);
