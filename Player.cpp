@@ -22,6 +22,14 @@ void Player::attack(Monster* monster) { // basic attack all players can use
 //void special_attack(Monster* monster) { // special attack for each class
 //}
 
+void Player::equipWeapon(Weapon* weapon) { // sets current weapon (weapon bonuses)
+    max_health = max_health + weapon->get_stat_bonus();
+}
+
+void Player::unequipWeapon(Weapon* weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    max_health = max_health + weapon->get_stat_bonus();
+}
+
 void Player::block() { // reduces damage taken for one turn
     defend = true;
 }
