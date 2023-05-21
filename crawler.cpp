@@ -10,6 +10,7 @@
 #include "Archer.h"
 #include "Slime.h"
 #include "Skeleton.h"
+#include "Wyvern.h"
 
 
 
@@ -121,7 +122,7 @@ int main() {
                 std::cout << "Your selection is not valid, try again\n";
             }            
         }
-        if (tutorial_enemy.get_current_health() == 0) {
+        if (tutorial_enemy.get_current_health() <= 0) {
             std::cout << "\nYou defeated the goblin!\n";
             victory = true;
             standard_kill_count++;
@@ -221,19 +222,48 @@ int main() {
             Goblin* goblin = new Goblin(classes[classes_index]);
             Slime* slime = new Slime(classes[classes_index]);
             Skeleton* skeleton = new Skeleton(classes[classes_index]);
+            Wyvern* wyvern = new Wyvern(classes[classes_index]);
 
             standard_monsters[0] = goblin;
             standard_monsters[1] = slime;
             standard_monsters[2] = skeleton;
+            standard_monsters[3] = wyvern;
 
-            int monster_select = rand() % 3 + 1;
+            int monster_select = (rand() % 4);
 
             if (monster_select == 0) {
-                std::cout << "You stumble across a goblin";
+                std::cout << "\nAs you stumble through the darkness, you all of a sudden get the feeling that something is watching you\n";
+                sleep(2);
+                std::cout << "You spin around and are met with the dirty golden eyes of a goblin\n";
+                sleep(2);
+                std::cout << "You draw your weapon, ready to fight\n";
+                sleep(2);
+            } else if (monster_select == 1) {
+                std::cout << "\nYou stumble over a rock, and to stop yourself falling you fling your arms out in front you\n";
+                sleep(2);
+                std::cout << "Instead of hard rock, your hands hit a gooey substance coating the ground\n";
+                sleep(2);
+                std::cout << "You look ahead at the slime, and prepare for combat";
+                sleep(2);
+            } else if (monster_select == 2) {
+                std::cout << "\nAs you are walking, all of a sudden an arrow whizzes by your head\n";
+                sleep(2);
+                std::cout << "Ducking behind a nearby boulder, you hear the clinking of bones and arrows\n";
+                sleep(2);
+                std::cout << "You draw your weapon, jump out from behind the boulder, and charge at the skeleton archer\n";
+            } else if (monster_select == 3) {
+                std::cout << "\nAll of a sudden, you see light in the distance\n";
+                sleep(2);
+                std::cout << "Excitedly you start running toward it, but stop cold in your tracks when your eyes finally adjust to the light\n";
+                sleep(2);
+                std::cout << "The source of the light is fire, and that fire is coming from the mouth of a small wyvern\n";
+                sleep(2);
+                std::cout << "Squinting your eyes, you prepare to fight\n";
             }
             delete goblin;
             delete slime;
             delete skeleton;
+            delete wyvern;
 // else run standard enemy loop
 
 // combat - 2 enemy arrays, one boss one standard, generate rand enemy from array

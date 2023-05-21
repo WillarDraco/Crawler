@@ -33,9 +33,14 @@
     };
 
     void Monster::take_damage(int damage){; //taking damage from player
-        current_health = current_health - damage;
-        std::cout << "\nYou did " << damage << " damage.\n";
-        std::cout << "The monster has " << current_health << " health left.\n";   
+        if(defend = true){
+        current_health = current_health - (0.75)*damage;
+        std::cout << "The monster has " << current_health << " health left\n";   
+        }
+        else{
+            current_health = current_health - damage;
+            std::cout << "The monster has " << current_health << " health left\n";
+        }
     }
 
     //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)

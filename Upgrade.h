@@ -5,6 +5,7 @@
 #include "Barbarian.h"
 #include "Archer.h"
 #include "Wizard.h"
+#include "Weapon.h"
 
 class Upgrade{
     protected:
@@ -15,6 +16,9 @@ class Upgrade{
     void upgrade_strength(Barbarian* barbarian); 
     void upgrade_agility(Archer* archer); 
     void upgrade_mana(Wizard* wizard);
+
+    void upgrade_weapon_bonus (Weapon* weapon);
+    void change_weapon();
 
     
 
