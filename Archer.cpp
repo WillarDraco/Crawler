@@ -16,7 +16,7 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     exp = 0;// current experience level
     this->level = level;
     defend = false;
-    int agility = 5; // represents the agility of a player - affects range damage
+    int agility = 5; // represents the agility of a player - affects special attack damage
     Weapon** archer_weapon = 0; // currently equipped weapon
     int max_ammo = 10; // total arrows/bolts knives an archer can have
     int current_ammo = max_ammo; // current ammunition level
