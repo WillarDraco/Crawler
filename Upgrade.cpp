@@ -4,6 +4,8 @@
 #include "Wizard.h"
 #include "Upgrade.h"
 
+Upgrade::Upgrade(){}; //default constructer
+
 void Upgrade::upgrade_strength(Barbarian* barbarian){
 
     int new_strength = barbarian->get_strength() + 2;
@@ -26,3 +28,10 @@ void Upgrade::upgrade_mana(Wizard* wizard){
     
     wizard->set_max_mana(new_mana);
 };
+
+void Upgrade::upgrade_weapon_bonus(Weapon* weapon){
+
+    int new_weapon_bonus = weapon->get_stat_bonus() + 2;
+
+    weapon->set_stat_bonus(new_weapon_bonus);
+}
