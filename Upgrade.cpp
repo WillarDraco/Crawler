@@ -34,4 +34,4 @@ void Upgrade::upgrade_weapon_bonus(Weapon* weapon){
     int new_weapon_bonus = weapon->get_stat_bonus() + 2;
 
     weapon->set_stat_bonus(new_weapon_bonus);
-}
+};
