@@ -30,21 +30,10 @@ void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  â
 }
 
 void Wizard::special_attack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
-    int damage = max_mana * ((rand() % 5) * level);
-    if (monster->hasBlocked() == true) {
-        damage = damage * 0.85;
-        monster->take_damage(damage);
-    } else {
-        monster->take_damage(damage);
-    }
+    int damage = (max_mana / 90)* ((rand() % 5) * level);
+    current_mana = max_mana - 10;
+    monster->take_damage(damage);
     std::cout << "user used fireball. It did " << damage << ".\n";
-}
-
-void Wizard::manaRegen() { // regenerates mana based on level each
-    current_mana = current_mana + max_mana * 0.5;
-    if (current_mana > max_mana) {
-        current_mana = max_mana;
-    }
 }
 
 void Wizard::rest() { // heals player and recharges mana for turn - based on total health and mana

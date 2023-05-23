@@ -40,17 +40,8 @@ void Archer::special_attack(Monster* monster) { // archer only attack that does 
     } else {
         std::cout << "No Ammo";
     }
-
-    if (monster->hasBlocked() == true) {
-        damage = damage * 0.85;
-        monster->take_damage(damage);
-    } else {
-        monster->take_damage(damage);
-    }
-}
-
-void Archer::recoverAmmo() { // recovers a random (small) amount of ammunition
-    current_ammo = current_ammo + max_ammo * 0.25;
+    
+    monster->take_damage(damage);
 }
 
 void Archer::rest() { // heals player for turn - based on total health
