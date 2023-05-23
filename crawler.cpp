@@ -14,8 +14,6 @@
 #include "Wand.h"
 #include "Weapon.h"
 
-
-
 int main() {
     int standard_kill_count = 0; // keeps track of amount of normal monsters killed
     int boss_kill_count = 0; // keeps track of amount of bosses killed
@@ -204,7 +202,7 @@ int main() {
 
 // tutorial victory level stuff
 
-// main gameplayer loop
+// main gameplay loop
     Monster** standard_monsters = new Monster*[3]; // fill arrays inside loop to account for changing player level
     Monster** boss_monsters = new Monster*[3];
     while (player_death == false) {
