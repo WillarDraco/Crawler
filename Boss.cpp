@@ -12,7 +12,7 @@ Boss::Boss(Player* player){
 
     combat_stats[0] = 90 + 10*(level);
     combat_stats[1] = combat_stats[0];
-    combat_stats[6] = level * 30;
+    combat_stats[6] = level * 32;
 
     defend = false; 
 }
