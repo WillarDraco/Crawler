@@ -25,6 +25,7 @@ class Monster{
         
         
         //getters and setters for data members
+        std::vector<int> get_combat_stats();
         int get_max_health();
         int get_current_health();
         int get_level();
