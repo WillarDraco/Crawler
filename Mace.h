@@ -3,7 +3,7 @@
 #include "Weapon.h"
 #include <string>
 
-class Mace : protected Weapon {
+class Mace : public Weapon {
     public:
         Mace(); // Default constructor
         Mace(std::string name, int stat_bonus, int level); // Constructor for a bow
