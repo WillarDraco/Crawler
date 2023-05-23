@@ -26,12 +26,12 @@
             if (random_move < 50){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[3]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
             }
             else if (random_move > 50){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[5]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
 
             }
         }   

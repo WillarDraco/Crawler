@@ -25,7 +25,7 @@
         if (random_move < 75){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[4]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
         } 
         else{
             std::cout << "\nThe skeleton blocks!\n";
