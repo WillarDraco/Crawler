@@ -21,7 +21,7 @@ class Player {
         void attack(Monster* monster); // basic attack all players can use
         //virtual void special_attack(Monster* monster); // special attack for each class
         void block(); // reduces enemy damage for one turn
-        //virtual void rest(); // heals player for turn - based on total health
+        virtual void rest(); // heals player for turn - based on total health
     
         virtual void equipWeapon(Weapon* weapon); // sets current weapon (weapon bonuses)
         virtual void unequipWeapon(Weapon* weapon); // sets current weapon to  “” (removes weapon bonuses)
