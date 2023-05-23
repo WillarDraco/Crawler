@@ -7,12 +7,12 @@
     Skeleton::Skeleton(Player* player){
         this->level = player->get_level();
 
-        this->max_health = 20 + 5*(level);
-        this->current_health = max_health;
+        this->combat_stats[0] = 20 + 5*(level);
+        this->combat_stats[1] = combat_stats[0];
 
         this->defend = false;    
         
-        this->agility = level;
+        this->combat_stats[4] = level;
         
         skeleton_weapon = 0;
     };
@@ -22,9 +22,9 @@
       int random_move = rand() % 100 + 1;
         defend = false;
         if (random_move < 75){
-                int damage = (rand() % 5 + 1) + (agility);
+                combat_stats[2] = (rand() % 5 + 1) + (combat_stats[4]);
 
-                player->take_damage(damage);
+                player->take_damage(combat_stats[2]);
         } 
         else{
             std::cout << "\nThe skeleton blocks!\n";
@@ -34,21 +34,21 @@
     }
 
     void Skeleton::equipWeapon(Weapon* skeleton_weapon) { // sets current weapon (weapon bonuses)
-        agility = agility + skeleton_weapon->get_stat_bonus();
+        combat_stats[4] = combat_stats[4]+ skeleton_weapon->get_stat_bonus();
         this->skeleton_weapon = &skeleton_weapon;
     }
 
     void Skeleton::unequipWeapon(Weapon* skeleton_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-        agility = agility - skeleton_weapon->get_stat_bonus();
+        combat_stats[4] = combat_stats[4] - skeleton_weapon->get_stat_bonus();
         this->skeleton_weapon = 0;
     }
     
     //getters and setters
     int Skeleton::get_agility(){
-        return agility;
+        return combat_stats[4];
     };
 
     void Skeleton::set_agility(int agility){
-        agility = agility;
+        combat_stats[4] = agility;
 
     };

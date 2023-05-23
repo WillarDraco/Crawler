@@ -7,8 +7,7 @@ class Player; // forward declaration to avoid codependecy
 
 class Monster{
     protected:
-        int max_health; // represents the max health of a monster
-        int current_health; // current health of a monster
+        std::vector<int> combat_stats;
         int level; // level of the monster
         bool defend; //sets defending state
 
@@ -16,7 +15,7 @@ class Monster{
         Monster(); //default constructer
         Monster(Player* player); //sets health based on level
 
-        virtual void punch(Player* player); // basic attack
+        virtual void attack(Player* player); // basic attack
         virtual void block(); // reduces taken damage for one turn
         virtual void take_damage(int damage); //taking damage from player
         virtual bool hasBlocked(); //check if monster has blocked

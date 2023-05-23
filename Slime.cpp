@@ -7,13 +7,13 @@
     Slime::Slime(Player* player){
         this->level = player->get_level();
 
-        this->max_health = 20 + 5*(level);
-        this->current_health = max_health;
+        this->combat_stats[0] = 20 + 5*(level);
+        this->combat_stats[1] = combat_stats[0];
 
         this->defend = false;    
         
-        this->strength = level;
-        this->mana = level * 2;
+        this->combat_stats[3] = level;
+        this->combat_stats[5] = level * 2;
     };
 
     // basic attack
@@ -23,14 +23,14 @@
         
         if (random_move < 75){
             if (random_move < 50){
-                int damage = (rand() % 5 + 1) + (strength);
+                combat_stats[2] = (rand() % 5 + 1) + (combat_stats[3]);
 
-                player->take_damage(damage);
+                player->take_damage(combat_stats[2]);
             }
             else if (random_move > 50){
-                int damage = (rand() % 5 + 1) + (mana);
+                combat_stats[2] = (rand() % 5 + 1) + (combat_stats[5]);
 
-                player->take_damage(damage);
+                player->take_damage(combat_stats[2]);
 
             }
         }   
@@ -44,18 +44,18 @@
     
     //getters and setters
     int Slime::get_strength(){
-        return strength;
+        return combat_stats[3];
     };
 
     void Slime::set_strength(int strength){
-        strength = strength;
+        combat_stats[3] = strength;
 
     };
 
       int Slime::get_mana(){
-        return mana;
+        return combat_stats[5];
     };
 
     void Slime::set_mana(int mana){
-        mana = mana;
+        combat_stats[5] = mana;
     };

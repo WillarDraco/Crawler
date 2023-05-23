@@ -6,8 +6,6 @@
 
 class Lich : public Boss{
     protected:
-        int strength;
-        int mana;
         Weapon** lich_weapon;
 
     public:
