@@ -52,7 +52,7 @@ void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  â
     this->wizard_weapon = 0;
 }
 
-void Wizard::specialAttack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana and equipped weapon
+void Wizard::specialAttack(Monster* monster) { // wizard only attack that uses mana and does damage based on mana
     int damage = 0;
     if (combat_stats[8] > 0) {
         damage = ((combat_stats[4] / 90) * ((rand() % 120 + 80) / 100) * level);

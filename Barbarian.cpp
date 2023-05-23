@@ -53,7 +53,7 @@ void Barbarian::unequipWeapon(Weapon* barbarian_weapon) { // sets current weapon
     this->barbarian_weapon = 0;
 }
 
-void Barbarian::special_attack(Monster* monster) { // barbarian only attack that does damage based on strength and equipped weapon
+void Barbarian::special_attack(Monster* monster) { // barbarian only attack that does damage based on strength
     int damage = (combat_stats[4] * ((rand() % 120 + 80) / 100) * level);
     monster->takeDamage(damage);
 }

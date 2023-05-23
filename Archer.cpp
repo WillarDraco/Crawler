@@ -55,7 +55,7 @@ void Archer::unequipWeapon(Weapon* archer_weapon) { // sets current weapon to  â
     this->archer_weapon = 0;
 }
 
-void Archer::specialAttack(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
+void Archer::specialAttack(Monster* monster) { // archer only attack that does damage based on agility
     int damage = 0;
     if (combat_stats[9] > 0) {
         damage = (combat_stats[4] * ((rand() % 120 + 80) / 100) * level);
