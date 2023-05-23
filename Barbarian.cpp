@@ -44,12 +44,24 @@ void Barbarian::gainExp(int exp) { // Gain exp function after defeating a monste
 }
 
 void Barbarian::equipWeapon(Weapon* barbarian_weapon) { // sets current weapon (weapon bonuses)
-    combat_stats[4] = combat_stats[4] + barbarian_weapon->get_stat_bonus();
     this->barbarian_weapon = &barbarian_weapon;
+    combat_stats[0] = combat_stats[0] + barbarian_weapon->get_max_health(); // represents the max health of a player
+    combat_stats[1] = combat_stats[1] + barbarian_weapon->get_current_health(); // current health of player
+    combat_stats[4] = combat_stats[4] + barbarian_weapon->get_resource_stat(); // Strength stat
+    combat_stats[5] = combat_stats[5] + barbarian_weapon->get_dodge_chance(); // Dodge chance
+    combat_stats[6] = combat_stats[6] + barbarian_weapon->get_defense(); // Defense stat
+    combat_stats[7] = combat_stats[7] + barbarian_weapon->get_crit_chance(); // Crit chance
+    combat_stats[3] = combat_stats[3] + combat_stats[4]; // Special attack damage
 }
 
 void Barbarian::unequipWeapon(Weapon* barbarian_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-    combat_stats[4] = combat_stats[4] - barbarian_weapon->get_stat_bonus();
+    combat_stats[0] = combat_stats[0] + barbarian_weapon->get_max_health(); // represents the max health of a player
+    combat_stats[1] = combat_stats[1] + barbarian_weapon->get_current_health(); // current health of player
+    combat_stats[4] = combat_stats[4] + barbarian_weapon->get_resource_stat(); // Strength stat
+    combat_stats[5] = combat_stats[5] + barbarian_weapon->get_dodge_chance(); // Dodge chance
+    combat_stats[6] = combat_stats[6] + barbarian_weapon->get_defense(); // Defense stat
+    combat_stats[7] = combat_stats[7] + barbarian_weapon->get_crit_chance(); // Crit chance
+    combat_stats[3] = combat_stats[3] + combat_stats[4]; // Special attack damage
     this->barbarian_weapon = 0;
 }
 
