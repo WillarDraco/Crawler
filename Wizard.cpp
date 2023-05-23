@@ -43,12 +43,26 @@ void Wizard::gainExp(int exp) { // Gain exp function after defeating a monster
 }
 
 void Wizard::equipWeapon(Weapon* wizard_weapon) { // sets current weapon (weapon bonuses)
-    combat_stats[4] = combat_stats[4] + wizard_weapon->get_stat_bonus();
     this->wizard_weapon = &wizard_weapon;
+    combat_stats[0] = combat_stats[0] + wizard_weapon->get_max_health(); // represents the max health of a player
+    combat_stats[1] = combat_stats[1] + wizard_weapon->get_current_health(); // current health of player
+    combat_stats[4] = combat_stats[4] + wizard_weapon->get_resource_stat(); // Max mana
+    combat_stats[5] = combat_stats[5] + wizard_weapon->get_dodge_chance(); // Dodge chance
+    combat_stats[6] = combat_stats[6] + wizard_weapon->get_defense(); // Defense stat
+    combat_stats[7] = combat_stats[7] + wizard_weapon->get_crit_chance(); // Crit chance
+    combat_stats[3] = combat_stats[3] + combat_stats[4]; // Special attack damage
+    combat_stats[9] = combat_stats[9] + wizard_weapon->get_current_resource(); // Current mana
 }
 
 void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-    combat_stats[4] = combat_stats[4] - wizard_weapon->get_stat_bonus();
+    combat_stats[0] = combat_stats[0] - wizard_weapon->get_max_health(); // represents the max health of a player
+    combat_stats[1] = combat_stats[1] - wizard_weapon->get_current_health(); // current health of player
+    combat_stats[4] = combat_stats[4] - wizard_weapon->get_resource_stat(); // Max mana
+    combat_stats[5] = combat_stats[5] - wizard_weapon->get_dodge_chance(); // Dodge chance
+    combat_stats[6] = combat_stats[6] - wizard_weapon->get_defense(); // Defense stat
+    combat_stats[7] = combat_stats[7] - wizard_weapon->get_crit_chance(); // Crit chance
+    combat_stats[3] = combat_stats[3] - combat_stats[4]; // Special attack damage
+    combat_stats[9] = combat_stats[9] - wizard_weapon->get_current_resource(); // Current mana
     this->wizard_weapon = 0;
 }
 
