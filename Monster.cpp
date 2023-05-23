@@ -45,9 +45,6 @@
         }
     }
 
-    //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    //void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
-        
 
     //getters and setters for data members
     int Monster::get_max_health(){
