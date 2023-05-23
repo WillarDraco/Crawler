@@ -100,20 +100,24 @@ int Player::get_special_damage() {
     return combat_stats[3];
 }
 
-int Player::get_dodge_chance() {
+int Player::get_class_stat(){
     return combat_stats[4];
 }
 
-int Player::get_defense() {
+int Player::get_dodge_chance() {
     return combat_stats[5];
 }
 
-int Player::get_crit_chance() {
+int Player::get_defense() {
     return combat_stats[6];
 }
 
-int Player::get_current_resource() {
+int Player::get_crit_chance() {
     return combat_stats[7];
+}
+
+int Player::get_current_resource() {
+    return combat_stats[9];
 }
 
 int Player::get_max_resource() {
@@ -126,7 +130,7 @@ void Player::set_max_health(int health) { // Sets max health
 }
 
 void Player::set_current_health(int health) { // Sets health
-    combat_stats[0] = health;
+    combat_stats[1] = health;
     return;
 }
 
@@ -148,20 +152,24 @@ void Player::set_special_damage(int special) {
     combat_stats[3] = special;
 }
 
+void Player::set_class_stat(int class_stat){
+    combat_stats[4] = class_stat;
+}
+
 void Player::set_dodge_chance(int dodge) {
-    combat_stats[4] = dodge;
+    combat_stats[5] = dodge;
 }
 
 void Player::set_defense(int defense) {
-    combat_stats[5] = defense;
+    combat_stats[6] = defense;
 }
 
 void Player::set_crit_chance(int crit) {
-    combat_stats[6] = crit;
+    combat_stats[7] = crit;
 }
 
 void Player::set_current_resource(int resource) {
-    combat_stats[7] = resource;
+    combat_stats[9] = resource;
 }
 
 void Player::set_max_resource(int resource) {
