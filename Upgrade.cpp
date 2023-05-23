@@ -6,32 +6,26 @@
 
 Upgrade::Upgrade(){}; //default constructer
 
-void Upgrade::upgrade_strength(Barbarian* barbarian){
-
-    int new_strength = barbarian->get_strength() + 2;
-
-    barbarian->set_strength(new_strength);
+void Upgrade::upgrade_class_stat(Player* player){
+    combat_stats[4] = combat_stats[4] + 5*level;
 };
 
 
-void Upgrade::upgrade_agility(Archer* archer){; 
-
-    int new_agility = archer->get_agility() + 2;
-    
-    archer->set_agility(new_agility);
+void Upgrade::upgrade_dodge_chance(Player* player){
+    combat_stats[5] = combat_stats[5] + 5*level;
 };
 
 
-void Upgrade::upgrade_mana(Wizard* wizard){
-
-    int new_mana = wizard->get_max_mana() + 2;
-    
-    wizard->set_max_mana(new_mana);
+void Upgrade::upgrade_defense (Player* player){
+    combat_stats[6] = combat_stats[6] + 5*level;
 };
 
-void Upgrade::upgrade_weapon_bonus(Weapon* weapon){
 
-    int new_weapon_bonus = weapon->get_stat_bonus() + 2;
+void Upgrade::upgrade_crit_chance(Player* player){
+    combat_stats[7] = combat_stats[7] + 5*level;
+};
 
-    weapon->set_stat_bonus(new_weapon_bonus);
+
+void Upgrade::upgrade_max_recourses(Player* player){
+    combat_stats[8] = combat_stats[8] + 5*level;
 };
