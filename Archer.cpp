@@ -17,7 +17,7 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     combat_stats[2] = 5; // Base attack damage
     combat_stats[3] = 10; // Special attack damage
     combat_stats[4] = 5; // Agility stat
-    combat_stats[5] = 0; // Dodge chance
+    combat_stats[5] = 1; // Dodge chance
     combat_stats[6] = 2; // Defense stat
     combat_stats[7] = 1; // Crit chance
     combat_stats[8] = 10; // Max ammo
@@ -36,7 +36,7 @@ void Archer::gainExp(int exp) { // Gain exp function after defeating a monster
     if (old_level != level) {
         std::cout << "Congratulations, you have levelled up! \n";
         combat_stats[0] = (level * 10) + 90; // Max Hp
-        combat_stats[2] = combat_stats[2] + 5; // Base attack damage
+        combat_stats[2] = combat_stats[2] + 2; // Base attack damage
         combat_stats[3] = combat_stats[3] + 10; // Special attack damage
         combat_stats[4] = combat_stats[4] + 5; // Agility stat
         combat_stats[6] = combat_stats[6] + 2; // Defense stat
@@ -55,14 +55,17 @@ void Archer::unequipWeapon(Weapon* archer_weapon) { // sets current weapon to  â
     this->archer_weapon = 0;
 }
 
-void Archer::specialAttack(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
+void Archer::specialAttack(Monster* monster) { // archer only attack that does damage based on agility
     int damage = 0;
-    if (combat_stats[9] != 0) {
-        damage = combat_stats[4] * ((rand() % 10 + 2) * level);
+    if (combat_stats[9] > 0) {
+        damage = (combat_stats[4] * ((rand() % 120 + 80) / 100) * level);
         combat_stats[9] = combat_stats[9] - 1;
+        if (combat_stats[9] < 0) {
+            combat_stats[9] = 0;
+        }
         monster->takeDamage(damage);
     } else {
-        std::cout << "No Ammo";
+        std::cout << "\nYou dont have enough ammo.\n";
     }
     return;
 }

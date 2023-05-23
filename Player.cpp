@@ -14,7 +14,8 @@ Player::Player(int level) { // sets level data member, health is set based on le
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use
-    monster->takeDamage(combat_stats[2]);
+    int damage = combat_stats[2] * ((rand() % 120 + 80) / 100);
+    monster->takeDamage(damage);
 }
 
 void Player::specialAttack(Monster* monster) { // special attack for each class
@@ -33,14 +34,20 @@ void Player::block() { // reduces damage taken for one turn
 
 void Player::takeDamage(int damage) {
     damage = damage - combat_stats[6];
+    int dodge = combat_stats[5] * (rand() % 100);
     if (defend == true) {
         std::cout << "\nYou blocked the monster's attack.\n";
         return;
     } else if (defend == false) {
-        combat_stats[1] = combat_stats[1] - damage;
-        std::cout << "\nThe monster attacked for " << damage << "damage\n";
-        std::cout << "You have " << combat_stats[1] << " health left\n";
-        return;
+        if (dodge >= 84 ) {
+            std::cout << "\nThe attack missed!\n";
+            return;
+        } else if (dodge < 84) {
+            combat_stats[1] = combat_stats[1] - damage;
+            std::cout << "\nThe monster attacked for " << damage << "damage\n";
+            std::cout << "You have " << combat_stats[1] << " health left\n";
+            return;
+        }
     }
 }
 
