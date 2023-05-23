@@ -11,7 +11,7 @@ class Wizard : public Player {
     public:
         Wizard(); // sets all data members to 0 or “ ”
         Wizard(int level, std::string name); // sets mana and health based on level, exp = 0, current weapon = “”, name is inherited;
-        void Wizard::gainExp(int exp); // Gain exp function after defeating a monster
+        void gainExp(int exp); // Gain exp function after defeating a monster
 
         void equipWeapon(Weapon* wizard_weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon* wizard_weapon); // sets current weapon to  “” (removes weapon bonuses)

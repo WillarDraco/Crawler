@@ -38,15 +38,16 @@ void Player::takeDamage(int damage) {
         std::cout << "\nYou blocked the monster's attack.\n";
         return;
     } else if (defend == false) {
-        if (dodge <= 16 ) {
+        if (dodge >= 84 ) {
             std::cout << "\nThe attack missed!\n";
-        } else if (dodge > 16) {
+            return;
+        } else if (dodge < 84) {
             combat_stats[1] = combat_stats[1] - damage;
             std::cout << "\nThe monster attacked for " << damage << "damage\n";
             std::cout << "You have " << combat_stats[1] << " health left\n";
+            return;
         }
     }
-    return;
 }
 
 void Player::gainExp(int exp) { // Gain exp function after defeating a monster

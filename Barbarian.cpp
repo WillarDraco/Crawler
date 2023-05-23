@@ -18,7 +18,7 @@ Barbarian::Barbarian(int level, std::string name) { // sets strength and health 
     combat_stats[2] = 6; // Base attack damage
     combat_stats[3] = 12; // Special attack damage
     combat_stats[4] = 8; // Represents the strength stat of a barbarian - affects melee damage
-    combat_stats[5] = 0; // Dodge chance
+    combat_stats[5] = 1; // Dodge chance
     combat_stats[6] = 4; // Defense stat
     combat_stats[7] = 1; // Crit chance
 

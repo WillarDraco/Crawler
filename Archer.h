@@ -12,6 +12,7 @@ class Archer : public Player {
         Archer(); // sets all data members to 0 or “”
         Archer(int level, std::string name); // sets strength and health based on level, exp = 0, current weapon = “”;
         void gainExp(int exp); // Gain exp function to level up
+        
         void equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
         

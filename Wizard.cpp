@@ -16,7 +16,7 @@ Wizard::Wizard(int level, std::string name) { // sets mana and health based on l
     combat_stats[2] = 2; // Base attack damage
     combat_stats[3] = 10; // Special attack damage
     combat_stats[4] = 100; // Represents the maximum mana of a player - affects magic damage and usage
-    combat_stats[5] = 0; // Dodge chance
+    combat_stats[5] = 1; // Dodge chance
     combat_stats[6] = 2; // Defense stat
     combat_stats[7] = 1; // Crit chance
     combat_stats[8] = combat_stats[4]; // current mana level of player
