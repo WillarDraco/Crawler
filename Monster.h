@@ -21,7 +21,10 @@ class Monster{
         virtual void take_damage(int damage); //taking damage from player
         virtual bool hasBlocked(); //check if monster has blocked
 
-
+        virtual void equipWeapon(Weapon* weapon); // sets current weapon (weapon bonuses)
+        virtual void unequipWeapon(Weapon* weapon); // sets current weapon to  “” (removes weapon bonuses)
+        
+        
         //getters and setters for data members
         int get_max_health();
         int get_current_health();

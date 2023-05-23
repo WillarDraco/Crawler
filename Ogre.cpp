@@ -1,6 +1,7 @@
 #include "Boss.h"
 #include "Ogre.h"
 #include <cstdlib>
+#include <iostream>
 
     //constructer
     Ogre::Ogre(Player* player){
@@ -12,8 +13,8 @@
         this->defend = false;    
         
         this->strength = level * 2;
-        this->agility = level * 2;
-        this->has_weapon = false;
+        this->agility = level * 3;
+        ogre_weapon = 0;
 
     }
 
@@ -21,20 +22,10 @@
     void Ogre::attack(Player* player){
 
         int random_move = rand() % 100 + 1;
-        
+        defend = false;
+
         if (random_move < 75){
-            if (has_weapon = true){
-                if (random_move < 50){
-                int damage = (rand() % 10 + 5) + (strength * 2);
-
-                player->take_damage(damage);
-                }
-                else if (random_move > 50){
-                int damage = (rand() % 10 + 5) + (agility);
-
-                player->take_damage(damage);
-                }
-            else if(random_move < 50){
+            if(random_move < 50){
                 int damage = (rand() % 10 + 5) + (strength);
 
                 player->take_damage(damage);
@@ -46,22 +37,23 @@
             }
         }   
         else{
+            std::cout << "\nThe Ogre blocks!\n";
             block();    
         }    
     
     }
+    
+
+
+    void Ogre::equipWeapon(Weapon* ogre_weapon) { // sets current weapon (weapon bonuses)
+        strength = strength + ogre_weapon->get_stat_bonus();
+        this->ogre_weapon = &ogre_weapon;
     }
 
-
-    // sets current weapon (weapon bonuses)
-    void Ogre::equipWeapon(){
-        has_weapon = true;
-    };
-
-    // sets current weapon to  “” (removes weapon bonuses)
-    void Ogre::unequipWeapon(){
-        has_weapon = false;
-    }; 
+    void Ogre::unequipWeapon(Weapon* ogre_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+        strength = strength - ogre_weapon->get_stat_bonus();
+        this->ogre_weapon = 0;
+    }
 
 
     //getters and setters

@@ -8,7 +8,7 @@ class Ogre : public Boss{
     protected:
         int strength;
         int agility;
-        bool has_weapon;
+        Weapon** ogre_weapon;
 
     public:
         Ogre(Player* player); //constructer
@@ -16,8 +16,8 @@ class Ogre : public Boss{
 
         void attack(Player* player); // basic attack
 
-        void equipWeapon(); // sets current weapon (weapon bonuses)
-        void unequipWeapon(); // sets current weapon to  “” (removes weapon bonuses)
+        void equipWeapon(Weapon* ogre_weapon); // sets current weapon (weapon bonuses)
+        void unequipWeapon(Weapon* ogre_weapon); // sets current weapon to  “” (removes weapon bonuses)
         
 
 

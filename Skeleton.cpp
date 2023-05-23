@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Skeleton.h"
 #include <cstdlib>
+#include <iostream>
 
     //default constructer
     Skeleton::Skeleton(Player* player){
@@ -12,37 +13,34 @@
         this->defend = false;    
         
         this->agility = level;
-        this->has_weapon = false;
+        
+        skeleton_weapon = 0;
     };
 
     //attack
     void Skeleton::attack(Player* player){
       int random_move = rand() % 100 + 1;
-        
+        defend = false;
         if (random_move < 75){
-            if (has_weapon == true){
-                int damage = (rand() % 5 + 1) + (agility)*2;
-
-                player->take_damage(damage);
-            }
-            else{
                 int damage = (rand() % 5 + 1) + (agility);
 
                 player->take_damage(damage);
-
-            }
-        }   
+        } 
         else{
+            std::cout << "\nThe skeleton blocks!\n";
             block();    
         }    
     
     }
 
-    void Skeleton::equipWeapon(){; // sets current weapon (weapon bonuses)
-        has_weapon = true;
+    void Skeleton::equipWeapon(Weapon* skeleton_weapon) { // sets current weapon (weapon bonuses)
+        agility = agility + skeleton_weapon->get_stat_bonus();
+        this->skeleton_weapon = &skeleton_weapon;
     }
-    void Skeleton::unequipWeapon(){; // sets current weapon to  “” (removes weapon bonuses)
-        has_weapon = false;
+
+    void Skeleton::unequipWeapon(Weapon* skeleton_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+        agility = agility - skeleton_weapon->get_stat_bonus();
+        this->skeleton_weapon = 0;
     }
     
     //getters and setters

@@ -19,7 +19,6 @@ class Wizard : public Player {
         void unequipWeapon(Weapon* wizard_weapon); // sets current weapon to  “” (removes weapon bonuses)
 
         void special_attack(Monster* monster); // wizard only attack that uses mana and does damage based on mana and equipped weapon
-        void manaRegen(); // regenerates mana based on level each
         void rest(); // heals player and recharges mana for turn - based on total health and mana
 
         int get_max_mana(); // Gets max mana

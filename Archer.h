@@ -20,8 +20,7 @@ class Archer : public Player {
         
         void special_attack(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
 
-        void recoverAmmo(); // recovers a random (small) amount of ammunition
-        void rest(); // heals player for turn - based on total health
+        void rest(); // heals for turn - based on total health
 
         int get_agility(); // Gets agility value
         int get_max_ammo(); // Gets max ammo value

@@ -32,12 +32,7 @@ void Barbarian::unequipWeapon(Weapon* barbarian_weapon) { // sets current weapon
 
 void Barbarian::special_attack(Monster* monster) { // barbarian only attack that does damage based on strength and equipped weapon
     int damage = strength * ((rand() % 5) * level);
-    if (monster->hasBlocked() == true) {
-            damage = damage * 0.85;
-            monster->take_damage(damage);
-        } else {
-            monster->take_damage(damage);
-    }
+    monster->take_damage(damage);
 }
 
 void Barbarian::rest() { // heals player for turn - based on total health
