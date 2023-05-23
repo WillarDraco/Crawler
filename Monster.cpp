@@ -9,7 +9,7 @@
 
     //set health based on level
     Monster::Monster(Player* player){
-        combat_stats = {0, 0, 0, 0, 0, 0}; // Stats {max_hp (0), current_hp (1), damage(2), strength(3), agility()4, mana(5)}
+        combat_stats = {0, 0, 0, 0, 0, 0, 0}; // Stats {max_hp (0), current_hp (1), damage(2), strength(3), agility()4, mana(5). exp(6)}
         
         level = player->get_level();
         combat_stats[0] = 20 + 5*(level);
