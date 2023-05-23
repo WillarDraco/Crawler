@@ -2,6 +2,7 @@
 #include <string>
 #include <limits>
 #include <unistd.h>
+#include <fstream>
 
 #include "Monster.h"
 #include "Goblin.h"
@@ -33,6 +34,23 @@
 
 
 int main() {
+    std::string new_or_continue;
+    bool valid = false;
+    while (valid = false) {
+    std::cout << "Please enter 'New Game' to start a new game or 'Continue' to continue from save data";
+    std::cin >> new_or_continue;
+        if ((new_or_continue == "Continue") || (new_or_continue == "New") || (new_or_continue == "continue") || (new_or_continue == "new")) {
+            valid == true;
+        } else {
+            std::cout << "Your selection is not valid, please try again";
+        }
+    }
+    if (new_or_continue == "Continue") {
+        // classes index
+        // weapon
+        // 
+    }
+    else if (new_or_continue == "New") {
     int standard_kill_count = 0; // keeps track of amount of normal monsters killed
     int boss_kill_count = 0; // keeps track of amount of bosses killed
 
@@ -147,7 +165,7 @@ int main() {
             break;
         }
 
-        classes[classes_index]->take_damage(tutorial_enemy.get_combat_stats()[2]);
+        classes[classes_index]->takeDamage(tutorial_enemy.get_combat_stats()[2]);
 
         if (classes[classes_index]->get_current_health() <= 0) {
             std::cout << "\nYou died\n";
@@ -155,7 +173,7 @@ int main() {
         }
     }
 
-    classes[classes_index]->gain_exp(10);
+    classes[classes_index]->gainExp(10);
 
 
     // if player health reaches 0, trigger gameover and display playthrough statistics
@@ -237,8 +255,7 @@ int main() {
     std::cout << "\nPress Enter to continue...\n";
     std::cin.get();
     std::cin.get();
-
-
+    }
 // main gameplayer loop
     Monster** standard_monsters = new Monster*[3]; // fill arrays inside loop to account for changing player level
     Monster** boss_monsters = new Monster*[3];
@@ -386,13 +403,13 @@ int main() {
                 }
                 if (boss_monsters[monster_select]->get_current_health() <= 0) {
                     std::cout << "\nYou defeated the goblin!\n";
-                    classes[classes_index]->gain_exp(boss_monsters[monster_select]->get_combat_stats()[6]);
+                    classes[classes_index]->gainExp(boss_monsters[monster_select]->get_combat_stats()[6]);
                     fight = false;
                     boss_kill_count++;
                     break;
                 }
 
-                classes[classes_index]->take_damage(boss_monsters[monster_select]->get_combat_stats()[2]);
+                classes[classes_index]->takeDamage(boss_monsters[monster_select]->get_combat_stats()[2]);
 
                 if (classes[classes_index]->get_current_health() <= 0) {
                     std::cout << "\nYou died\n";
@@ -536,13 +553,13 @@ int main() {
                 }
                 if (standard_monsters[monster_select]->get_current_health() <= 0) {
                     std::cout << "\nYou defeated the goblin!\n";
-                    classes[classes_index]->gain_exp(standard_monsters[monster_select]->get_combat_stats()[6]);
+                    classes[classes_index]->gainExp(standard_monsters[monster_select]->get_combat_stats()[6]);
                     fight = false;
                     standard_kill_count++;
                     break;
                 }
 
-                classes[classes_index]->take_damage(standard_monsters[monster_select]->get_combat_stats()[2]);
+                classes[classes_index]->takeDamage(standard_monsters[monster_select]->get_combat_stats()[2]);
 
                 if (classes[classes_index]->get_current_health() <= 0) {
                     std::cout << "\nYou died\n";
