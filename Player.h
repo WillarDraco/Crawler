@@ -27,7 +27,7 @@ class Player {
         virtual void unequipWeapon(Weapon* weapon); // sets current weapon to  “” (removes weapon bonuses)
 
         void takeDamage(int damage); // Take damage function
-        void gainExp(int exp); // Gain exp function after defeating a monster
+        virtual void gainExp(int exp); // Gain exp function after defeating a monster
         //virtual void level_up(); // Changes stats according to level
 
         // getters and setters for all data memebers
