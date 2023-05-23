@@ -11,8 +11,8 @@ Barbarian::Barbarian() { // sets all data members to 0 or “ ”
 
 Barbarian::Barbarian(int level, std::string name) { // sets strength and health based on level, exp = 0, current weapon = “”;
     this->name = name;
-    max_health = (level * 10) + 100; // represents the max health of a player
-    current_health = max_health; // current health of player
+    combat_stats[0] = (level * 10) + 100; // represents the max health of a player
+    combat_stats[1] = combat_stats[0]; // current health of player
     exp = 0; // current number of experience points
     this->level = level; // total experience level
     defend = false; // sets defending state

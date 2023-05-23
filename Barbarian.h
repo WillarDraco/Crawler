@@ -7,7 +7,6 @@
 
 class Barbarian : public Player {
     private:
-        int strength; // represents strength of a player - affects melee damage
         Weapon** barbarian_weapon; // currently equipped weapon
     public:
         Barbarian(); // sets all data members to 0 or “ ”
