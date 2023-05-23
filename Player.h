@@ -39,6 +39,7 @@ class Player {
         std::string get_name();
         int get_damage();
         int get_special_damage();
+        int get_class_stat();
         int get_dodge_chance();
         int get_defense();
         int get_crit_chance();
@@ -52,6 +53,7 @@ class Player {
         void set_name(std::string name);
         void set_damage(int damage);
         void set_special_damage(int special);
+        void set_class_stat(int class_stat);
         void set_dodge_chance(int dodge);
         void set_defense(int defense);
         void set_crit_chance(int crit);
