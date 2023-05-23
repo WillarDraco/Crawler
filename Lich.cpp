@@ -14,6 +14,7 @@
         
         this->combat_stats[3] = level * 2;
         this->combat_stats[5] = level * 3;
+        this->combat_stats[6] = level * 32;
 
         lich_weapon = 0;        
 
@@ -29,12 +30,12 @@
             if(random_move < 50){
                 combat_stats[2] = (rand() % 10 + 5) + (combat_stats[3]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
             }
             else if (random_move > 50){
                 combat_stats[2] = (rand() % 10 + 5) + (combat_stats[5]);
 
-                player->take_damage(combat_stats[2]); 
+                player->takeDamage(combat_stats[2]); 
             }
         }   
         else{

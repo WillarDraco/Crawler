@@ -10,15 +10,15 @@ Player::Player(int level) { // sets level data member, health is set based on le
     exp = 0;// current experience level
     this->level = level;
     defend = false;
-    combat_stats = {100, 100, 5, 10, 0, 5, 1, 0, 10}; // Stats {max_hp (0), current_hp (1), damage(2), special damage(3), dodge chance()4, defense(5), crit chance(6), current resource(7), max resource (8)}
+    combat_stats = {100, 100, 5, 10, 0, 5, 1, 0, 10}; // Stats {max_hp (0), current_hp (1), damage(2), special damage(3), class stat(4), dodge chance(5), defense(6), crit chance(7), max resource(8), current resource (9)}
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use
-    monster->take_damage(combat_stats[2]);
+    monster->takeDamage(combat_stats[2]);
 }
 
-void Player::special_attack(Monster* monster) { // special attack for each class
-    monster->take_damage(combat_stats[3]);
+void Player::specialAttack(Monster* monster) { // special attack for each class
+    monster->takeDamage(combat_stats[3]);
 }
 
 void Player::equipWeapon(Weapon* weapon) { // sets current weapon (weapon bonuses)
@@ -31,7 +31,8 @@ void Player::block() { // reduces damage taken for one turn
     defend = true;
 }
 
-void Player::take_damage(int damage) {
+void Player::takeDamage(int damage) {
+    damage = damage - combat_stats[6];
     if (defend == true) {
         std::cout << "\nYou blocked the monster's attack.\n";
         return;
@@ -43,16 +44,18 @@ void Player::take_damage(int damage) {
     }
 }
 
-void Player::gain_exp(int exp) { // Gain exp function after defeating a monster
+void Player::gainExp(int exp) { // Gain exp function after defeating a monster
     int old_level = level;
     this->exp = this->exp + exp;
     level = (1 / 2) * pow((1 / 2),exp);
     if (old_level != level) {
         std::cout << "Congratulations, you have levelled up! \n";
-        combat_stats[0] = (level * 10) + 90;
-        combat_stats[2] = combat_stats[2] + 5;
-        combat_stats[3] = combat_stats[3] + 10;
+        combat_stats[0] = (level * 10) + 90; // Max Hp
+        combat_stats[2] = combat_stats[2] + 5; // Base attack damage
+        combat_stats[3] = combat_stats[3] + 10; // Special attack damage
+        combat_stats[4] = combat_stats[4] + 5;
         combat_stats[5] = combat_stats[5] + 5;
+        combat_stats[8] = combat_stats[8] + 10;
     }
     return;
 }

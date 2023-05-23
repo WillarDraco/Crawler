@@ -13,6 +13,8 @@
         this->defend = false;    
         
         this->combat_stats[5] = level;
+        this->combat_stats[6] = level * 16;
+
     };
 
     //magic attack
@@ -23,7 +25,7 @@
         if (random_move < 75){
             combat_stats[2] = (rand() % 5 + 1) + (combat_stats[5]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
         }   
         else{
             std::cout << "\nThe Wyvern blocks!\n";

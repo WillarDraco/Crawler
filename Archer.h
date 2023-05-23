@@ -7,18 +7,15 @@
 
 class Archer : public Player {
     private:
-        int agility; // represents the agility of a player - affects range damage
         Weapon** archer_weapon; // currently equipped weapon
-        int max_ammo; // total arrows/bolts knives an archer can have
-        int current_ammo; // current ammunition level
     public:
         Archer(); // sets all data members to 0 or “”
         Archer(int level, std::string name); // sets strength and health based on level, exp = 0, current weapon = “”;
-
+        void gainExp(int exp); // Gain exp function to level up
         void equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
         void unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
         
-        void special_attack(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
+        void specialAttack(Monster* monster); // archer only attack that does damage based on agility and equipped weapon
 
         void rest(); // heals for turn - based on total health
 
