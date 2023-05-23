@@ -17,7 +17,7 @@ void Player::attack(Monster* monster) { // basic attack all players can use
     monster->takeDamage(combat_stats[2]);
 }
 
-void Player::special_attack(Monster* monster) { // special attack for each class
+void Player::specialAttack(Monster* monster) { // special attack for each class
     monster->takeDamage(combat_stats[3]);
 }
 
@@ -31,7 +31,7 @@ void Player::block() { // reduces damage taken for one turn
     defend = true;
 }
 
-void Player::take_damage(int damage) {
+void Player::takeDamage(int damage) {
     if (defend == true) {
         std::cout << "\nYou blocked the monster's attack.\n";
         return;
@@ -43,7 +43,7 @@ void Player::take_damage(int damage) {
     }
 }
 
-void Player::gain_exp(int exp) { // Gain exp function after defeating a monster
+void Player::gainExp(int exp) { // Gain exp function after defeating a monster
     int old_level = level;
     this->exp = this->exp + exp;
     level = (1 / 2) * pow((1 / 2),exp);
@@ -53,6 +53,7 @@ void Player::gain_exp(int exp) { // Gain exp function after defeating a monster
         combat_stats[2] = combat_stats[2] + 5;
         combat_stats[3] = combat_stats[3] + 10;
         combat_stats[5] = combat_stats[5] + 5;
+        combat_stats[8] = combat_stats[8] + 10;
     }
     return;
 }
