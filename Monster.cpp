@@ -20,6 +20,14 @@
     // basic attack
     void Monster::punch(Player* player){}
 
+    void Monster::equipWeapon(Weapon* weapon) { // sets current weapon (weapon bonuses)
+    max_health = max_health + weapon->get_stat_bonus();
+    }
+
+    void Monster::unequipWeapon(Weapon* weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    max_health = max_health + weapon->get_stat_bonus();
+    }
+
     // reduces taken damage for one turn
     void Monster::block(){
         defend = true;
@@ -45,9 +53,6 @@
         }
     }
 
-    //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    //void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
-        
 
     //getters and setters for data members
     int Monster::get_max_health(){

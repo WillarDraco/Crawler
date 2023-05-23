@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Slime.h"
 #include <cstdlib>
+#include <iostream>
 
     //default constructer
     Slime::Slime(Player* player){
@@ -18,6 +19,7 @@
     // basic attack
     void Slime::attack(Player* player){
            int random_move = rand() % 100 + 1;
+           defend = false;
         
         if (random_move < 75){
             if (random_move < 50){
@@ -33,6 +35,7 @@
             }
         }   
         else{
+            std::cout << "\nThe Slime blocks!\n";
             block();    
         }    
     

@@ -13,7 +13,8 @@
         this->defend = false;    
         
         this->strength = level;
-        this->has_weapon = false;
+
+        goblin_weapon = 0;
     };
 
 
@@ -22,32 +23,26 @@
         int random_move = rand() % 100 + 1;
         defend = false;
         if (random_move < 75){
-            if (has_weapon == true){
-                int damage = (rand() % 5 + 1) + (strength)*2;
-                player->take_damage(damage);
-            }
-            else{
                 int damage = (rand() % 5 + 1) + (strength);
                 player->take_damage(damage);
 
             }
-        }   
+          
         else{
             std::cout << "\nThe goblin blocks!\n";
             block();    
         }
     }
 
-    // sets weapon to true
-    void Goblin::equipWeapon(){
-        has_weapon = true;
-    };
+   void Goblin::equipWeapon(Weapon* goblin_weapon) { // sets current weapon (weapon bonuses)
+        strength = strength + goblin_weapon->get_stat_bonus();
+        this->goblin_weapon = &goblin_weapon;
+}
 
-     // sets weapon to false
-    void Goblin::unequipWeapon(){
-        has_weapon = false;
-    };
-
+    void Goblin::unequipWeapon(Weapon* goblin_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+        strength = strength - goblin_weapon->get_stat_bonus();
+        this->goblin_weapon = 0;
+}
     
 
     //getters and setters

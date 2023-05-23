@@ -7,16 +7,15 @@
 class Skeleton : public Monster{
     protected:
         int agility;
-        bool has_weapon;
+        Weapon** skeleton_weapon;
 
     public:
         Skeleton(Player* player); //default constructor
 
         void attack(Player* player); //attack
 
-
-        void equipWeapon(); // sets current weapon (weapon bonuses)
-        void unequipWeapon(); // sets current weapon to  “” (removes weapon bonuses)
+        void equipWeapon(Weapon* skeleton_weapon); // sets current weapon (weapon bonuses)
+        void unequipWeapon(Weapon* skeleton_weapon); // sets current weapon to  “” (removes weapon bonuses)
         
 
         //getters and setters

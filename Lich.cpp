@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Lich.h"
 #include <cstdlib>
+#include <iostream>
 
     //default constructer
     Lich::Lich(Player* player){
@@ -13,7 +14,8 @@
         
         this->strength = level * 2;
         this->mana = level * 2;
-        this->has_weapon = false;        
+
+        lich_weapon = 0;        
 
     };
 
@@ -21,20 +23,10 @@
     void Lich::attack(Player* player){
 
         int random_move = rand() % 100 + 1;
-        
+        defend = false;
+
         if (random_move < 75){
-            if (has_weapon = true){
-                if (random_move < 50){
-                int damage = (rand() % 10 + 5) + (strength);
-
-                player->take_damage(damage);
-                }
-                else if (random_move > 50){
-                int damage = (rand() % 10 + 5) + (mana * 2);
-
-                player->take_damage(damage);
-                }
-            else if(random_move < 50){
+            if(random_move < 50){
                 int damage = (rand() % 10 + 5) + (strength);
 
                 player->take_damage(damage);
@@ -46,22 +38,21 @@
             }
         }   
         else{
+            std::cout << "\nThe Lich blocks!\n";
             block();    
         }    
     
     }
-    }  
+     
+    void Lich::equipWeapon(Weapon* lich_weapon) { // sets current weapon (weapon bonuses)
+        mana = mana + lich_weapon->get_stat_bonus();
+        this->lich_weapon = &lich_weapon;
+    }
 
-    // sets current weapon (weapon bonuses)
-    void Lich::equipWeapon(){
-        has_weapon = true;
-    };
-
-    // sets current weapon to  “” (removes weapon bonuses)
-    void Lich::unequipWeapon(){
-        has_weapon = false;
-    };
-    
+    void Lich::unequipWeapon(Weapon* lich_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+        mana = mana - lich_weapon->get_stat_bonus();
+        this->lich_weapon = 0;
+    }
 
     //getters and setters
     int Lich::get_strength(){

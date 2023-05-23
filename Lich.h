@@ -8,7 +8,7 @@ class Lich : public Boss{
     protected:
         int strength;
         int mana;
-        bool has_weapon;
+        Weapon** lich_weapon;
 
     public:
         Lich(Player* player); //constructer
@@ -16,8 +16,8 @@ class Lich : public Boss{
 
         void attack(Player* player); // basic attack
         
-        void equipWeapon(); // sets current weapon (weapon bonuses)
-        void unequipWeapon(); // sets current weapon to  “” (removes weapon bonuses)
+        void equipWeapon(Weapon* lich_weapon); // sets current weapon (weapon bonuses)
+        void unequipWeapon(Weapon* lich_weapon); // sets current weapon to  “” (removes weapon bonuses)
 
 
         //getters and setters
