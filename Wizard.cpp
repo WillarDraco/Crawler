@@ -32,7 +32,7 @@ void Wizard::gainExp(int exp) { // Gain exp function after defeating a monster
     this->exp = this->exp + exp;
     level = (1 / 2) * pow((1 / 2),exp);
     if (old_level != level) {
-        std::cout << "Congratulations, you have levelled up! \n";
+        std::cout << "\nCongratulations, you have levelled up!\n";
         combat_stats[0] = combat_stats[0] + 10; // Max Hp
         combat_stats[2] = combat_stats[2] + 2; // Base attack damage
         combat_stats[4] = combat_stats[4] + 5; // Represents the maximum mana of a player - affects magic damage and usage
