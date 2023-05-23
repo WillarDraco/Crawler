@@ -118,7 +118,7 @@ int main() {
             std::cout << "\nWill you attack, defend or rest?\n";
             std::cin >> selection;           
             if (selection == "Attack" || (selection == "attack")) {
-                tutorial_enemy.takeDamage(classes[classes_index]->get_combat_stats[/*GOWILLARDGO*/]);
+                tutorial_enemy.takeDamage(classes[classes_index]->get_combat_stats()[1]);
                 valid = true;
             } else if (selection == "Defend" || (selection == "defend")) {
                 classes[classes_index]->block();

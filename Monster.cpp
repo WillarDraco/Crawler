@@ -38,7 +38,7 @@
         return false;
     };
 
-    void Monster::take_damage(int damage){; //taking damage from player
+    void Monster::takeDamage(int damage){; //taking damage from player
        if (defend == true) {
         std::cout << "\nThe monster blocked the players attack.\n";
         return;

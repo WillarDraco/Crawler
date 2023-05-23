@@ -58,6 +58,10 @@ void Player::gain_exp(int exp) { // Gain exp function after defeating a monster
 }
 
 // getters and setters for all data memebers
+std::vector<int> Player::get_combat_stats() {
+    return combat_stats;
+}
+
 int Player::get_max_health() { // Gets max health
     return max_health;
 }
