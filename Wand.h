@@ -6,6 +6,6 @@
 class Wand : public Weapon {
     public:
         Wand();
-        Wand(std::string name, int stat_bonus);
+        Wand(std::string name, int stat_bonus, int level); // Constructor for a Wand
 };
 #endif

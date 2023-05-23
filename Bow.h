@@ -5,7 +5,7 @@
 
 class Bow : protected Weapon {
     public:
-        Bow();
-        Bow(std::string name, int stat_bonus);
+        Bow(); // Default constructor
+        Bow(std::string name, int stat_bonus, int level); // Constructor for a bow
 };
 #endif

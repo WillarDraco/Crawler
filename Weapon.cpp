@@ -1,6 +1,15 @@
 #include "Weapon.h"
 #include <string>
 
+Weapon::Weapon() { // default constructor sets name to “” and stat bonus to 0
+}
+
+Weapon::Weapon(std::string name, int stat_bonus, int level) { // constructor setting level, name and stat bonus
+    this->level = level;
+    this->name = name;
+    this->stat_bonus = stat_bonus * level;
+}
+
 std::string Weapon::get_name() { // Gets name of the weapon
     return name;
 }
