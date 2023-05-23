@@ -9,7 +9,7 @@ class Wyvern : public Monster{
         int mana;
 
     public:
-        Wyvern(int level); //default constructor
+        Wyvern(Player* player); //default constructor
 
         void magic_attack (Player* player); //attack
         

@@ -8,18 +8,24 @@
 #include "Barbarian.h"
 #include "Wizard.h"
 #include "Archer.h"
+#include "Slime.h"
+#include "Skeleton.h"
+#include "Wyvern.h"
+#include "Wand.h"
+#include "Weapon.h"
 
 
 
 int main() {
+    int standard_kill_count = 0; // keeps track of amount of normal monsters killed
+    int boss_kill_count = 0; // keeps track of amount of bosses killed
 
     std::cout << "Welcome to Crawler!" << "\n" << "Crawler is a turn-based "
         "rogue-like game where you take control of a player and defeat as many " 
-        "monsters as you can, levelling up and unlocking weapons along the way.\n";
-
+        "monsters as you can,\nlevelling up and unlocking weapons along the way.\n";
     sleep(2);
 
-    // openGL start button and whatnot
+    // openGL start button and maybe highscores?
     // black screen, text pops up - character creation -
     std::string name;
     std::string _class;
@@ -29,11 +35,13 @@ int main() {
 
     sleep(0.5);
 
+    // create an array of pointers to pointers of each class type
+    // player selects one to use and that pointer/index is used throughout the game
     Player** classes = new Player*[3];
 
-    Barbarian* barbarian = new Barbarian(1);
-    Archer* archer = new Archer(1);
-    Wizard* wizard = new Wizard(1);
+    Barbarian* barbarian = new Barbarian(1, name);
+    Archer* archer = new Archer(1, name);
+    Wizard* wizard = new Wizard(1, name);
 
     classes[0] = barbarian;
     classes[1] = archer;
@@ -48,31 +56,23 @@ int main() {
         if (_class == ("Barbarian") || _class == "barbarian") {
             classes_index = 0;
             valid_class = true;
-            _class = "barbarian";
+            _class = "Barbarian";
         } else if (_class == ("Archer") || _class == ("archer")) {
             classes_index = 1;
             valid_class = true;
-            _class = "archer";
+            _class = "Archer";
         } else if (_class == ("Wizard") || _class == ("wizard")) {
             classes_index = 2;
             valid_class = true;
-            _class = "wizard";
+            _class = "Wizard";
         } else {
             std::cout << "Your selection is not valid, try again\n";
         }
     }
-    if (_class == "wizard") {
-        Wizard* user = new Wizard;
-    } else if (_class == "archer") {
-        Archer* user = new Archer;
-    } else if (_class == "barbarian") {
-        Barbarian* user = new Barbarian;
-    } else
-
 
     sleep(0.5);
 
-    std::cout << "You are a " << _class << " named " << name << "\n" << "Press enter to continue\n";
+    std::cout << "You are " << name << " the " << _class << "\n" << "Press enter to continue\n";
     std::cin.get();
     std::cin.get();
 
@@ -83,12 +83,12 @@ int main() {
     std::cout << "You hear a growl, and you scramble to your feet as a goblin approaches...\n"; 
     sleep(2);
 
-    Goblin tutorial_enemy = Goblin(1); 
+    Goblin tutorial_enemy = Goblin(classes[classes_index]); 
     // openGL fight scene appears
 
     // text boxes pop up explaining punch/defend/rest
 
-    std::cout << "In a fight, until you have a weapon you may Punch, Defend or Rest\n";
+    std::cout << "\nIn a fight, until you have a weapon you may Attack, Defend, Rest or perform a special action\n";
     sleep(2);
     std::cout << "Once an option is selected, the selected option occurs and it is now the enemys turn\n";
     sleep(2);
@@ -98,108 +98,182 @@ int main() {
     sleep(2);
     std::cout << "Rest recovers a small amount of health\n";
     sleep(2);
+    std::cout << "Your special action depends on your class type FINISH THIS BEFORE SUBMIT\n";
+    sleep(2);
 
     // While loop until fight is over
     bool victory = false;
     bool player_death = false;
-    int enemy_move;
-    int kill_count = 0;
-
     while (victory == false && player_death == false) {
         // Loop to ensure valid selection
         bool valid = false;
         while (valid == false) {
             std::string selection;
-            std::cout << "Will you attack, defend or rest?\n";
-            std::cin >> selection;
-            if (_class == "barbarian") {
-                if (selection == ("attack","Attack")) {
-                    classes[1]->attack(tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    barbarian.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    barbarian.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            } else if (_class == "archer") {
-                if (selection == ("Punch","punch")) {
-                    archer.punch(&tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    archer.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    archer.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            } else if (_class == "wizard") {
-                if (selection == ("Punch","punch")) {
-                    wizard.punch(&tutorial_enemy);
-                    valid = true;
-                } else if (selection == ("Defend","defend")) {
-                    wizard.defend();
-                    valid = true;
-                } else if (selection == ("Rest","rest")) {
-                    wizard.rest();
-                    valid = true;
-                } else {
-                    std::cout << "Your selection is not valid, try again\n";
-                }
-            }
+            std::cout << "\nWill you attack, defend or rest?\n";
+            std::cin >> selection;           
+            if (selection == "Attack" || (selection == "attack")) {
+                classes[classes_index]->attack(&tutorial_enemy);
+                valid = true;
+            } else if (selection == "Defend" || (selection == "defend")) {
+                classes[classes_index]->block();
+                valid = true;
+            } else if (selection == "Rest" || (selection == "rest")) {
+                //classes[classes_index]->rest();
+                valid = true;
+            } else {
+                std::cout << "Your selection is not valid, try again\n";
+            }            
         }
         if (tutorial_enemy.get_current_health() <= 0) {
-            std::cout << "You defeated the goblin!";
+            std::cout << "\nYou defeated the goblin!\n";
             victory = true;
-            kill_count++;
+            standard_kill_count++;
             break;
         }
-        enemy_move = 1+ (rand() % 100);
-        if (enemy_move < 75) {
-            tutorial_enemy.attack(&user);
-        } else {
-            tutorial_enemy.block();
-        }
+        tutorial_enemy.attack(classes[classes_index]);
 
-        if (user.get_current_health() <= 0) {
-            std::cout << "You died";
+        if (classes[classes_index]->get_current_health() <= 0) {
+            std::cout << "\nYou died\n";
             player_death = true;
         }
     }
 
+    // if player health reaches 0, trigger gameover and display playthrough statistics
     if (player_death == true) {
-        //gameover, stats
+        std::string name = classes[classes_index]->get_name();
+        std::cout << "Unfortunately " << name << " the " << _class << " has failed in their quest to reach the exit.\n";
+        sleep(2);
+        std::cout << name << " killed " << standard_kill_count << " monsters and " << boss_kill_count << " bosses.\n";
+        sleep(2);
+        std::cout << name << " reached level " << classes[classes_index]->get_level() << ".\n";
+        sleep(2);
+        std::cout << "While " << name << " may have failed in his quest, another may succeed...\n";
+        sleep(2);
+        std::cout << "Will you try again?\n";
+        
         return 0;
     }
 
+    // tutorial enemy drops weapon depending on class
+    if (_class == "Barbarian") {
+        std::cout << "\nYou notice a dirty blade tucked in the the goblins belt...\n";
+        sleep(2);
+        std::cout << "You take the blade from the body and see it's a sword, rusty and dirty but sharp\n";
+        sleep(2);
+        std::cout << "Gratefully, you tuck the sword into your own belt, and as you begin to look around you\nnotice and old wooden shield in the corner of the room\n";
+        sleep(2);
+        std::cout << "\nCongratulations! you have acquired a sword and shield!\n";
+        sleep(2);
+    } else if (_class == "Archer") {
+        std::cout << "\nYou notice a leather strap across the goblins chest, and upon closer insepction you realise\nthere is a quiver full of arrows across the goblins back...\n";
+        sleep(2);
+        std::cout << "The tips on the arrows look worn but still sharp enough to cut\n";
+        sleep(2);
+        std::cout << "Gratefully, you strap the quiver to your own back, and as you begin to look around you notice\nan old hunting bow in the corner of the room\n";
+        sleep(2);
+        std::cout << "\nCongratulations! You have acquired a Bow and Quiver!\n";
+        sleep(2);
+    } else if (_class == "Wizard") {
+        std::cout << "\nYou notice a strange old book in the goblins small satchel\n";
+        sleep(2);
+        std::cout << "You take the book and as you attempt to read it, you realise while most of it is in a language\nyou cannot understand\n";
+        sleep(2);
+        std::cout << "You look around the room and find it completely empty and decide to take a moment to glean\nwhat you can from this book\n";
+        sleep(2);
+        std::cout << "Several moments later you realise its a book about spellcraft! For now you can only understand\none spell but that is enough for now\n";
+        sleep(2);
+        std::cout << "You put the book back in the satchel and attach the satchel to your belt\n";
+        sleep(2);
+        std::cout << "\nCongratulation! You have acquired a spellbook!\n";
+        Wand* wand = new Wand("Cracked Wand", 5);
+        classes[classes_index]->equipWeapon(wand);
+    }
+    std::cout << "\nNow that you have a weapon, your attack will do more damage, and each type of weapon has\nunique effects!\n";
     sleep(2);
-    std::cout << "Standing breathless over the dead body of the golbin, "
-        "you look into the darkness";
+    std::cout << "You may find other weapons in your travels, but be warned, you can only carry one type at a time\n";
     sleep(2);
-    std::cout << "You decide the only way out is forwards, and with a grimace"
-        " you take your first step into what seem to be an endless darkness...";
+    std::cout << "\nStanding breathless over the dead body of the goblin, you look into the darkness\n";
     sleep(2);
-}
+    std::cout << "You decide the only way out is forwards, and with a grimace\n"
+        "you take your first step into what seem to be an endless darkness...\n";
+    sleep(2);
+    std::cout << "\nPress Enter to continue...\n";
+    std::cin.get();
+    std::cin.get();
 
-// tutorial enemy drops weapon
 
-// if victory - check player levelup
-// if player death
+// tutorial victory level stuff
 
 // main gameplayer loop
+    Monster** standard_monsters = new Monster*[3]; // fill arrays inside loop to account for changing player level
+    Monster** boss_monsters = new Monster*[3];
+    while (player_death == false) {
 
-// KC % 3 == 0 run boss loop
+        
+        /* if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
+            Ogre* ogre = new Ogre(classes[classes_index]);
+            Dragon* dragon = new Dragon(classes[classes_index]);
+            Lich* lich = new Lich(classes[classes_index]);
 
+            boss_monsters[0] = ogre;
+            boss_monsters[1] = dragon;
+            boss_monsters[2] = lich;
+
+            delete ogre;
+            delete lich;
+            delete dragon;
+        } else */
+            Goblin* goblin = new Goblin(classes[classes_index]);
+            Slime* slime = new Slime(classes[classes_index]);
+            Skeleton* skeleton = new Skeleton(classes[classes_index]);
+            Wyvern* wyvern = new Wyvern(classes[classes_index]);
+
+            standard_monsters[0] = goblin;
+            standard_monsters[1] = slime;
+            standard_monsters[2] = skeleton;
+            standard_monsters[3] = wyvern;
+
+            int monster_select = (rand() % 4);
+
+            if (monster_select == 0) {
+                std::cout << "\nAs you stumble through the darkness, you all of a sudden get the feeling that something is watching you\n";
+                sleep(2);
+                std::cout << "You spin around and are met with the dirty golden eyes of a goblin\n";
+                sleep(2);
+                std::cout << "You draw your weapon, ready to fight\n";
+                sleep(2);
+            } else if (monster_select == 1) {
+                std::cout << "\nYou stumble over a rock, and to stop yourself falling you fling your arms out in front you\n";
+                sleep(2);
+                std::cout << "Instead of hard rock, your hands hit a gooey substance coating the ground\n";
+                sleep(2);
+                std::cout << "You look ahead at the slime, and prepare for combat";
+                sleep(2);
+            } else if (monster_select == 2) {
+                std::cout << "\nAs you are walking, all of a sudden an arrow whizzes by your head\n";
+                sleep(2);
+                std::cout << "Ducking behind a nearby boulder, you hear the clinking of bones and arrows\n";
+                sleep(2);
+                std::cout << "You draw your weapon, jump out from behind the boulder, and charge at the skeleton archer\n";
+            } else if (monster_select == 3) {
+                std::cout << "\nAll of a sudden, you see light in the distance\n";
+                sleep(2);
+                std::cout << "Excitedly you start running toward it, but stop cold in your tracks when your eyes finally adjust to the light\n";
+                sleep(2);
+                std::cout << "The source of the light is fire, and that fire is coming from the mouth of a small wyvern\n";
+                sleep(2);
+                std::cout << "Squinting your eyes, you prepare to fight\n";
+            }
+            delete goblin;
+            delete slime;
+            delete skeleton;
+            delete wyvern;
 // else run standard enemy loop
 
 // combat - 2 enemy arrays, one boss one standard, generate rand enemy from array
+    }
+}
+
+
 
 // if victory - STDKC++/BKC++, check level, if Boss upgrades or heal
-
-// if death - display kill count and boss kill count, display level
-// game over

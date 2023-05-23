@@ -4,6 +4,7 @@
 #include "Monster.h"
 #include <cstdlib>
 #include <string>
+#include <iostream>
 
 Barbarian::Barbarian() { // sets all data members to 0 or “ ”
 }
@@ -16,14 +17,22 @@ Barbarian::Barbarian(int level, std::string name) { // sets strength and health 
     this->level = level; // total experience level
     defend = false; // sets defending state
     strength = ((level * 10) / 2); // represents the strength stat of a barbarian - affects melee damage
+    barbarian_weapon = 0;
 }
 
-void Barbarian::equipWeapon(Weapon* barbarian_weapon); // sets current weapon (weapon bonuses)
-void Barbarian::unequipWeapon(Weapon* barbarian_weapon); // sets current weapon to  “” (removes weapon bonuses)
+void Barbarian::equipWeapon(Weapon* barbarian_weapon) { // sets current weapon (weapon bonuses)
+    strength = strength + barbarian_weapon->get_stat_bonus();
+    this->barbarian_weapon = &barbarian_weapon;
+}
+
+void Barbarian::unequipWeapon(Weapon* barbarian_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    strength = strength - barbarian_weapon->get_stat_bonus();
+    this->barbarian_weapon = 0;
+}
 
 void Barbarian::special_attack(Monster* monster) { // barbarian only attack that does damage based on strength and equipped weapon
     int damage = strength * ((rand() % 5) * level);
-    if (monster->block() == true) {
+    if (monster->hasBlocked() == true) {
             damage = damage * 0.85;
             monster->take_damage(damage);
         } else {

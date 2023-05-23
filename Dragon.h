@@ -10,7 +10,7 @@ class Dragon : public Boss{
         int mana;
 
     public:
-        Dragon(int level); //constructer
+        Dragon(Player* player); //constructer
 
 
         void attack(Player* player); // basic attack

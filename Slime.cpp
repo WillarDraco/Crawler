@@ -3,9 +3,16 @@
 #include <cstdlib>
 
     //default constructer
-    Slime::Slime(int level){
-        strength = level;
-        mana = level * 2;
+    Slime::Slime(Player* player){
+        this->level = player->get_level();
+
+        this->max_health = 20 + 5*(level);
+        this->current_health = max_health;
+
+        this->defend = false;    
+        
+        this->strength = level;
+        this->mana = level * 2;
     };
 
     // basic attack

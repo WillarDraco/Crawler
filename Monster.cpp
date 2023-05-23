@@ -2,6 +2,7 @@
 #include "Weapon.h"
 #include "Player.h"
 #include <cstdlib>
+#include <iostream>
     
     //default constructer sets everything to basics
     Monster::Monster() {}; 
@@ -20,21 +21,32 @@
     void Monster::punch(Player* player){}
 
     // reduces taken damage for one turn
-    bool Monster::block(){
+    void Monster::block(){
         defend = true;
     }; 
 
+    bool Monster::hasBlocked() {
+        if (defend == true) {
+            return true;
+        } else
+        return false;
+    };
+
     void Monster::take_damage(int damage){; //taking damage from player
-        if (defend = true){
-            current_health = current_health - damage*(0.5);
+        if(defend == true){
+        current_health = current_health - (0.75)*damage;
+        std::cout << "\nYou did " << 0.75 * damage << " damage\n";
+        std::cout << "The monster has " << current_health << " health left\n";   
         }
         else{
             current_health = current_health - damage;
+            std::cout << "\nYou did " << damage << " damage\n";
+            std::cout << "The monster has " << current_health << " health left\n";
         }
     }
 
-    void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
-    void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
+    //void Monster::equipWeapon(Weapon){}; // sets current weapon (weapon bonuses)
+    //void Monster::unequipWeapon(Weapon){}; // sets current weapon to  “” (removes weapon bonuses)
         
 
     //getters and setters for data members

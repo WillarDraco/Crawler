@@ -16,14 +16,21 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     exp = 0;// current experience level
     this->level = level;
     defend = false;
-    int agility = 5; // represents the agility of a player - affects range damage
+    int agility = 5; // represents the agility of a player - affects special attack damage
     Weapon** archer_weapon = 0; // currently equipped weapon
     int max_ammo = 10; // total arrows/bolts knives an archer can have
     int current_ammo = max_ammo; // current ammunition level
 }
 
-void Archer::equipWeapon(Weapon* archer_weapon); // sets current weapon (weapon bonuses)
-void Archer::unequipWeapon(Weapon* archer_weapon); // sets current weapon to  “” (removes weapon bonuses)
+void Archer::equipWeapon(Weapon* archer_weapon) { // sets current weapon (weapon bonuses)
+    agility = agility + archer_weapon->get_stat_bonus();
+    this->archer_weapon = &archer_weapon;
+}
+
+void Archer::unequipWeapon(Weapon* archer_weapon) { // sets current weapon to  “” (removes weapon bonuses)
+    agility = agility - archer_weapon->get_stat_bonus();
+    this->archer_weapon = 0;
+}
 
 void Archer::special_attack(Monster* monster) { // archer only attack that does damage based on agility and equipped weapon
     int damage = 0;
@@ -34,7 +41,7 @@ void Archer::special_attack(Monster* monster) { // archer only attack that does 
         std::cout << "No Ammo";
     }
 
-    if (monster->block() == true) {
+    if (monster->hasBlocked() == true) {
         damage = damage * 0.85;
         monster->take_damage(damage);
     } else {
