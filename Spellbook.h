@@ -3,7 +3,7 @@
 #include "Weapon.h"
 #include <string>
 
-class Spellbook : protected Weapon {
+class Spellbook : public Weapon {
     public:
         Spellbook(); // Default constructor
         Spellbook(std::string name, int stat_bonus, int level); // Constructor for a bow

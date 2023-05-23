@@ -9,30 +9,28 @@
 
     //set health based on level
     Monster::Monster(Player* player){
+        combat_stats = {0, 0, 0, 0, 0, 0}; // Stats {max_hp (0), current_hp (1), damage(2), strength(3), agility()4, mana(5)}
+        
         level = player->get_level();
-
-        max_health = 20 + 5*(level);
-        current_health = max_health;
+        combat_stats[0] = 20 + 5*(level);
+        combat_stats[1] = combat_stats[0];
 
         defend = false;    
         };
 
     // basic attack
-    void Monster::punch(Player* player){}
+    void Monster::attack(Player* player){}
 
-    void Monster::equipWeapon(Weapon* weapon) { // sets current weapon (weapon bonuses)
-    max_health = max_health + weapon->get_stat_bonus();
-    }
-
-    void Monster::unequipWeapon(Weapon* weapon) { // sets current weapon to  “” (removes weapon bonuses)
-    max_health = max_health + weapon->get_stat_bonus();
-    }
+    void Monster::equipWeapon(Weapon* weapon) {} // sets current weapon (weapon bonuses)
+    void Monster::unequipWeapon(Weapon* weapon) {} // sets current weapon to  “” (removes weapon bonuses)
+    
 
     // reduces taken damage for one turn
     void Monster::block(){
         defend = true;
     }; 
 
+    //checks whether monster has or hasnt blocked
     bool Monster::hasBlocked() {
         if (defend == true) {
             return true;
@@ -40,27 +38,26 @@
         return false;
     };
 
-    void Monster::take_damage(int damage){; //taking damage from player
-        if(defend == true){
-        current_health = current_health - (0.75)*damage;
-        std::cout << "\nYou did " << 0.75 * damage << " damage\n";
-        std::cout << "The monster has " << current_health << " health left\n";   
-        }
-        else{
-            current_health = current_health - damage;
-            std::cout << "\nYou did " << damage << " damage\n";
-            std::cout << "The monster has " << current_health << " health left\n";
-        }
+    void Monster::takeDamage(int damage){; //taking damage from player
+       if (defend == true) {
+        std::cout << "\nThe monster blocked the players attack.\n";
+        return;
+    } else if (defend == false) {
+        combat_stats[1] = combat_stats[1] - damage;
+        std::cout << "\nThe player attacked for " << damage << "damage\n";
+        std::cout << "The monster has " << combat_stats[1] << " health left\n";
+        return;
+    }
     }
 
 
     //getters and setters for data members
     int Monster::get_max_health(){
-        return max_health;
+        return combat_stats[0];
     };
 
     int Monster::get_current_health(){
-        return current_health;
+        return combat_stats[1];
     };
 
     int Monster::get_level(){
@@ -68,11 +65,11 @@
     };
 
     void Monster::set_max_health(int health){
-        max_health = health;
+        combat_stats[0] = health;
     };
 
     void Monster::set_current_health(int health){
-        current_health = health;
+        combat_stats[1] = health;
     };
 
     void Monster::set_level(int level){

@@ -6,8 +6,6 @@
 
 class Slime : public Monster{
     protected:
-        int strength;
-        int mana;
 
     public:
         Slime(Player* player); //default constructor

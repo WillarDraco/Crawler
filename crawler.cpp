@@ -13,6 +13,15 @@
 #include "Wyvern.h"
 #include "Wand.h"
 #include "Weapon.h"
+#include "Dagger.h"
+#include "Bow.h"
+#include "Mace.h"
+#include "BattleAxe.h"
+#include "Crossbow.h"
+#include "ThrowingKnives.h"
+#include "Spellbook.h"
+
+
 
 int main() {
     int standard_kill_count = 0; // keeps track of amount of normal monsters killed
@@ -96,7 +105,7 @@ int main() {
     sleep(2);
     std::cout << "Rest recovers a small amount of health\n";
     sleep(2);
-    std::cout << "Your special action depends on your class type FINISH THIS BEFORE SUBMIT\n";
+    std::cout << "Your special attack depends on your class type, for example, a Wizard can use fireball\n";
     sleep(2);
 
     // While loop until fight is over
@@ -110,13 +119,13 @@ int main() {
             std::cout << "\nWill you attack, defend or rest?\n";
             std::cin >> selection;           
             if (selection == "Attack" || (selection == "attack")) {
-                classes[classes_index]->attack(&tutorial_enemy);
+                tutorial_enemy.takeDamage(classes[classes_index]->get_combat_stats()[2]);
                 valid = true;
             } else if (selection == "Defend" || (selection == "defend")) {
                 classes[classes_index]->block();
                 valid = true;
             } else if (selection == "Rest" || (selection == "rest")) {
-                //classes[classes_index]->rest();
+                classes[classes_index]->rest();
                 valid = true;
             } else {
                 std::cout << "Your selection is not valid, try again\n";
@@ -128,13 +137,17 @@ int main() {
             standard_kill_count++;
             break;
         }
-        tutorial_enemy.attack(classes[classes_index]);
+
+        classes[classes_index]->take_damage(tutorial_enemy.get_combat_stats()[2]);
 
         if (classes[classes_index]->get_current_health() <= 0) {
             std::cout << "\nYou died\n";
             player_death = true;
         }
     }
+
+    classes[classes_index]->gain_exp(10);
+
 
     // if player health reaches 0, trigger gameover and display playthrough statistics
     if (player_death == true) {
@@ -156,12 +169,18 @@ int main() {
     if (_class == "Barbarian") {
         std::cout << "\nYou notice a dirty blade tucked in the the goblins belt...\n";
         sleep(2);
-        std::cout << "You take the blade from the body and see it's a sword, rusty and dirty but sharp\n";
+        std::cout << "You take the blade from the body and see it's a goblins sword, rusty and dirty but sharp\n";
         sleep(2);
-        std::cout << "Gratefully, you tuck the sword into your own belt, and as you begin to look around you\nnotice and old wooden shield in the corner of the room\n";
+        std::cout << "The blade is too small to use as a sword but it could still do damage\nGratefully, you tuck the sword into your own belt, and as you begin to look around you\n";
         sleep(2);
-        std::cout << "\nCongratulations! you have acquired a sword and shield!\n";
+        std::cout << "\nCongratulations! you have acquired a dagger!\n";
         sleep(2);
+        std::cout << "\n Now that you have a dagger, you can use 'Special Attack' to swing your dagger\n";
+        sleep(2);
+
+        Dagger* first_dagger = new Dagger("Cracked Wand", 5, classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_dagger);
+
     } else if (_class == "Archer") {
         std::cout << "\nYou notice a leather strap across the goblins chest, and upon closer insepction you realise\nthere is a quiver full of arrows across the goblins back...\n";
         sleep(2);
@@ -171,6 +190,12 @@ int main() {
         sleep(2);
         std::cout << "\nCongratulations! You have acquired a Bow and Quiver!\n";
         sleep(2);
+        std::cout << "\nNow that you have a Bow, you can use the 'Special Attack' in combat to shoot an arrow!\n";
+        sleep(2);
+
+        Bow* first_bow = new Bow("Cracked Wand", 5, classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_bow);
+
     } else if (_class == "Wizard") {
         std::cout << "\nYou notice a strange old book in the goblins small satchel\n";
         sleep(2);
@@ -183,10 +208,15 @@ int main() {
         std::cout << "You put the book back in the satchel and attach the satchel to your belt\n";
         sleep(2);
         std::cout << "\nCongratulation! You have acquired a spellbook!\n";
-        Wand* wand = new Wand("Cracked Wand", 5);
-        classes[classes_index]->equipWeapon(wand);
+        sleep(2);
+        std::cout << "\nNow that you have a spellbook, you can use the 'Special Attack' in combat to cast a fireball!\n";
+        sleep(2);
+
+        Spellbook* first_spellbook = new Spellbook("Cracked Wand", 5, classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_spellbook);
     }
-    std::cout << "\nNow that you have a weapon, your attack will do more damage, and each type of weapon has\nunique effects!\n";
+
+    std::cout << "Each weapon has unique bonuses, such as the chance to evade attacks, or double strike\n";
     sleep(2);
     std::cout << "You may find other weapons in your travels, but be warned, you can only carry one type at a time\n";
     sleep(2);
@@ -200,15 +230,14 @@ int main() {
     std::cin.get();
 
 
-// tutorial victory level stuff
-
-// main gameplay loop
+// main gameplayer loop
     Monster** standard_monsters = new Monster*[3]; // fill arrays inside loop to account for changing player level
     Monster** boss_monsters = new Monster*[3];
+    bool fight;
     while (player_death == false) {
-
+        fight = true;
         
-        /* if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
+    /*  if (standard_kill_count % 3 == 0) {  // after every 3rd normal enemy, fight boss
             Ogre* ogre = new Ogre(classes[classes_index]);
             Dragon* dragon = new Dragon(classes[classes_index]);
             Lich* lich = new Lich(classes[classes_index]);
@@ -261,6 +290,108 @@ int main() {
                 std::cout << "The source of the light is fire, and that fire is coming from the mouth of a small wyvern\n";
                 sleep(2);
                 std::cout << "Squinting your eyes, you prepare to fight\n";
+            }
+
+            int weapon_chance = rand() % 100;
+            if (monster_select == 0 && (weapon_chance > 90)) {
+                int rand_weapon = rand() % 3;
+                int stat_bonus = (rand() % 5) + 1;
+
+                Dagger* dagger = new Dagger("Goblin Sword", stat_bonus, standard_monsters[monster_select]->get_level());
+                Battleaxe* battleaxe = new Battleaxe("Goblin Sword", stat_bonus, standard_monsters[monster_select]->get_level());
+                Mace* mace = new Mace("Goblin Sword", stat_bonus, standard_monsters[monster_select]->get_level());
+                Weapon** weaponlist = new Weapon*[3];
+
+                weaponlist[0] = dagger;
+                weaponlist[1] = mace;
+                weaponlist[2] = battleaxe;
+
+                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
+                
+                switch (rand_weapon) {              
+                case 0 :
+                    std::cout << "The goblin has a dagger!";
+                    break;
+
+                case 1 :
+                    std::cout << "The goblin has a mace!";
+                    break;
+
+                case 2 :
+                    std::cout << "The goblin has a battleaxe!";
+                    break;
+
+                default :
+                    std::cout << "The goblin has a weapon!";
+                }
+
+            } else if (monster_select == 2 && weapon_chance > 90) {
+                int rand_weapon = rand() % 3;
+                int stat_bonus = (rand() % 5) + 1;
+
+                Bow* bow = new Bow("Skeleton Sword", stat_bonus, standard_monsters[monster_select]->get_level());
+                Crossbow* crossbow = new Crossbow("Skeleton Crossbow", stat_bonus, standard_monsters[monster_select]->get_level());
+                ThrowingKnives* throwingknives = new ThrowingKnives("Goblin Sword", stat_bonus, standard_monsters[monster_select]->get_level());
+                Weapon** weaponlist = new Weapon*[3];
+
+                weaponlist[0] = bow;
+                weaponlist[1] = crossbow;
+                weaponlist[2] = throwingknives;
+
+                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
+                switch (rand_weapon) {              
+                case 0 :
+                    std::cout << "The skeleton has a bow!";
+                    break;
+
+                case 1 :
+                    std::cout << "The skeleton has a crossbow!";
+                    break;
+
+                case 2 :
+                    std::cout << "The skeleton has throwing knives!";
+                    break;
+
+                default :
+                    std::cout << "The skeleton has a weapon!";
+                }
+            }
+
+            while (fight = true) {
+            
+                bool valid = false;
+                while (valid == false) {
+                    std::string selection;
+                    std::cout << "\nEnter: Attack, Defend, Rest or Special Attack\n";
+                    std::cin >> selection;           
+                    if (selection == "Attack" || (selection == "attack")) {
+                        tutorial_enemy.takeDamage(classes[classes_index]->get_combat_stats()[2]);
+                        valid = true;
+                    } else if (selection == "Defend" || (selection == "defend")) {
+                        classes[classes_index]->block();
+                        valid = true;
+                    } else if (selection == "Rest" || (selection == "rest")) {
+                        classes[classes_index]->rest();
+                        valid = true;
+                    } else if (selection == "Special Attack" || selection == "special attack") {
+                        tutorial_enemy.takeDamage(classes[classes_index]->get_combat_stats()[3]);
+                    } else {
+                        std::cout << "Your selection is not valid, try again\n";
+                    } 
+                }
+                if (tutorial_enemy.get_current_health() <= 0) {
+                    std::cout << "\nYou defeated the goblin!\n";
+                    victory = true;
+                    standard_kill_count++;
+                    break;
+                }
+
+                classes[classes_index]->take_damage(standard_monsters[monster_select]->get_combat_stats()[2]);
+
+                if (classes[classes_index]->get_current_health() <= 0) {
+                    std::cout << "\nYou died\n";
+                    player_death = true;
+                }
             }
             delete goblin;
             delete slime;

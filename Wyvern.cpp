@@ -7,12 +7,12 @@
     Wyvern::Wyvern(Player* player){
         this->level = player->get_level();
 
-        this->max_health = 20 + 5*(level);
-        this->current_health = max_health;
+        this->combat_stats[0] = 20 + 5*(level);
+        this->combat_stats[1] = combat_stats[0];
 
         this->defend = false;    
         
-        this->mana = level;
+        this->combat_stats[5] = level;
     };
 
     //magic attack
@@ -21,9 +21,9 @@
              defend = false;
         
         if (random_move < 75){
-            int damage = (rand() % 5 + 1) + (mana);
+            combat_stats[2] = (rand() % 5 + 1) + (combat_stats[5]);
 
-                player->take_damage(damage);
+                player->take_damage(combat_stats[2]);
         }   
         else{
             std::cout << "\nThe Wyvern blocks!\n";
@@ -35,9 +35,9 @@
     
     //getters and setters
     int Wyvern::get_mana(){
-        return mana;
+        return combat_stats[5];
     };
 
     void Wyvern::set_mana(int mana){
-        mana = mana;
+        combat_stats[5] = mana;
     };

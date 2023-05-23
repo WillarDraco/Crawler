@@ -6,7 +6,6 @@
 
 class Goblin : public Monster{
     protected:
-        int strength;
         Weapon** goblin_weapon;
     
     public:

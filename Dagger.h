@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Monster.h"
 
-class Dagger : protected Weapon {
+class Dagger : public Weapon {
     public:
         Dagger();
         Dagger(std::string name, int stat_bonus, int level);

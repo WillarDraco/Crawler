@@ -31,6 +31,7 @@ class Player {
         //virtual void level_up(); // Changes stats according to level
 
         // getters and setters for all data memebers
+        std::vector<int> get_combat_stats();
         int get_max_health();
         int get_current_health();
         int get_exp();

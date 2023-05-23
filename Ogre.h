@@ -6,8 +6,6 @@
 
 class Ogre : public Boss{
     protected:
-        int strength;
-        int agility;
         Weapon** ogre_weapon;
 
     public:

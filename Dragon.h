@@ -6,9 +6,7 @@
 
 class Dragon : public Boss{
     protected:
-        int strength;
-        int mana;
-
+       
     public:
         Dragon(Player* player); //constructer
 

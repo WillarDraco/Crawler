@@ -6,7 +6,6 @@
 
 class Wyvern : public Monster{
     protected:
-        int mana;
 
     public:
         Wyvern(Player* player); //default constructor

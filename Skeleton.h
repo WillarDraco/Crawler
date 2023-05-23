@@ -6,7 +6,6 @@
 
 class Skeleton : public Monster{
     protected:
-        int agility;
         Weapon** skeleton_weapon;
 
     public:
