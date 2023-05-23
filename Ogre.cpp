@@ -14,7 +14,7 @@
         
         this->combat_stats[3] = level * 2;
         this->combat_stats[4] = level * 3;
-        this->combat_stats[6] = level * 30;
+        this->combat_stats[6] = level * 32;
 
         ogre_weapon = 0;
 
