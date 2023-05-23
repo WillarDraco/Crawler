@@ -13,6 +13,7 @@
         this->defend = false;    
         
         this->combat_stats[3] = level;
+        this->combat_stats[6] = level * 16;
 
         goblin_weapon = 0;
     };
@@ -24,7 +25,7 @@
         defend = false;
         if (random_move < 75){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[3]);
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
 
             }
           

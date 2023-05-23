@@ -14,6 +14,7 @@
         
         this->combat_stats[3] = level;
         this->combat_stats[5] = level * 2;
+        this->combat_stats[6] = level * 16;
     };
 
     // basic attack
@@ -25,12 +26,12 @@
             if (random_move < 50){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[3]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
             }
             else if (random_move > 50){
                 combat_stats[2] = (rand() % 5 + 1) + (combat_stats[5]);
 
-                player->take_damage(combat_stats[2]);
+                player->takeDamage(combat_stats[2]);
 
             }
         }   
