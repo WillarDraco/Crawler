@@ -2,6 +2,7 @@
 #define MONSTER_H
 
 #include "Weapon.h"
+#include <vector>
 
 class Player; // forward declaration to avoid codependecy
 

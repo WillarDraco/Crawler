@@ -14,11 +14,11 @@ Player::Player(int level) { // sets level data member, health is set based on le
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use
-    monster->take_damage(combat_stats[2]);
+    monster->takeDamage(combat_stats[2]);
 }
 
 void Player::special_attack(Monster* monster) { // special attack for each class
-    monster->take_damage(combat_stats[3]);
+    monster->takeDamage(combat_stats[3]);
 }
 
 void Player::equipWeapon(Weapon* weapon) { // sets current weapon (weapon bonuses)

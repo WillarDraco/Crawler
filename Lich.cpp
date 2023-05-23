@@ -14,6 +14,7 @@
         
         this->combat_stats[3] = level * 2;
         this->combat_stats[5] = level * 3;
+        this->combat_stats[6] = level * 30;
 
         lich_weapon = 0;        
 

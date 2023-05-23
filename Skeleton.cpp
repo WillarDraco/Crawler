@@ -13,6 +13,7 @@
         this->defend = false;    
         
         this->combat_stats[4] = level;
+        this->combat_stats[6] = level * 16;
         
         skeleton_weapon = 0;
     };

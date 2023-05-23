@@ -13,6 +13,8 @@
         this->defend = false;    
         
         this->combat_stats[5] = level;
+        this->combat_stats[6] = level * 16;
+        
     };
 
     //magic attack

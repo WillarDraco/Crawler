@@ -13,6 +13,7 @@
         this->defend = false;    
         
         this->combat_stats[3] = level;
+        this->combat_stats[6] = level * 16;
 
         goblin_weapon = 0;
     };

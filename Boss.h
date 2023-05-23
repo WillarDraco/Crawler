@@ -2,13 +2,14 @@
 #define BOSS_H
 
 #include "Monster.h"
+#include "Player.h"
 
 class Boss : public Monster {
     protected:
     
     public:
         Boss(); //default constructer
-        Boss(int level); //constructer for health based on level
+        Boss(Player* player); //constructer
 
 };
 
