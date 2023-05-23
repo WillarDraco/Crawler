@@ -36,11 +36,25 @@ class Player {
         int get_exp();
         int get_level();
         std::string get_name();
+        int get_damage();
+        int get_special_damage();
+        int get_dodge_chance();
+        int get_defense();
+        int get_crit_chance();
+        int get_current_resource();
+        int get_max_resource();
 
         void set_max_health(int health);
         void set_current_health(int health);
         void set_exp(int exp);
         void set_level(int level);
         void set_name(std::string name);
+        void set_damage(int damage);
+        void set_special_damage(int special);
+        void set_dodge_chance(int dodge);
+        void set_defense(int defense);
+        void set_crit_chance(int crit);
+        void set_current_resource(int resource);
+        void set_max_resource(int resource);
 };
 #endif
