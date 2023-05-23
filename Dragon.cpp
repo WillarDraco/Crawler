@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Dragon.h"
 #include <cstdlib>
+#include <iostream>
 
     //default constructer
     Dragon::Dragon(Player* player){
@@ -19,6 +20,7 @@
     void Dragon::attack(Player* player){
         
         int random_move = rand() % 100 + 1;
+        defend = false;
         
         if (random_move < 75){
             if (random_move < 50){
@@ -34,6 +36,7 @@
             }
         }   
         else{
+            std::cout << "\nThe Dragon blocks!\n";
             block();    
         }    
     

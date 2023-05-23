@@ -1,6 +1,7 @@
 #include "Monster.h"
 #include "Wyvern.h"
 #include <cstdlib>
+#include <iostream>
 
     //default constructer
     Wyvern::Wyvern(Player* player){
@@ -17,6 +18,7 @@
     //magic attack
     void Wyvern::magic_attack(Player* player){
              int random_move = rand() % 100 + 1;
+             defend = false;
         
         if (random_move < 75){
             int damage = (rand() % 5 + 1) + (mana);
@@ -24,6 +26,7 @@
                 player->take_damage(damage);
         }   
         else{
+            std::cout << "\nThe Wyvern blocks!\n";
             block();    
         }    
     

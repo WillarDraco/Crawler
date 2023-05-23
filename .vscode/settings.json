@@ -73,6 +73,7 @@
         "ratio": "cpp",
         "set": "cpp",
         "sstream": "cpp",
-        "hashtable": "cpp"
+        "hashtable": "cpp",
+        "optional": "cpp"
     }
 }
