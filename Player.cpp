@@ -33,15 +33,20 @@ void Player::block() { // reduces damage taken for one turn
 
 void Player::takeDamage(int damage) {
     damage = damage - combat_stats[6];
+    int dodge = combat_stats[5] * (rand() % 100);
     if (defend == true) {
         std::cout << "\nYou blocked the monster's attack.\n";
         return;
     } else if (defend == false) {
-        combat_stats[1] = combat_stats[1] - damage;
-        std::cout << "\nThe monster attacked for " << damage << "damage\n";
-        std::cout << "You have " << combat_stats[1] << " health left\n";
-        return;
+        if (dodge <= 16 ) {
+            std::cout << "\nThe attack missed!\n";
+        } else if (dodge > 16) {
+            combat_stats[1] = combat_stats[1] - damage;
+            std::cout << "\nThe monster attacked for " << damage << "damage\n";
+            std::cout << "You have " << combat_stats[1] << " health left\n";
+        }
     }
+    return;
 }
 
 void Player::gainExp(int exp) { // Gain exp function after defeating a monster
