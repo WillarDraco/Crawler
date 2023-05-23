@@ -56,6 +56,7 @@
     //getters and setters for data members
     std::vector<int> Monster::get_combat_stats() {
     return combat_stats;
+    }
 
     int Monster::get_max_health(){
         return combat_stats[0];
