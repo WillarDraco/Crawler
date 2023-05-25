@@ -26,7 +26,7 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     exp = 0;// current experience level
     this->level = level;
     defend = false;
-    Weapon** archer_weapon = 0; // currently equipped weapon
+    archer_weapon = 0; // currently equipped weapon
 }
 
 void Archer::gainExp(int exp) { // Gain exp function after defeating a monster

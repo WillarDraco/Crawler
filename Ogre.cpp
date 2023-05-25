@@ -48,12 +48,12 @@
 
 
     void Ogre::equipWeapon(Weapon* ogre_weapon) { // sets current weapon (weapon bonuses)
-        combat_stats[3] = combat_stats[3] + ogre_weapon->get_stat_bonus();
+        combat_stats[3] = combat_stats[3] + ogre_weapon->get_damage();
         this->ogre_weapon = &ogre_weapon;
     }
 
     void Ogre::unequipWeapon(Weapon* ogre_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-        combat_stats[3] = combat_stats[3] - ogre_weapon->get_stat_bonus();
+        combat_stats[3] = combat_stats[3] - ogre_weapon->get_damage();
         this->ogre_weapon = 0;
     }
 

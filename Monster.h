@@ -20,6 +20,7 @@ class Monster{
         virtual void block(); // reduces taken damage for one turn
         virtual void takeDamage(int damage); //taking damage from player
         virtual bool hasBlocked(); //check if monster has blocked
+        virtual ~Monster();
 
         virtual void equipWeapon(Weapon* weapon); // sets current weapon (weapon bonuses)
         virtual void unequipWeapon(Weapon* weapon); // sets current weapon to  “” (removes weapon bonuses)

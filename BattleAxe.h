@@ -6,6 +6,6 @@
 class Battleaxe : public Weapon {
     public:
         Battleaxe(); // Default constructor
-        Battleaxe(std::string name, int stat_bonus, int level); // Constructor for a bow
+        Battleaxe(std::string name, int leve); // Constructor for a bow
 };
 #endif

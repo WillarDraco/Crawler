@@ -20,6 +20,8 @@
         defend = false;    
         };
 
+    Monster::~Monster(){};
+
     // basic attack
     void Monster::attack(Player* player){}
 

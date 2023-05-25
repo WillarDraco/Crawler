@@ -6,6 +6,6 @@
 class ThrowingKnives : public Weapon {
     public:
         ThrowingKnives(); // Default constructor
-        ThrowingKnives(std::string name, int stat_bonus, int level); // Constructor for a bow
+        ThrowingKnives(std::string name, int level); // Constructor for a bow
 };
 #endif

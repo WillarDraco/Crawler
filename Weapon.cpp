@@ -86,8 +86,8 @@ void Weapon::set_special_damage(int special) { // Sets special damage
     weapon_stats[3] = special;
 }
 
-int Weapon::get_resource_stat() { // Gets resource stat
-    return weapon_stats[4];
+void Weapon::set_resource_stat(int recource) { // Gets resource stat
+    weapon_stats[4] = recource;
 }
 
 void Weapon::set_dodge_chance(int dodge) { // Sets dodge chance

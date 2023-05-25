@@ -10,7 +10,7 @@
 	TARGET = crawler  
 
 	# The function containers
-	OBJECTS = Player.cpp Monster.cpp Archer.cpp Barbarian.cpp Wizard.cpp Boss.cpp Goblin.cpp Skeleton.cpp Slime.cpp Wyvern.cpp
+	OBJECTS = Player.cpp Monster.cpp Archer.cpp Barbarian.cpp Wizard.cpp Boss.cpp Ogre.cpp Dragon.cpp Lich.cpp Goblin.cpp Skeleton.cpp Slime.cpp Wyvern.cpp Weapon.cpp Wand.cpp Dagger.cpp Bow.cpp Mace.cpp BattleAxe.cpp Crossbow.cpp ThrowingKnives.cpp Spellbook.cpp Staff.cpp Upgrade.cpp
 	
 compile:
 	$(CC) $(CFLAGS) -o $(TARGET)  $(OBJECTS) crawler.cpp 
