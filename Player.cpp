@@ -46,6 +46,9 @@ void Player::block() { // reduces damage taken for one turn
 
 void Player::takeDamage(int damage) {
     damage = damage - combat_stats[6];
+    if (damage < 0){
+        damage = 0;
+    }
     int dodge = combat_stats[5] * (rand() % 100);
     if (defend == true) {
         std::cout << "\nYou blocked the monster's attack.\n";
