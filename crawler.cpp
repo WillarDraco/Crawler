@@ -658,7 +658,7 @@ int main() {
         break;
 
         case 4:
-        std::cout << "\n2. Upgrade your max recourses?\n";
+        std::cout << "\n2. Upgrade your max resourses?\n";
         break;
 
     }
