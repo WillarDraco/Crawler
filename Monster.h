@@ -8,7 +8,7 @@ class Player; // forward declaration to avoid codependecy
 
 class Monster{
     protected:
-        std::vector<int> combat_stats;
+        int combat_stats[10];
         int level; // level of the monster
         bool defend; //sets defending state
 
@@ -27,7 +27,7 @@ class Monster{
         
         
         //getters and setters for data members
-        std::vector<int> get_combat_stats();
+        int* get_combat_stats();
         int get_max_health();
         int get_current_health();
         int get_level();
