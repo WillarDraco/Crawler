@@ -25,7 +25,7 @@
         int random_move = rand() % 100 + 1;
         defend = false;
         if (random_move < 75){
-                combat_stats[2] = (rand() % 5 + 1) + (combat_stats[3]);
+                combat_stats[2] = ((rand() % 5) + 1) + combat_stats[3];
                 player->takeDamage(combat_stats[2]);
 
             }

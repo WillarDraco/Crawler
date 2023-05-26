@@ -26,7 +26,7 @@ Player::Player(int level) { // sets level data member, health is set based on le
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use
-    int damage = combat_stats[2] * ((rand() % 120 + 80) / 100);
+    int damage = combat_stats[2] * (((rand() % 120) + 80) / 100);
     monster->takeDamage(damage);
 }
 

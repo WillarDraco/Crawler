@@ -181,7 +181,7 @@ int main() {
                 break;
             }
 
-            classes[classes_index]->takeDamage(tutorial_enemy.get_combat_stats()[2]);
+            tutorial_enemy.attack(classes[classes_index]);
 
             if (classes[classes_index]->get_current_health() <= 0) {
                 std::cout << "\nYou died\n";
@@ -442,7 +442,7 @@ int main() {
                     break;
                 }
 
-                classes[classes_index]->takeDamage(boss_monsters[monster_select]->get_combat_stats()[2]);
+                boss_monsters[monster_select]->attack(classes[classes_index]);
 
                 if (classes[classes_index]->get_current_health() <= 0) {
                     std::cout << "\nYou died\n";
@@ -587,10 +587,190 @@ int main() {
                     classes[classes_index]->gainExp(standard_monsters[monster_select]->get_combat_stats()[6]);
                     fight = false;
                     classes[classes_index]->increaseStandardKillCount();
+
+                     //upgrades section
+                    std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
+                    
+                    int upgrade_one = rand() % 5;
+                    switch (upgrade_one){
+                        case 0:
+                        std::cout << "\n1. Upgrade your class stat?\n";
+                        break;
+
+                        case 1:
+                        std::cout << "\n1. Upgrade your dodge chance\n";
+                        break;
+
+                        case 2:
+                        std::cout << "\n1. Upgrade your defense?\n";
+                        break;
+
+                        case 3:
+                        std::cout << "\n1. Upgrade your critical chance?\n";
+                        break;
+
+                        case 4:
+                        std::cout << "\n1. Upgrade your max recourses?\n";
+                        break;
+                    }
+
+
+                    int upgrade_two = rand() % 5;
+
+                    while ((upgrade_two = upgrade_one)){
+                        upgrade_two = rand() % 5;
+                    }
+
+                    switch (upgrade_two){
+                        case 0:
+                        std::cout << "\n2. Upgrade your class stat?\n";
+                        break;
+
+                        case 1:
+                        std::cout << "\n2. Upgrade your dodge chance\n";
+                        break;
+
+                        case 2:
+                        std::cout << "\n2. Upgrade your defense?\n";
+                        break;
+
+                        case 3:
+                        std::cout << "\n2. Upgrade your critical chance?\n";
+                        break;
+
+                        case 4:
+                        std::cout << "\n2. Upgrade your max resourses?\n";
+                        break;
+
+                    }
+
+
+                    int upgrade_three = rand() % 5;
+
+                    while((upgrade_three = upgrade_one) || (upgrade_three = upgrade_one)){
+                        upgrade_three = rand() % 5;
+                    }
+
+                    switch (upgrade_three){
+                        case 0:
+                        std::cout << "\n3. Upgrade your class stat?\n";
+                        break;
+
+                        case 1:
+                        std::cout << "\n3. Upgrade your dodge chance\n";
+                        break;
+
+                        case 2:
+                        std::cout << "\n3. Upgrade your defense?\n";
+                        break;
+
+                        case 3:
+                        std::cout << "\n3. Upgrade your critical chance?\n";
+                        break;
+
+                        case 4:
+                        std::cout << "\n3. Upgrade your max resourses?\n";
+                        break;
+                    }
+
+                    Upgrade* upgrade = new Upgrade();
+                    int requested_upgrade;
+                    std::cin >> requested_upgrade;
+
+                    while ((requested_upgrade =! 1 || 2 || 3)){
+                        std::cout << "\nYour entry is invalid, please try again\n";
+                        std::cin >> requested_upgrade;
+                    }
+                    
+                    if((requested_upgrade = 1)){
+                        switch (upgrade_one){
+
+                        case 0:
+                        upgrade->upgrade_class_stat(classes[classes_index]);
+                        std::cout << "\nYou upgraded your class stat\n";
+                        break;
+
+                        case 1:
+                        upgrade->upgrade_dodge_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your dodge chance\n";
+                        break;
+
+                        case 2:
+                        upgrade->upgrade_defense(classes[classes_index]);
+                        std::cout << "\nYou upgraded your defense\n";
+                        break;
+
+                        case 3:
+                        upgrade->upgrade_crit_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your critical chance\n";
+                        break;
+
+                        case 4:
+                        upgrade->upgrade_max_recourses(classes[classes_index]);
+                        std::cout << "\nYou upgraded your max resourses\n";
+                        break;       
+                    };
+                    } else if((requested_upgrade = 2)){
+                        switch (upgrade_two){
+
+                        case 0:
+                        upgrade->upgrade_class_stat(classes[classes_index]);
+                        std::cout << "\nYou upgraded your class stat\n";
+                        break;
+
+                        case 1:
+                        upgrade->upgrade_dodge_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your dodge chance\n";
+                        break;
+
+                        case 2:
+                        upgrade->upgrade_defense(classes[classes_index]);
+                        std::cout << "\nYou upgraded your defense\n";
+                        break;
+
+                        case 3:
+                        upgrade->upgrade_crit_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your critical chance\n";
+                        break;
+
+                        case 4:
+                        upgrade->upgrade_max_recourses(classes[classes_index]);
+                        std::cout << "\nYou upgraded your max resourses\n";
+                        break;       
+                    };
+                    } else if((requested_upgrade = 3)){
+                        switch (upgrade_one){
+
+                        case 0:
+                        upgrade->upgrade_class_stat(classes[classes_index]);
+                        std::cout << "\nYou upgraded your class stat\n";
+                        break;
+
+                        case 1:
+                        upgrade->upgrade_dodge_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your dodge chance\n";
+                        break;
+
+                        case 2:
+                        upgrade->upgrade_defense(classes[classes_index]);
+                        std::cout << "\nYou upgraded your defense\n";
+                        break;
+
+                        case 3:
+                        upgrade->upgrade_crit_chance(classes[classes_index]);
+                        std::cout << "\nYou upgraded your critical chance\n";
+                        break;
+
+                        case 4:
+                        upgrade->upgrade_max_recourses(classes[classes_index]);
+                        std::cout << "\nYou upgraded your max resourses\n";
+                        break;       
+                    };
+                    };
                     break;
                 }
 
-                classes[classes_index]->takeDamage(standard_monsters[monster_select]->get_combat_stats()[2]);
+                boss_monsters[monster_select]->attack(classes[classes_index]);
 
                 if (classes[classes_index]->get_current_health() <= 0) {
                     std::cout << "\nYou died\n";
@@ -604,190 +784,4 @@ int main() {
             delete wyvern;
         }
     } 
-    
-    //upgrades section
-    std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
-    
-    int upgrade_one = rand() % 5;
-    switch (upgrade_one){
-        case 0:
-        std::cout << "\n1. Upgrade your class stat?\n";
-        break;
-
-        case 1:
-        std::cout << "\n1. Upgrade your dodge chance\n";
-        break;
-
-        case 2:
-        std::cout << "\n1. Upgrade your defense?\n";
-        break;
-
-        case 3:
-        std::cout << "\n1. Upgrade your critical chance?\n";
-        break;
-
-        case 4:
-        std::cout << "\n1. Upgrade your max recourses?\n";
-        break;
     }
-
-
-    int upgrade_two = rand() % 5;
-
-    while ((upgrade_two = upgrade_one)){
-        upgrade_two = rand() % 5;
-    }
-
-    switch (upgrade_two){
-        case 0:
-        std::cout << "\n2. Upgrade your class stat?\n";
-        break;
-
-        case 1:
-        std::cout << "\n2. Upgrade your dodge chance\n";
-        break;
-
-        case 2:
-        std::cout << "\n2. Upgrade your defense?\n";
-        break;
-
-        case 3:
-        std::cout << "\n2. Upgrade your critical chance?\n";
-        break;
-
-        case 4:
-        std::cout << "\n2. Upgrade your max resourses?\n";
-        break;
-
-    }
-
-
-    int upgrade_three = rand() % 5;
-
-    while((upgrade_three = upgrade_one) || (upgrade_three = upgrade_one)){
-        upgrade_three = rand() % 5;
-    }
-
-    switch (upgrade_three){
-        case 0:
-        std::cout << "\n3. Upgrade your class stat?\n";
-        break;
-
-        case 1:
-        std::cout << "\n3. Upgrade your dodge chance\n";
-        break;
-
-        case 2:
-        std::cout << "\n3. Upgrade your defense?\n";
-        break;
-
-        case 3:
-        std::cout << "\n3. Upgrade your critical chance?\n";
-        break;
-
-        case 4:
-        std::cout << "\n3. Upgrade your max recourses?\n";
-        break;
-    }
-
-    Upgrade* upgrade = new Upgrade();
-    int requested_upgrade;
-    std::cin >> requested_upgrade;
-
-    while ((requested_upgrade =! 1 || 2 || 3)){
-        std::cout << "\nYour entry is invalid, please try again\n";
-        std::cin >> requested_upgrade;
-    }
-    
-    if((requested_upgrade = 1)){
-        switch (upgrade_one){
-
-        case 0:
-        upgrade->upgrade_class_stat(classes[classes_index]);
-        std::cout << "\nYou upgraded your class stat\n";
-        break;
-
-        case 1:
-        upgrade->upgrade_dodge_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your dodge chance\n";
-        break;
-
-        case 2:
-        upgrade->upgrade_defense(classes[classes_index]);
-        std::cout << "\nYou upgraded your defense\n";
-        break;
-
-        case 3:
-        upgrade->upgrade_crit_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your critical chance\n";
-        break;
-
-        case 4:
-        upgrade->upgrade_max_recourses(classes[classes_index]);
-        std::cout << "\nYou upgraded your max recourses\n";
-        break;       
-       };
-    } else if((requested_upgrade = 2)){
-        switch (upgrade_two){
-
-        case 0:
-        upgrade->upgrade_class_stat(classes[classes_index]);
-        std::cout << "\nYou upgraded your class stat\n";
-        break;
-
-        case 1:
-        upgrade->upgrade_dodge_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your dodge chance\n";
-        break;
-
-        case 2:
-        upgrade->upgrade_defense(classes[classes_index]);
-        std::cout << "\nYou upgraded your defense\n";
-        break;
-
-        case 3:
-        upgrade->upgrade_crit_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your critical chance\n";
-        break;
-
-        case 4:
-        upgrade->upgrade_max_recourses(classes[classes_index]);
-        std::cout << "\nYou upgraded your max recourses\n";
-        break;       
-       };
-    } else if((requested_upgrade = 3)){
-        switch (upgrade_one){
-
-        case 0:
-        upgrade->upgrade_class_stat(classes[classes_index]);
-        std::cout << "\nYou upgraded your class stat\n";
-        break;
-
-        case 1:
-        upgrade->upgrade_dodge_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your dodge chance\n";
-        break;
-
-        case 2:
-        upgrade->upgrade_defense(classes[classes_index]);
-        std::cout << "\nYou upgraded your defense\n";
-        break;
-
-        case 3:
-        upgrade->upgrade_crit_chance(classes[classes_index]);
-        std::cout << "\nYou upgraded your critical chance\n";
-        break;
-
-        case 4:
-        upgrade->upgrade_max_recourses(classes[classes_index]);
-        std::cout << "\nYou upgraded your max recourses\n";
-        break;       
-       };
-    };
-
-
-}
-
-
-
-// if victory - STDKC++/BKC++, check level, if Boss upgrades or heal
