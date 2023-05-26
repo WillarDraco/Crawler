@@ -89,7 +89,7 @@ void Weapon::set_level(int level) { //Sets level
 }
 
 void Weapon::set_name(std::string name){
-    std::string name = name;
+    this->name = name;
 }
 
 void Weapon::set_damage(int damage) { // Sets base damage
