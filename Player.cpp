@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cmath>
 #include "Monster.h"
+#include <fstream>
+#include <string>
 
 Player::Player() { // default constructor - sets all data members to 0
 }
@@ -51,6 +53,10 @@ void Player::takeDamage(int damage) {
     }
 }
 
+void Player::rest() {
+    combat_stats[1] = combat_stats[1] + combat_stats[0] *0.1;
+}
+
 void Player::gainExp(int exp) { // Gain exp function after defeating a monster
     int old_level = level;
     this->exp = this->exp + exp;
@@ -65,6 +71,14 @@ void Player::gainExp(int exp) { // Gain exp function after defeating a monster
         combat_stats[8] = combat_stats[8] + 10;
     }
     return;
+}
+
+void Player::increaseBossKillCount() {
+    this->boss_kill_count++;
+}
+
+void Player::increaseStandardKillCount() {
+    this->standard_kill_count++;
 }
 
 // getters and setters for all data memebers
@@ -124,6 +138,14 @@ int Player::get_max_resource() {
     return combat_stats[8];
 }
 
+int Player::get_boss_kill_count() {
+    return boss_kill_count;
+}
+
+int Player::get_standard_kill_count() {
+    return standard_kill_count;
+}
+
 void Player::set_max_health(int health) { // Sets max health
     combat_stats[0] = health;
     return;
@@ -175,3 +197,38 @@ void Player::set_current_resource(int resource) {
 void Player::set_max_resource(int resource) {
     combat_stats[8] = resource;
 }
+
+void Player::set_boss_kill_count(int boss_kill_count) {
+    this->boss_kill_count = boss_kill_count;
+}
+
+void Player::set_standard_kill_count(int standard_kill_count) {
+    this->standard_kill_count = standard_kill_count;
+}
+
+void Player::save(Player* current_player) {
+    std::ofstream savefile("savefile.txt", std::ios::trunc);
+
+    savefile.open("savefile.txt");
+    
+    savefile.write((char*)&current_player, sizeof(Player));
+
+    savefile.close();
+    
+}
+
+void Player::load() {
+    Player save_player;
+    std::fstream savefile("savefile.txt", std::ios::in);
+    savefile.open("savefile.txt");
+
+    savefile.read((char*)&save_player, sizeof(Player));
+
+    savefile.close();
+    this->name = save_player.get_name();
+    this->level = save_player.get_level();
+    this->combat_stats = save_player.get_combat_stats();
+    this->exp = save_player.get_exp();
+
+}
+

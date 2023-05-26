@@ -20,7 +20,7 @@ Barbarian::Barbarian(int level, std::string name) { // sets strength and health 
     combat_stats[4] = 8; // Represents the strength stat of a barbarian - affects melee damage
     combat_stats[5] = 1; // Dodge chance
     combat_stats[6] = 4; // Defense stat
-    combat_stats[7] = 1; // Crit chance
+    combat_stats[7] = 1; // Crit chanc
 
     exp = 0; // current number of experience points
     this->level = level; // total experience level

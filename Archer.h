@@ -22,7 +22,7 @@ class Archer : public Player {
 
         int get_agility(); // Gets agility value
         int get_max_ammo(); // Gets max ammo value
-        int get_current_ammo(); // Gets current ammo value
+        int get_current_resource(); // Gets current ammo value
 
         void set_agility(int agility); // Sets agility value
         void set_max_ammo(int max_ammo); // Gets max ammo value

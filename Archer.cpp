@@ -109,7 +109,7 @@ int Archer::get_max_ammo() { // Gets max ammo value
     return combat_stats[8];
 }
 
-int Archer::get_current_ammo() { // Gets current ammo value
+int Archer::get_current_resource() { // Gets current ammo value
     return combat_stats[9];
 }
 

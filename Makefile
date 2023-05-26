@@ -1,2 +1,2 @@
-crawler:crawler.cpp Player.cpp Wizard.cpp Barbarian.cpp Archer.cpp Monster.cpp Goblin.cpp Slime.cpp Skeleton.cpp Wyvern.cpp Weapon.cpp Wand.cpp
-	g++ -std=c++11 -o crawler Player.cpp Monster.cpp Wizard.cpp Barbarian.cpp Archer.cpp Goblin.cpp Skeleton.cpp Slime.cpp Wyvern.cpp Weapon.cpp crawler.cpp Wand.cpp
+crawler:crawler.cpp Player.cpp Wizard.cpp Barbarian.cpp Archer.cpp Monster.cpp Goblin.cpp Slime.cpp Skeleton.cpp Wyvern.cpp Boss.cpp Lich.cpp Dragon.cpp Ogre.cpp Weapon.cpp Wand.cpp Spellbook.cpp Staff.cpp Mace.cpp Dagger.cpp BattleAxe.cpp Bow.cpp Crossbow.cpp ThrowingKnives.cpp
+	g++ -std=c++11 -Wall -o crawler crawler.cpp Player.cpp Wizard.cpp Barbarian.cpp Archer.cpp Monster.cpp Goblin.cpp Slime.cpp Skeleton.cpp Wyvern.cpp Boss.cpp Lich.cpp Dragon.cpp Ogre.cpp Weapon.cpp Wand.cpp Spellbook.cpp Staff.cpp Mace.cpp Dagger.cpp BattleAxe.cpp Bow.cpp Crossbow.cpp ThrowingKnives.cpp
