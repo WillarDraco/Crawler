@@ -6,14 +6,14 @@
 class Weapon {
     protected:
         std::string name; // represents name of player’s weapon
-        std::vector<int> weapon_stats; // Vector to hold combat stats
+        int weapon_stats[10]; // Vector to hold combat stats
         int level; // represents the level of the weapon
     public:
         Weapon(); // default constructor sets name to “” and stat bonus to 0
         Weapon(std::string name, int level); // constructor setting level, name and stat bonus
         
        // getters and setters for all data memebers
-        std::vector<int> get_weapon_stats();
+        int* get_weapon_stats();
         int get_max_health();
         int get_current_health();
         int get_level();
