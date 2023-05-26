@@ -606,10 +606,8 @@ int main() {
     } 
 
     //upgrades section
-    Upgrade* upgrade;
     std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
     
-
     int upgrade_one = rand() % 5;
     switch (upgrade_one){
         case 0:
@@ -636,7 +634,7 @@ int main() {
 
     int upgrade_two = rand() % 5;
 
-    while (upgrade_two = upgrade_one){
+    while ((upgrade_two = upgrade_one)){
         upgrade_two = rand() % 5;
     }
 
@@ -690,17 +688,18 @@ int main() {
         case 4:
         std::cout << "\n3. Upgrade your max recourses?\n";
         break;
-    }   
-    
+    }
+
+    Upgrade* upgrade = new Upgrade();
     int requested_upgrade;
     std::cin >> requested_upgrade;
 
-    while (requested_upgrade =! 1 || 2 || 3){
+    while ((requested_upgrade =! 1 || 2 || 3)){
         std::cout << "\nYour entry is invalid, please try again\n";
         std::cin >> requested_upgrade;
     }
     
-    if(requested_upgrade = 1){
+    if((requested_upgrade = 1)){
         switch (upgrade_one){
 
         case 0:
@@ -728,7 +727,7 @@ int main() {
         std::cout << "\nYou upgraded your max recourses\n";
         break;       
        };
-    } else if(requested_upgrade = 2){
+    } else if((requested_upgrade = 2)){
         switch (upgrade_two){
 
         case 0:
@@ -756,7 +755,7 @@ int main() {
         std::cout << "\nYou upgraded your max recourses\n";
         break;       
        };
-    } else if(requested_upgrade = 3){
+    } else if((requested_upgrade = 3)){
         switch (upgrade_one){
 
         case 0:
