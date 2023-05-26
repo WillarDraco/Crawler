@@ -14,7 +14,7 @@ class Player {
         int level; // total experience level
         bool defend; // sets defending state
         std::string name; // players name
-        std::vector<int> combat_stats; // Array to hold combat stats
+        int combat_stats[10]; // Array to hold combat stats
         int standard_kill_count; // keeps track of no. of normal enemies a player has killed
         int boss_kill_count; //keeps track no. of bosses a player has killed
     public:
@@ -37,7 +37,8 @@ class Player {
         void increaseStandardKillCount();
 
         // getters and setters for all data memebers
-        std::vector<int> get_combat_stats();
+        int* get_combat_stats();
+
         int get_max_health();
         int get_current_health();
         int get_exp();

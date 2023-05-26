@@ -46,7 +46,7 @@ int main() {
 
     std::string new_or_continue;
     bool valid = false;
-
+    
     while (valid == false) {
         std::cout << "Please enter 'New Game' to start a new game or 'Continue' to continue from save data\n";
         std::cin >> new_or_continue;
@@ -73,7 +73,7 @@ int main() {
         classes[classes_index] = &player;
 
     } else if ((new_or_continue == "New") || (new_or_continue == "new")) {
-
+        
         // black screen, text pops up - character creation -
         std::string name;
         std::string _class;
@@ -120,7 +120,7 @@ int main() {
             }
         }
 
-        sleep(0.5);
+        sleep(2);
 
         std::cout << "You are " << name << " the " << _class << "\n" << "Press enter to continue\n";
         std::cin.get();

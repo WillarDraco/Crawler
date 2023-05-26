@@ -12,7 +12,17 @@ Player::Player(int level) { // sets level data member, health is set based on le
     exp = 0;// current experience level
     this->level = level;
     defend = false;
-    combat_stats = {100, 100, 5, 10, 0, 5, 1, 0, 10}; // Stats {max_hp (0), current_hp (1), damage(2), special damage(3), class stat(4), dodge chance(5), defense(6), crit chance(7), max resource(8), current resource (9)}
+    // Stats {max_hp (0), current_hp (1), damage(2), special damage(3), class stat(4), dodge chance(5), defense(6), crit chance(7), max resource(8), current resource (9)}
+    combat_stats[0] = 100;
+    combat_stats[1] = 100;
+    combat_stats[2] = 5;
+    combat_stats[3] = 10;
+    combat_stats[4] = 0;
+    combat_stats[5] = 5;
+    combat_stats[6] = 1;
+    combat_stats[7] = 0;
+    combat_stats[8] = 1;
+    combat_stats[9] = 0;
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use
@@ -82,7 +92,7 @@ void Player::increaseStandardKillCount() {
 }
 
 // getters and setters for all data memebers
-std::vector<int> Player::get_combat_stats() {
+int* Player::get_combat_stats() {
     return combat_stats;
 }
 
@@ -227,7 +237,7 @@ void Player::load() {
     savefile.close();
     this->name = save_player.get_name();
     this->level = save_player.get_level();
-    this->combat_stats = save_player.get_combat_stats();
+    
     this->exp = save_player.get_exp();
 
 }
