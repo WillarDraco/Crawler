@@ -69,7 +69,7 @@ int main() {
     std::cin >> name;
 
     sleep(0.5);
-
+    
     // create an array of pointers to pointers of each class type
     // player selects one to use and that pointer/index is used throughout the game
     Player** classes = new Player*[3];
@@ -607,7 +607,7 @@ int main() {
 
     int upgrade_two = rand() % 5;
 
-    while (upgrade_two = upgrade_one){
+    while ((upgrade_two = upgrade_one)){
         upgrade_two = rand() % 5;
     }
 
@@ -666,12 +666,12 @@ int main() {
     int requested_upgrade;
     std::cin >> requested_upgrade;
 
-    while (requested_upgrade =! 1 || 2 || 3){
+    while ((requested_upgrade =! 1 || 2 || 3)){
         std::cout << "\nYour entry is invalid, please try again\n";
         std::cin >> requested_upgrade;
     }
     
-    if(requested_upgrade = 1){
+    if((requested_upgrade = 1)){
         switch (upgrade_one){
 
         case 0:
@@ -699,7 +699,7 @@ int main() {
         std::cout << "\nYou upgraded your max recourses\n";
         break;       
        };
-    } else if(requested_upgrade = 2){
+    } else if((requested_upgrade = 2)){
         switch (upgrade_two){
 
         case 0:
@@ -727,7 +727,7 @@ int main() {
         std::cout << "\nYou upgraded your max recourses\n";
         break;       
        };
-    } else if(requested_upgrade = 3){
+    } else if((requested_upgrade = 3)){
         switch (upgrade_one){
 
         case 0:
