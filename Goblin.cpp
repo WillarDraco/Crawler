@@ -36,12 +36,12 @@
     }
 
    void Goblin::equipWeapon(Weapon* goblin_weapon) { // sets current weapon (weapon bonuses)
-        combat_stats[3] = combat_stats[3] + goblin_weapon->get_stat_bonus();
+        combat_stats[3] = combat_stats[3] + goblin_weapon->get_damage();
         this->goblin_weapon = &goblin_weapon;
 }
 
     void Goblin::unequipWeapon(Weapon* goblin_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-        combat_stats[3] = combat_stats[3] - goblin_weapon->get_stat_bonus();
+        combat_stats[3] = combat_stats[3] - goblin_weapon->get_damage();
         this->goblin_weapon = 0;
 }
     

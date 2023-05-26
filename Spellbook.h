@@ -6,6 +6,6 @@
 class Spellbook : public Weapon {
     public:
         Spellbook(); // Default constructor
-        Spellbook(std::string name, int stat_bonus, int level); // Constructor for a bow
+        Spellbook(std::string name, int level); // Constructor for a bow
 };
 #endif

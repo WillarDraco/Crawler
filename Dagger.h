@@ -8,7 +8,7 @@
 class Dagger : public Weapon {
     public:
         Dagger();
-        Dagger(std::string name, int stat_bonus, int level);
+        Dagger(std::string name, int level);
         // Dagger gives the player a 15% chance to evade all damage
         // Dagger gives the player a 15% chance to hit twice
 };

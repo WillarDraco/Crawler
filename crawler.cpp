@@ -30,6 +30,7 @@
 #include "ThrowingKnives.h"
 #include "Spellbook.h"
 #include "Staff.h"
+#include "Upgrade.h"
 
 
 
@@ -217,8 +218,8 @@ int main() {
             std::cout << "\n Now that you have a dagger, you can use 'Special Attack' to swing your dagger\n";
             sleep(2);
 
-            Dagger* first_dagger = new Dagger("Cracked Wand", 5, classes[classes_index]->get_level());
-            classes[classes_index]->equipWeapon(first_dagger);
+        Dagger* first_dagger = new Dagger("Cracked Wand", classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_dagger);
 
         } else if (_class == "Archer") {
             std::cout << "\nYou notice a leather strap across the goblins chest, and upon closer insepction you realise\nthere is a quiver full of arrows across the goblins back...\n";
@@ -232,8 +233,8 @@ int main() {
             std::cout << "\nNow that you have a Bow, you can use the 'Special Attack' in combat to shoot an arrow!\n";
             sleep(2);
 
-            Bow* first_bow = new Bow("Cracked Wand", 5, classes[classes_index]->get_level());
-            classes[classes_index]->equipWeapon(first_bow);
+        Bow* first_bow = new Bow("Cracked Wand", classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_bow);
 
         } else if (_class == "Wizard") {
             std::cout << "\nYou notice a strange old book in the goblins small satchel\n";
@@ -251,9 +252,9 @@ int main() {
             std::cout << "\nNow that you have a spellbook, you can use the 'Special Attack' in combat to cast a fireball!\n";
             sleep(2);
 
-            Spellbook* first_spellbook = new Spellbook("Cracked Wand", 5, classes[classes_index]->get_level());
-            classes[classes_index]->equipWeapon(first_spellbook);
-        }
+        Spellbook* first_spellbook = new Spellbook("Cracked Wand", classes[classes_index]->get_level());
+        classes[classes_index]->equipWeapon(first_spellbook);
+    }
 
         std::cout << "Each weapon has unique bonuses, such as the chance to evade attacks, or double strike\n";
         sleep(2);
@@ -351,9 +352,9 @@ int main() {
             rand_weapon = rand() % 3;
             stat_bonus = (rand() % 10) + 5;
 
-                Dagger* dagger = new Dagger("Ogre's Sword", stat_bonus, standard_monsters[monster_select]->get_level());
-                Battleaxe* battleaxe = new Battleaxe("Ogre's Battleaxe", stat_bonus, standard_monsters[monster_select]->get_level());
-                Mace* mace = new Mace("Ogre's Mace", stat_bonus, standard_monsters[monster_select]->get_level());
+                Dagger* dagger = new Dagger("Ogre's Sword", standard_monsters[monster_select]->get_level());
+                Battleaxe* battleaxe = new Battleaxe("Ogre's Battleaxe", standard_monsters[monster_select]->get_level());
+                Mace* mace = new Mace("Ogre's Mace", standard_monsters[monster_select]->get_level());
                 Weapon** weaponlist = new Weapon*[3];
 
                 weaponlist[0] = dagger;
@@ -383,9 +384,9 @@ int main() {
             rand_weapon = rand() % 3;
             stat_bonus = (rand() % 5) + 1;
 
-                Wand* wand= new Wand("Lich Wand", stat_bonus, standard_monsters[monster_select]->get_level());
-                Spellbook* spellbook = new Spellbook("Lich's Book of Spells", stat_bonus, standard_monsters[monster_select]->get_level());
-                Staff* staff = new Staff("Lich's Staff", stat_bonus, standard_monsters[monster_select]->get_level());
+                Wand* wand= new Wand("Lich Wand", standard_monsters[monster_select]->get_level());
+                Spellbook* spellbook = new Spellbook("Lich's Book of Spells", standard_monsters[monster_select]->get_level());
+                Staff* staff = new Staff("Lich's Staff", standard_monsters[monster_select]->get_level());
                 Weapon** weaponlist = new Weapon*[3];
 
                 weaponlist[0] = wand;
@@ -411,7 +412,7 @@ int main() {
                 }
             }
             bool valid;
-            while (fight = true) {
+            while ((fight = true)) {
             
                 valid = false;
                 while (valid == false) {
@@ -501,9 +502,9 @@ int main() {
                 rand_weapon = rand() % 3;
                 stat_bonus = (rand() % 5) + 1;
 
-                Dagger* dagger = new Dagger("Goblin's Sword", stat_bonus, standard_monsters[monster_select]->get_level());
-                Battleaxe* battleaxe = new Battleaxe("Goblin's Battleaxe", stat_bonus, standard_monsters[monster_select]->get_level());
-                Mace* mace = new Mace("Goblin's Mace", stat_bonus, standard_monsters[monster_select]->get_level());
+                Dagger* dagger = new Dagger("Goblin's Sword", standard_monsters[monster_select]->get_level());
+                Battleaxe* battleaxe = new Battleaxe("Goblin's Battleaxe", standard_monsters[monster_select]->get_level());
+                Mace* mace = new Mace("Goblin's Mace", standard_monsters[monster_select]->get_level());
                 Weapon** weaponlist = new Weapon*[3];
 
                 weaponlist[0] = dagger;
@@ -533,9 +534,9 @@ int main() {
                 rand_weapon = rand() % 3;
                 stat_bonus = (rand() % 5) + 1;
 
-                Bow* bow = new Bow("Skeleton Bow", stat_bonus, standard_monsters[monster_select]->get_level());
-                Crossbow* crossbow = new Crossbow("Skeleton Crossbow", stat_bonus, standard_monsters[monster_select]->get_level());
-                ThrowingKnives* throwingknives = new ThrowingKnives("Skeleton Throwing Knives", stat_bonus, standard_monsters[monster_select]->get_level());
+                Bow* bow = new Bow("Skeleton Bow", standard_monsters[monster_select]->get_level());
+                Crossbow* crossbow = new Crossbow("Skeleton Crossbow", standard_monsters[monster_select]->get_level());
+                ThrowingKnives* throwingknives = new ThrowingKnives("Skeleton Throwing Knives", standard_monsters[monster_select]->get_level());
                 Weapon** weaponlist = new Weapon*[3];
 
                 weaponlist[0] = bow;
@@ -561,7 +562,7 @@ int main() {
                 }
             }
 
-            while (fight = true) {
+            while ((fight = true)) {
             
                 bool valid = false;
                 while (valid == false) {

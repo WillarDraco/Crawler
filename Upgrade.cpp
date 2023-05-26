@@ -7,25 +7,35 @@
 Upgrade::Upgrade(){}; //default constructer
 
 void Upgrade::upgrade_class_stat(Player* player){
-    combat_stats[4] = combat_stats[4] + 5*level;
+
+    int new_stat = player->get_class_stat() + 5*level;
+    player->set_class_stat(new_stat);
 };
 
 
 void Upgrade::upgrade_dodge_chance(Player* player){
-    combat_stats[5] = combat_stats[5] + 5*level;
+     
+    int new_stat = player->get_dodge_chance() + 5*level;
+    player->set_dodge_chance(new_stat);
 };
 
 
 void Upgrade::upgrade_defense (Player* player){
-    combat_stats[6] = combat_stats[6] + 5*level;
+
+    int new_stat = player->get_defense() + 5*level;
+    player->set_defense(new_stat);
 };
 
 
 void Upgrade::upgrade_crit_chance(Player* player){
-    combat_stats[7] = combat_stats[7] + 5*level;
+    
+    int new_stat = player->get_crit_chance() + 5*level;
+    player->set_crit_chance(new_stat);
 };
 
 
 void Upgrade::upgrade_max_recourses(Player* player){
-    combat_stats[8] = combat_stats[8] + 5*level;
+
+    int new_stat = player->get_max_resource() + 5*level;
+    player->set_max_resource(new_stat);
 };

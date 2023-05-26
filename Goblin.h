@@ -20,6 +20,8 @@ class Goblin : public Monster{
         //getters and setters
         int get_strength();
         void set_strength(int);
+
+
 };
 
 #endif

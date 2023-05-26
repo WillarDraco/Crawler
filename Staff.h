@@ -6,6 +6,6 @@
 class Staff : public Weapon {
     public:
         Staff(); // Default constructor
-        Staff(std::string name, int stat_bonus, int level); // Constructor for a bow
+        Staff(std::string name, int level); // Constructor for a bow
 };
 #endif

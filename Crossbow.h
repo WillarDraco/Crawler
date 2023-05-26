@@ -6,6 +6,6 @@
 class Crossbow : public Weapon {
     public:
         Crossbow(); // Default constructor
-        Crossbow(std::string name, int stat_bonus, int level); // Constructor for a bow
+        Crossbow(std::string name, int level); // Constructor for a bow
 };
 #endif

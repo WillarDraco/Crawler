@@ -35,12 +35,12 @@
     }
 
     void Skeleton::equipWeapon(Weapon* skeleton_weapon) { // sets current weapon (weapon bonuses)
-        combat_stats[4] = combat_stats[4]+ skeleton_weapon->get_stat_bonus();
+        combat_stats[4] = combat_stats[4]+ skeleton_weapon->get_damage();
         this->skeleton_weapon = &skeleton_weapon;
     }
 
     void Skeleton::unequipWeapon(Weapon* skeleton_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-        combat_stats[4] = combat_stats[4] - skeleton_weapon->get_stat_bonus();
+        combat_stats[4] = combat_stats[4] - skeleton_weapon->get_damage();
         this->skeleton_weapon = 0;
     }
     

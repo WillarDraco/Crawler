@@ -46,12 +46,12 @@
     }
      
     void Lich::equipWeapon(Weapon* lich_weapon) { // sets current weapon (weapon bonuses)
-        combat_stats[5] = combat_stats[5] + lich_weapon->get_stat_bonus();
+        combat_stats[5] = combat_stats[5] + lich_weapon->get_damage();
         this->lich_weapon = &lich_weapon;
     }
 
     void Lich::unequipWeapon(Weapon* lich_weapon) { // sets current weapon to  “” (removes weapon bonuses)
-        combat_stats[5] = combat_stats[5] - lich_weapon->get_stat_bonus();
+        combat_stats[5] = combat_stats[5] - lich_weapon->get_damage();
         this->lich_weapon = 0;
     }
 
