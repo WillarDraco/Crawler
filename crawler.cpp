@@ -412,7 +412,7 @@ int main() {
                 }
             }
             bool valid;
-            while ((fight = true)) {
+            while ((fight == true)) {
             
                 valid = false;
                 while (valid == false) {
