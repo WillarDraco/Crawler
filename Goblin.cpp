@@ -6,14 +6,15 @@
     //constructer
     Goblin::Goblin(Player* player){
         this->level = player->get_level();
+        this->defend = false;
 
-        this->combat_stats[0] = 20 + 5*(level);
-        this->combat_stats[1] = combat_stats[0];
-
-        this->defend = false;    
-        
-        this->combat_stats[3] = level;
-        this->combat_stats[6] = level * 16;
+        combat_stats[0] = 20 + 5*(level);
+        combat_stats[1] = combat_stats[0];
+        combat_stats[2] = 0;
+        combat_stats[3] = level;
+        combat_stats[4] = 0;
+        combat_stats[5] = 0;
+        combat_stats[6] = level * 16;
 
         goblin_weapon = 0;
     };
