@@ -23,6 +23,9 @@ Archer::Archer(int level, std::string name) { // sets strength and health based 
     combat_stats[8] = 10; // Max ammo
     combat_stats[9] = 10; // Current ammo
 
+    boss_kill_count = 0;
+    standard_kill_count = 0;
+
     exp = 0;// current experience level
     this->level = level;
     defend = false;

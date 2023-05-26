@@ -23,6 +23,9 @@ Player::Player(int level) { // sets level data member, health is set based on le
     combat_stats[7] = 0;
     combat_stats[8] = 1;
     combat_stats[9] = 0;
+    
+    boss_kill_count = 0;
+    standard_kill_count = 0;
 }
 
 void Player::attack(Monster* monster) { // basic attack all players can use

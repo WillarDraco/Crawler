@@ -14,7 +14,7 @@ class Player {
         int level; // total experience level
         bool defend; // sets defending state
         std::string name; // players name
-        int combat_stats[10]; // Array to hold combat stats
+        int combat_stats[12]; // Array to hold combat stats
         int standard_kill_count; // keeps track of no. of normal enemies a player has killed
         int boss_kill_count; //keeps track no. of bosses a player has killed
     public:

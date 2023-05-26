@@ -469,7 +469,7 @@ int main() {
 
                     int upgrade_two = rand() % 5;
 
-                    while ((upgrade_two = upgrade_one)){
+                    while ((upgrade_two == upgrade_one)){
                         upgrade_two = rand() % 5;
                     }
 
@@ -499,7 +499,7 @@ int main() {
 
                     int upgrade_three = rand() % 5;
 
-                    while((upgrade_three = upgrade_one) || (upgrade_three = upgrade_one)){
+                    while((upgrade_three == upgrade_one) || (upgrade_three == upgrade_one)){
                         upgrade_three = rand() % 5;
                     }
 
@@ -534,7 +534,7 @@ int main() {
                         std::cin >> requested_upgrade;
                     }
                     
-                    if((requested_upgrade = 1)){
+                    if((requested_upgrade == 1)){
                         switch (upgrade_one){
 
                         case 0:
@@ -562,7 +562,7 @@ int main() {
                         std::cout << "\nYou upgraded your max resourses\n";
                         break;       
                     };
-                    } else if((requested_upgrade = 2)){
+                    } else if((requested_upgrade == 2)){
                         switch (upgrade_two){
 
                         case 0:
@@ -590,7 +590,7 @@ int main() {
                         std::cout << "\nYou upgraded your max resourses\n";
                         break;       
                     };
-                    } else if((requested_upgrade = 3)){
+                    } else if((requested_upgrade == 3)){
                         switch (upgrade_one){
 
                         case 0:

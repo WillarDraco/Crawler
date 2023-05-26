@@ -24,6 +24,9 @@ Barbarian::Barbarian(int level, std::string name) { // sets strength and health 
     combat_stats[8] = 0;
     combat_stats[9] = 0;
 
+    boss_kill_count = 0;
+    standard_kill_count = 0;
+
     exp = 0; // current number of experience points
     this->level = level; // total experience level
     defend = false; // sets defending state
