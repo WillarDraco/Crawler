@@ -51,7 +51,7 @@ void Wizard::equipWeapon(Weapon* wizard_weapon) { // sets current weapon (weapon
     combat_stats[6] = combat_stats[6] + wizard_weapon->get_defense(); // Defense stat
     combat_stats[7] = combat_stats[7] + wizard_weapon->get_crit_chance(); // Crit chance
     combat_stats[3] = combat_stats[3] + combat_stats[4]; // Special attack damage
-    combat_stats[9] = combat_stats[9] + wizard_weapon->get_current_resource(); // Current mana
+    combat_stats[8] = combat_stats[8] + wizard_weapon->get_current_resource(); // Current mana
 }
 
 void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  “” (removes weapon bonuses)
@@ -62,7 +62,7 @@ void Wizard::unequipWeapon(Weapon* wizard_weapon) { // sets current weapon to  �
     combat_stats[6] = combat_stats[6] - wizard_weapon->get_defense(); // Defense stat
     combat_stats[7] = combat_stats[7] - wizard_weapon->get_crit_chance(); // Crit chance
     combat_stats[3] = combat_stats[3] - combat_stats[4]; // Special attack damage
-    combat_stats[9] = combat_stats[9] - wizard_weapon->get_current_resource(); // Current mana
+    combat_stats[8] = combat_stats[8] - wizard_weapon->get_current_resource(); // Current mana
     this->wizard_weapon = 0;
 }
 

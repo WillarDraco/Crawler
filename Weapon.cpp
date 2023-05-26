@@ -16,6 +16,8 @@ Weapon::Weapon(std::string name, int level) { // constructor setting level, name
     weapon_stats[5] = 1; // Dodge chance
     weapon_stats[6] = 2; // Defense stat
     weapon_stats[7] = 1; // Crit chance
+    weapon_stats[8] = 10; // max resource
+    weapon_stats[9] = 10; // current resource
 }
 
 // getters and setters for all data memebers
@@ -61,6 +63,14 @@ int Weapon::get_defense() { // Gets defense stat
 
 int Weapon::get_crit_chance() { // Gets crit chance
     return weapon_stats[7];
+}
+
+int Weapon::get_max_resource() { // Gets crit chance
+    return weapon_stats[8];
+}
+
+int Weapon::get_current_resource() { // Gets crit chance
+    return weapon_stats[9];
 }
 
 void Weapon::set_max_health(int health) { // Sets max health

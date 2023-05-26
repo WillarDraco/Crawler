@@ -47,17 +47,18 @@ int main() {
     std::string new_or_continue;
     bool valid = false;
 
-    while (valid = false) {
-        std::cout << "Please enter 'New Game' to start a new game or 'Continue' to continue from save data";
+    while (valid == false) {
+        std::cout << "Please enter 'New Game' to start a new game or 'Continue' to continue from save data\n";
         std::cin >> new_or_continue;
         if ((new_or_continue == "new") || (new_or_continue == "New")) {
-            valid == true;
+            valid = true;
+            delete classes;
         } else if ((new_or_continue == "continue") || (new_or_continue == "Continue")) {
             valid = true;
             std::ifstream savefile;
             savefile.open("savefile.txt");
                 if (!savefile) {
-                    std::cerr << "Error in opening the fil\n Start a new game\n";
+                    std::cerr << "Error in opening the fil\nStart a new game\n";
                     valid = false;
                 } else
                 savefile.close();
@@ -73,7 +74,6 @@ int main() {
 
     } else if ((new_or_continue == "New") || (new_or_continue == "new")) {
 
-        // openGL start button and maybe highscores?
         // black screen, text pops up - character creation -
         std::string name;
         std::string _class;
@@ -81,11 +81,13 @@ int main() {
         std::cout << "Enter a name: ";
         std::cin >> name;
 
-        sleep(0.5);
+        sleep(2);
+        
 
         // create an array of pointers to pointers of each class type
         // player selects one to use and that pointer/index is used throughout the game
 
+                
         Barbarian* barbarian = new Barbarian(1, name);
         Archer* archer = new Archer(1, name);
         Wizard* wizard = new Wizard(1, name);
@@ -93,24 +95,25 @@ int main() {
         classes[0] = barbarian;
         classes[1] = archer;
         classes[2] = wizard;
+        
 
         int classes_index;
-        bool valid_class = false;
-        while (valid_class == false) {
+        valid = false;
+        while (valid == (false)) {
             std::cout << "Select a class, you may choose:\nBarbarian\nArcher\nWizard\n";
             std::cin >> _class;
     
-            if (_class == ("Barbarian") || _class == "barbarian") {
+            if (_class == ("Barbarian") || (_class == "barbarian")) {
                 classes_index = 0;
-                valid_class = true;
+                valid = true;
                 _class = "Barbarian";
             } else if (_class == ("Archer") || _class == ("archer")) {
                 classes_index = 1;
-                valid_class = true;
+                valid = true;
                 _class = "Archer";
             } else if (_class == ("Wizard") || _class == ("wizard")) {
                 classes_index = 2;
-                valid_class = true;
+                valid = true;
                 _class = "Wizard";
             } else {
                 std::cout << "Your selection is not valid, try again\n";
@@ -275,11 +278,11 @@ int main() {
 
         valid = false;
         char save;
-        while (valid = false) {
+        while (valid == false) {
             std::cout << "Would you like to save? Y/N";
             std::cin >> save;
             if (save == 'Y') {
-                valid == true;
+                valid = true;
                 classes[classes_index]->save(classes[classes_index]);
             } else if (save == 'N') {
                 valid = true;
@@ -295,7 +298,6 @@ int main() {
         int monster_select;
         int weapon_chance;
         int rand_weapon;
-        int stat_bonus;
         player_death = false;
     while (player_death == false) {
         fight = true;
@@ -350,7 +352,6 @@ int main() {
             weapon_chance = rand() % 100;
             if (monster_select == 0 && (weapon_chance > 90)) {
             rand_weapon = rand() % 3;
-            stat_bonus = (rand() % 10) + 5;
 
                 Dagger* dagger = new Dagger("Ogre's Sword", standard_monsters[monster_select]->get_level());
                 Battleaxe* battleaxe = new Battleaxe("Ogre's Battleaxe", standard_monsters[monster_select]->get_level());
@@ -382,7 +383,6 @@ int main() {
 
             } else if (monster_select == 2 && weapon_chance > 90) {
             rand_weapon = rand() % 3;
-            stat_bonus = (rand() % 5) + 1;
 
                 Wand* wand= new Wand("Lich Wand", standard_monsters[monster_select]->get_level());
                 Spellbook* spellbook = new Spellbook("Lich's Book of Spells", standard_monsters[monster_select]->get_level());
@@ -500,7 +500,6 @@ int main() {
             weapon_chance = rand() % 100;
             if (monster_select == 0 && (weapon_chance > 90)) {
                 rand_weapon = rand() % 3;
-                stat_bonus = (rand() % 5) + 1;
 
                 Dagger* dagger = new Dagger("Goblin's Sword", standard_monsters[monster_select]->get_level());
                 Battleaxe* battleaxe = new Battleaxe("Goblin's Battleaxe", standard_monsters[monster_select]->get_level());
@@ -532,7 +531,6 @@ int main() {
 
             } else if (monster_select == 2 && weapon_chance > 90) {
                 rand_weapon = rand() % 3;
-                stat_bonus = (rand() % 5) + 1;
 
                 Bow* bow = new Bow("Skeleton Bow", standard_monsters[monster_select]->get_level());
                 Crossbow* crossbow = new Crossbow("Skeleton Crossbow", standard_monsters[monster_select]->get_level());
