@@ -54,7 +54,7 @@
         return;
     } else if (defend == false) {
         combat_stats[1] = combat_stats[1] - damage;
-        std::cout << "\nThe player attacked for " << damage << "damage\n";
+        std::cout << "\nThe player attacked for " << damage << " damage\n";
         std::cout << "The monster has " << combat_stats[1] << " health left\n";
         return;
     }

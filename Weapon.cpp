@@ -12,7 +12,7 @@ Weapon::Weapon(std::string name, int level) { // constructor setting level, name
     weapon_stats[1] = weapon_stats[0]; // current health of player
     weapon_stats[2] = 5; // Base attack damage
     weapon_stats[3] = 10; // Special attack damage
-    weapon_stats[4] = 5; // Resource stat
+    weapon_stats[4] = 5; // class stat
     weapon_stats[5] = 1; // Dodge chance
     weapon_stats[6] = 2; // Defense stat
     weapon_stats[7] = 1; // Crit chance
@@ -21,7 +21,7 @@ Weapon::Weapon(std::string name, int level) { // constructor setting level, name
 }
 
 // getters and setters for all data memebers
-std::vector<int> Weapon::get_weapon_stats() {
+int* Weapon::get_weapon_stats() {
     return weapon_stats;
 }
 
@@ -88,6 +88,10 @@ void Weapon::set_level(int level) { //Sets level
     return;
 }
 
+void Weapon::set_name(std::string name){
+    std::string name = name;
+}
+
 void Weapon::set_damage(int damage) { // Sets base damage
     weapon_stats[2] = damage;
 }
@@ -111,3 +115,12 @@ void Weapon::set_defense(int defense) { // Sets defense stat
 void Weapon::set_crit_chance(int crit) { // Sets crit chance
     weapon_stats[7] = crit;
 }
+
+void Weapon::set_current_resource(int resource){
+    weapon_stats[8] = resource;
+};
+
+
+void Weapon::set_max_resource(int resource){
+    weapon_stats[9] = resource;
+};
