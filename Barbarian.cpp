@@ -21,6 +21,8 @@ Barbarian::Barbarian(int level, std::string name) { // sets strength and health 
     combat_stats[5] = 1; // Dodge chance
     combat_stats[6] = 4; // Defense stat
     combat_stats[7] = 1; // Crit chanc
+    combat_stats[8] = 0;
+    combat_stats[9] = 0;
 
     exp = 0; // current number of experience points
     this->level = level; // total experience level
