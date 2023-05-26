@@ -6,16 +6,16 @@
     //default constructer
     Skeleton::Skeleton(Player* player){
         this->level = player->get_level();
+        this->defend = false;
 
-        this->combat_stats[0] = 20 + 5*(level);
-        this->combat_stats[1] = combat_stats[0];
-        this->combat_stats[2] = 0;
-        this->combat_stats[3] = 0;  
-        this->combat_stats[4] = level;
-        this->combat_stats[5] = 0;
-        this->combat_stats[6] = level * 16;
-        
-        this->defend = false; 
+        combat_stats[0] = 20 + 5*(level);
+        combat_stats[1] = combat_stats[0];
+        combat_stats[2] = 0;
+        combat_stats[3] = 0;  
+        combat_stats[4] = level;
+        combat_stats[5] = 0;
+        combat_stats[6] = level * 16;
+         
         skeleton_weapon = 0;
     };
 
