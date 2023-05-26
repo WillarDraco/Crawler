@@ -606,10 +606,8 @@ int main() {
     } 
 
     //upgrades section
-    Upgrade* upgrade;
     std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
     
-
     int upgrade_one = rand() % 5;
     switch (upgrade_one){
         case 0:
@@ -690,8 +688,9 @@ int main() {
         case 4:
         std::cout << "\n3. Upgrade your max recourses?\n";
         break;
-    }   
-    
+    }
+
+    Upgrade* upgrade = new Upgrade();
     int requested_upgrade;
     std::cin >> requested_upgrade;
 
