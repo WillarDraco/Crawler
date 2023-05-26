@@ -6,15 +6,15 @@
     //constructer
     Ogre::Ogre(Player* player){
         this->level = player->get_level();
+        this->defend = false; 
 
-        this->combat_stats[0] = 90 + 10*(level);
-        this->combat_stats[1] = combat_stats[0];
-
-        this->defend = false;    
-        
-        this->combat_stats[3] = level * 2;
-        this->combat_stats[4] = level * 3;
-        this->combat_stats[6] = level * 32;
+        combat_stats[0] = 90 + 10*(level);
+        combat_stats[1] = combat_stats[0];
+        combat_stats[2] = 0;
+        combat_stats[3] = level * 2;
+        combat_stats[4] = level * 3;
+        combat_stats[5] = 0;
+        combat_stats[6] = level * 32;
 
         ogre_weapon = 0;
 
