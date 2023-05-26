@@ -56,7 +56,7 @@ void Player::takeDamage(int damage) {
             return;
         } else if (dodge < 84) {
             combat_stats[1] = combat_stats[1] - damage;
-            std::cout << "\nThe monster attacked for " << damage << "damage\n";
+            std::cout << "\nThe monster attacked for " << damage << " damage\n";
             std::cout << "You have " << combat_stats[1] << " health left\n";
             return;
         }

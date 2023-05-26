@@ -604,7 +604,7 @@ int main() {
             delete wyvern;
         }
     } 
-
+    
     //upgrades section
     std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
     
