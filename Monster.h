@@ -8,7 +8,7 @@ class Player; // forward declaration to avoid codependecy
 
 class Monster{
     protected:
-        int combat_stats[10];
+        int combat_stats[7];
         int level; // level of the monster
         bool defend; //sets defending state
 
