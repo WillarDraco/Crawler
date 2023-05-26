@@ -16,13 +16,8 @@
         combat_stats[4] = 0;
         combat_stats[5] = 0;
         combat_stats[6] = 0;
-        combat_stats[7] = 0;
+
         level = player->get_level();
-
-        combat_stats[0] = 20 + 5*(level);
-        combat_stats[1] = combat_stats[0];
-        combat_stats[6] = level * 16;
-
         defend = false;    
         };
 
