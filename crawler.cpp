@@ -439,156 +439,8 @@ int main() {
                     classes[classes_index]->gainExp(boss_monsters[monster_select]->get_combat_stats()[6]);
                     fight = false;
                     classes[classes_index]->increaseBossKillCount();
-                    break;
-                }
 
-                boss_monsters[monster_select]->attack(classes[classes_index]);
-
-                if (classes[classes_index]->get_current_health() <= 0) {
-                    std::cout << "\nYou died\n";
-                    player_death = true;
-                    fight = false;
-                }
-            }          
-            delete ogre;
-            delete lich;
-            delete dragon;
-
-        } else {
-            Goblin* goblin = new Goblin(classes[classes_index]);
-            Slime* slime = new Slime(classes[classes_index]);
-            Skeleton* skeleton = new Skeleton(classes[classes_index]);
-            Wyvern* wyvern = new Wyvern(classes[classes_index]);
-
-            standard_monsters[0] = goblin;
-            standard_monsters[1] = slime;
-            standard_monsters[2] = skeleton;
-            standard_monsters[3] = wyvern;
-
-            monster_select = (rand() % 4);
-
-            if (monster_select == 0) {
-                std::cout << "\nAs you stumble through the darkness, you all of a sudden get the feeling that something is watching you\n";
-                sleep(2);
-                std::cout << "You spin around and are met with the dirty golden eyes of a goblin\n";
-                sleep(2);
-                std::cout << "You draw your weapon, ready to fight\n";
-                sleep(2);
-            } else if (monster_select == 1) {
-                std::cout << "\nYou stumble over a rock, and to stop yourself falling you fling your arms out in front you\n";
-                sleep(2);
-                std::cout << "Instead of hard rock, your hands hit a gooey substance coating the ground\n";
-                sleep(2);
-                std::cout << "You look ahead at the slime, and prepare for combat";
-                sleep(2);
-            } else if (monster_select == 2) {
-                std::cout << "\nAs you are walking, all of a sudden an arrow whizzes by your head\n";
-                sleep(2);
-                std::cout << "Ducking behind a nearby boulder, you hear the clinking of bones and arrows\n";
-                sleep(2);
-                std::cout << "You draw your weapon, jump out from behind the boulder, and charge at the skeleton archer\n";
-            } else if (monster_select == 3) {
-                std::cout << "\nAll of a sudden, you see light in the distance\n";
-                sleep(2);
-                std::cout << "Excitedly you start running toward it, but stop cold in your tracks when your eyes finally adjust to the light\n";
-                sleep(2);
-                std::cout << "The source of the light is fire, and that fire is coming from the mouth of a small wyvern\n";
-                sleep(2);
-                std::cout << "Squinting your eyes, you prepare to fight\n";
-            }
-
-            weapon_chance = rand() % 100;
-            if (monster_select == 0 && (weapon_chance > 90)) {
-                rand_weapon = rand() % 3;
-
-                Dagger* dagger = new Dagger("Goblin's Sword", standard_monsters[monster_select]->get_level());
-                Battleaxe* battleaxe = new Battleaxe("Goblin's Battleaxe", standard_monsters[monster_select]->get_level());
-                Mace* mace = new Mace("Goblin's Mace", standard_monsters[monster_select]->get_level());
-                Weapon** weaponlist = new Weapon*[3];
-
-                weaponlist[0] = dagger;
-                weaponlist[1] = mace;
-                weaponlist[2] = battleaxe;
-
-                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
-                
-                switch (rand_weapon) {              
-                case 0 :
-                    std::cout << "The goblin has a dagger!";
-                    break;
-
-                case 1 :
-                    std::cout << "The goblin has a mace!";
-                    break;
-
-                case 2 :
-                    std::cout << "The goblin has a battleaxe!";
-                    break;
-
-                default :
-                    std::cout << "The goblin has a weapon!";
-                }
-
-            } else if (monster_select == 2 && weapon_chance > 90) {
-                rand_weapon = rand() % 3;
-
-                Bow* bow = new Bow("Skeleton Bow", standard_monsters[monster_select]->get_level());
-                Crossbow* crossbow = new Crossbow("Skeleton Crossbow", standard_monsters[monster_select]->get_level());
-                ThrowingKnives* throwingknives = new ThrowingKnives("Skeleton Throwing Knives", standard_monsters[monster_select]->get_level());
-                Weapon** weaponlist = new Weapon*[3];
-
-                weaponlist[0] = bow;
-                weaponlist[1] = crossbow;
-                weaponlist[2] = throwingknives;
-
-                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
-                switch (rand_weapon) {              
-                case 0 :
-                    std::cout << "The skeleton has a bow!";
-                    break;
-
-                case 1 :
-                    std::cout << "The skeleton has a crossbow!";
-                    break;
-
-                case 2 :
-                    std::cout << "The skeleton has throwing knives!";
-                    break;
-
-                default :
-                    std::cout << "The skeleton has a weapon!";
-                }
-            }
-
-            while ((fight = true)) {
-            
-                bool valid = false;
-                while (valid == false) {
-                    std::string selection;
-                    std::cout << "\nEnter: Attack, Defend, Rest or Special Attack\n";
-                    std::cin >> selection;           
-                    if (selection == "Attack" || (selection == "attack")) {
-                        standard_monsters[monster_select]->takeDamage(classes[classes_index]->get_combat_stats()[2]);
-                        valid = true;
-                    } else if (selection == "Defend" || (selection == "defend")) {
-                        classes[classes_index]->block();
-                        valid = true;
-                    } else if (selection == "Rest" || (selection == "rest")) {
-                        classes[classes_index]->rest();
-                        valid = true;
-                    } else if (selection == "Special Attack" || selection == "special attack") {
-                        standard_monsters[monster_select]->takeDamage(classes[classes_index]->get_combat_stats()[3]);
-                    } else {
-                        std::cout << "Your selection is not valid, try again\n";
-                    } 
-                }
-                if (standard_monsters[monster_select]->get_current_health() <= 0) {
-                    std::cout << "\nYou defeated the monster!\n";
-                    classes[classes_index]->gainExp(standard_monsters[monster_select]->get_combat_stats()[6]);
-                    fight = false;
-                    classes[classes_index]->increaseStandardKillCount();
-
-                     //upgrades section
+                    //upgrades section
                     std::cout << "\nCongradulations, you have earned the choice of 3 upgrades. Enter 1, 2 or 3 to select your desired upgrade\n";
                     
                     int upgrade_one = rand() % 5;
@@ -771,6 +623,154 @@ int main() {
                 }
 
                 boss_monsters[monster_select]->attack(classes[classes_index]);
+
+                if (classes[classes_index]->get_current_health() <= 0) {
+                    std::cout << "\nYou died\n";
+                    player_death = true;
+                    fight = false;
+                }
+            }          
+            delete ogre;
+            delete lich;
+            delete dragon;
+
+        } else {
+            Goblin* goblin = new Goblin(classes[classes_index]);
+            Slime* slime = new Slime(classes[classes_index]);
+            Skeleton* skeleton = new Skeleton(classes[classes_index]);
+            Wyvern* wyvern = new Wyvern(classes[classes_index]);
+
+            standard_monsters[0] = goblin;
+            standard_monsters[1] = slime;
+            standard_monsters[2] = skeleton;
+            standard_monsters[3] = wyvern;
+
+            monster_select = (rand() % 4);
+
+            if (monster_select == 0) {
+                std::cout << "\nAs you stumble through the darkness, you all of a sudden get the feeling that something is watching you\n";
+                sleep(2);
+                std::cout << "You spin around and are met with the dirty golden eyes of a goblin\n";
+                sleep(2);
+                std::cout << "You draw your weapon, ready to fight\n";
+                sleep(2);
+            } else if (monster_select == 1) {
+                std::cout << "\nYou stumble over a rock, and to stop yourself falling you fling your arms out in front you\n";
+                sleep(2);
+                std::cout << "Instead of hard rock, your hands hit a gooey substance coating the ground\n";
+                sleep(2);
+                std::cout << "You look ahead at the slime, and prepare for combat";
+                sleep(2);
+            } else if (monster_select == 2) {
+                std::cout << "\nAs you are walking, all of a sudden an arrow whizzes by your head\n";
+                sleep(2);
+                std::cout << "Ducking behind a nearby boulder, you hear the clinking of bones and arrows\n";
+                sleep(2);
+                std::cout << "You draw your weapon, jump out from behind the boulder, and charge at the skeleton archer\n";
+            } else if (monster_select == 3) {
+                std::cout << "\nAll of a sudden, you see light in the distance\n";
+                sleep(2);
+                std::cout << "Excitedly you start running toward it, but stop cold in your tracks when your eyes finally adjust to the light\n";
+                sleep(2);
+                std::cout << "The source of the light is fire, and that fire is coming from the mouth of a small wyvern\n";
+                sleep(2);
+                std::cout << "Squinting your eyes, you prepare to fight\n";
+            }
+
+            weapon_chance = rand() % 100;
+            if (monster_select == 0 && (weapon_chance > 90)) {
+                rand_weapon = rand() % 3;
+
+                Dagger* dagger = new Dagger("Goblin's Sword", standard_monsters[monster_select]->get_level());
+                Battleaxe* battleaxe = new Battleaxe("Goblin's Battleaxe", standard_monsters[monster_select]->get_level());
+                Mace* mace = new Mace("Goblin's Mace", standard_monsters[monster_select]->get_level());
+                Weapon** weaponlist = new Weapon*[3];
+
+                weaponlist[0] = dagger;
+                weaponlist[1] = mace;
+                weaponlist[2] = battleaxe;
+
+                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
+                
+                switch (rand_weapon) {              
+                case 0 :
+                    std::cout << "The goblin has a dagger!";
+                    break;
+
+                case 1 :
+                    std::cout << "The goblin has a mace!";
+                    break;
+
+                case 2 :
+                    std::cout << "The goblin has a battleaxe!";
+                    break;
+
+                default :
+                    std::cout << "The goblin has a weapon!";
+                }
+
+            } else if (monster_select == 2 && weapon_chance > 90) {
+                rand_weapon = rand() % 3;
+
+                Bow* bow = new Bow("Skeleton Bow", standard_monsters[monster_select]->get_level());
+                Crossbow* crossbow = new Crossbow("Skeleton Crossbow", standard_monsters[monster_select]->get_level());
+                ThrowingKnives* throwingknives = new ThrowingKnives("Skeleton Throwing Knives", standard_monsters[monster_select]->get_level());
+                Weapon** weaponlist = new Weapon*[3];
+
+                weaponlist[0] = bow;
+                weaponlist[1] = crossbow;
+                weaponlist[2] = throwingknives;
+
+                standard_monsters[monster_select]->equipWeapon(weaponlist[rand_weapon]);
+                switch (rand_weapon) {              
+                case 0 :
+                    std::cout << "The skeleton has a bow!";
+                    break;
+
+                case 1 :
+                    std::cout << "The skeleton has a crossbow!";
+                    break;
+
+                case 2 :
+                    std::cout << "The skeleton has throwing knives!";
+                    break;
+
+                default :
+                    std::cout << "The skeleton has a weapon!";
+                }
+            }
+
+            while ((fight == true)) {
+            
+                bool valid = false;
+                while (valid == false) {
+                    std::string selection;
+                    std::cout << "\nEnter: Attack, Defend, Rest or Special Attack\n";
+                    std::cin >> selection;           
+                    if (selection == "Attack" || (selection == "attack")) {
+                        standard_monsters[monster_select]->takeDamage(classes[classes_index]->get_combat_stats()[2]);
+                        valid = true;
+                    } else if (selection == "Defend" || (selection == "defend")) {
+                        classes[classes_index]->block();
+                        valid = true;
+                    } else if (selection == "Rest" || (selection == "rest")) {
+                        classes[classes_index]->rest();
+                        valid = true;
+                    } else if (selection == "Special Attack" || selection == "special attack") {
+                        standard_monsters[monster_select]->takeDamage(classes[classes_index]->get_combat_stats()[3]);
+                    } else {
+                        std::cout << "Your selection is not valid, try again\n";
+                    } 
+                }
+                if (standard_monsters[monster_select]->get_current_health() <= 0) {
+                    std::cout << "\nYou defeated the monster!\n";
+                    classes[classes_index]->gainExp(standard_monsters[monster_select]->get_combat_stats()[6]);
+                    fight = false;
+                    classes[classes_index]->increaseStandardKillCount();
+                    break;
+                }
+
+                standard_monsters[monster_select]->attack(classes[classes_index]);
 
                 if (classes[classes_index]->get_current_health() <= 0) {
                     std::cout << "\nYou died\n";
