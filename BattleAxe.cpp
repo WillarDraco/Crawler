@@ -1,4 +1,4 @@
-#include "Battleaxe.h"
+#include "BattleAxe.h"
 #include <string>
 
 Battleaxe::Battleaxe() { // Default constructor
