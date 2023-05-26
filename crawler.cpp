@@ -277,14 +277,14 @@ int main() {
     // main gameplayer loop
 
         valid = false;
-        char save;
+        std::string save;
         while (valid == false) {
-            std::cout << "Would you like to save? Y/N";
+            std::cout << "Would you like to save? Y/N\n";
             std::cin >> save;
-            if (save == 'Y') {
+            if (save == "Y") {
                 valid = true;
                 classes[classes_index]->save(classes[classes_index]);
-            } else if (save == 'N') {
+            } else if (save == "N") {
                 valid = true;
             } else {
                 std::cout << "That selection was not valid, please try again";

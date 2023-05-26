@@ -9,12 +9,13 @@
 
         this->combat_stats[0] = 20 + 5*(level);
         this->combat_stats[1] = combat_stats[0];
-
-        this->defend = false;    
-        
+        this->combat_stats[2] = 0;
+        this->combat_stats[3] = 0;  
         this->combat_stats[4] = level;
+        this->combat_stats[5] = 0;
         this->combat_stats[6] = level * 16;
         
+        this->defend = false; 
         skeleton_weapon = 0;
     };
 
