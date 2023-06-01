@@ -19,7 +19,7 @@
     };
 
     //magic attack
-    void Wyvern::magic_attack(Player* player){
+    void Wyvern::attack(Player* player){
              int random_move = rand() % 100 + 1;
              defend = false;
         

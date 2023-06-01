@@ -10,7 +10,7 @@ class Wyvern : public Monster{
     public:
         Wyvern(Player* player); //default constructor
 
-        void magic_attack (Player* player); //attack
+        void attack (Player* player); //attack
         
 
         //getters and setters
